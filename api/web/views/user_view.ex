@@ -13,8 +13,6 @@ defmodule Stracker.UserView do
     %{id: user.id,
       username: user.username,
       email: user.email,
-      password_hash: user.password_hash,
-      subscriber: user.subscriber,
-      name: user.name}
+      subscriber: user.subscriber}
   end
 end
