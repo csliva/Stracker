@@ -8,6 +8,7 @@ defmodule Stracker.User do
     field :password, :string, virtual: true
     field :subscriber, :boolean, default: false
     field :name, :string
+    has_many :posts , Stracker.Post
 
     timestamps()
   end

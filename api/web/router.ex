@@ -11,6 +11,7 @@ defmodule Stracker.Router do
     pipe_through :api
     resources "/users", UserController, except: [:new, :edit]
     resources "/posts", PostController, except: [:new, :edit]
+    get "/posts/user/:user_id", PostController, :get_by_user
     post "/sessions", SessionController, :create
     delete "/sessions", SessionController, :delete
     post "/sessions/refresh", SessionController, :refresh

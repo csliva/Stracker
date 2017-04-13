@@ -3,8 +3,9 @@ defmodule Stracker.Post do
 
   schema "posts" do
     field :post_title, :string
-    field :slug, :string
     field :time, :integer
+    field :notes, :string
+    belongs_to :user, Stracker.User
 
     timestamps()
   end
@@ -14,7 +15,7 @@ defmodule Stracker.Post do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:post_title, :slug, :time])
-    |> validate_required([:post_title, :slug, :time])
+    |> cast(params, [:post_title, :notes, :time, :user_id])
+    |> validate_required([:post_title, :time, :user_id])
   end
 end

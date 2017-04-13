@@ -12,7 +12,9 @@ defmodule Stracker.PostView do
   def render("post.json", %{post: post}) do
     %{id: post.id,
       post_title: post.post_title,
-      slug: post.slug,
-      time: post.time}
+      time: post.time,
+      notes: post.notes,
+      user_id: post.user_id
+    }
   end
 end

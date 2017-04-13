@@ -8,4 +8,8 @@ const createStoreWithMiddleware = applyMiddleware(...middleWare)(createStore);
 
 const store = createStoreWithMiddleware(reducers);
 
+store.subscribe(() => {
+  console.log("store updated", store.getState());
+})
+
 export default store;

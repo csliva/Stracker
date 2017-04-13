@@ -29,6 +29,15 @@ defmodule Stracker.PostController do
     render(conn, "show.json", post: post)
   end
 
+  def get_by_user(conn, %{"user_id" => user_id}) do
+    posts = Repo.all(
+      from p in Post,
+      select: p,
+      where: ^user_id == p.user_id
+    )
+    render(conn, "index.json", posts: posts)
+  end
+
   def update(conn, %{"id" => id, "post" => post_params}) do
     post = Repo.get!(Post, id)
     changeset = Post.changeset(post, post_params)
