@@ -14,6 +14,7 @@
 
 #### api
 * create a dev.secret.exs file under the config folder which contains Mix.Config info such as postgres user and pass
+```
 use Mix.Config
 
 config :stracker, Stracker.Repo,
@@ -23,5 +24,6 @@ config :stracker, Stracker.Repo,
   database: "stracker_dev",
   hostname: "localhost",
   pool_size: 10
+```
 * `mix deps.get`
 * `mix ecto.migrate`
