@@ -20,7 +20,7 @@ use Mix.Config
 config :stracker, Stracker.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "YOUR_PGSQL_USERNAME",
-  password: "YOU_PASS",
+  password: "YOUR_PASS",
   database: "stracker_dev",
   hostname: "localhost",
   pool_size: 10
