@@ -6,11 +6,25 @@ const initialState = {
     post_title: String,
     time: Number,
     user_id: Number,
-  }
+  },
+  allStacks: {}
 }
 export default function (state = initialState, action) {
   console.log(action.type);
   switch (action.type) {
+    case 'RECIEVE_ALL_STACKS':
+      return {
+        ...state,
+        allStacks: action.response,
+      };
+    case 'RECIEVE_STACKS_ERROR':
+      return {
+        ...state,
+      };
+    case 'GET_STACKS_REQUEST':
+      return {
+        ...state,
+      };
     case 'FORM_ACTIVATE':
       return {
         ...state,

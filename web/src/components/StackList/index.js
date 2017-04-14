@@ -2,7 +2,6 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { css, StyleSheet } from 'aphrodite';
-import api from '../../api';
 import Stack from '../../components/Stack';
 
 const styles = StyleSheet.create({
@@ -20,36 +19,29 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  currentUser: Object
+  currentUser: Object,
+  stacks: Object,
 }
 
 class StackList extends Component {
   props: Props
 
-  constructor(props) {
-      super(props)
-      this.state = {
-          data: []
-      };
-  }
+  //const StackDisplay =
+  //this.props.stacks.map(function(object, i){
+  //  return <Stack name={object.post_title} key={i} id={object.id} />;
+  //})
 
+  componentWillMount(){
+    const { currentUser, stacks } = this.props;
+  }
   componentDidMount(){
-    var that = this;
-    const { currentUser } = this.props;
-    api.fetch(`/posts/user/${currentUser.id}`)
-      .then(function(result) {
-        that.setState({
-          data: result.data
-        });
-    });
+    console.log("THIS IS ALL STACKS", this.props.stacks);
   }
   render() {
     return (
       <div className={`col-md-3 ${css(styles.left_block)}`}>
         <ul className={`stacklist ${css(styles.stacklist)}`}>
-          {this.state.data.map(function(object, i){
-            return <Stack name={object.post_title} key={i} id={object.id} />;
-          })}
+          <li>Stacks of information will go here</li>
         </ul>
        </div>
     );
@@ -58,5 +50,6 @@ class StackList extends Component {
 export default connect(
   state => ({
     currentUser: state.session.currentUser,
+    stacks: state.stack.allStacks
   }),
 )(StackList);

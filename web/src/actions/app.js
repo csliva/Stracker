@@ -5,13 +5,25 @@ export function setActiveStack(id) {
     dispatch({ type: 'SET_STACK_REQUEST' });
     return api.fetch(`/posts/${id}`)
       .then((response) => {
-        setStack(dispatch, response);
+        dispatch({ type: 'SET_ACTIVE_STACK', response });
       })
       .catch(() => {
         console.log("Uh oh")
       });
   };
 }
-function setStack(dispatch, response) {
-  dispatch({ type: 'SET_ACTIVE_STACK', response });
+
+export function getAllStacks(currentUserId) {
+  console.log("Getting all stacks for " + currentUserId);
+  return (dispatch) => {
+    dispatch({ type: 'GET_STACKS_REQUEST' });
+    return api.fetch(`/posts/user/${currentUserId}`)
+      .then((response) => {
+        console.log(response);
+        dispatch({type: 'RECIEVE_ALL_STACKS', response})
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 }

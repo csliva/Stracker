@@ -4,7 +4,16 @@ import api from '../api';
 function setCurrentUser(dispatch, response) {
   localStorage.setItem('token', JSON.stringify(response.meta.token));
   dispatch({ type: 'AUTHENTICATION_SUCCESS', response });
-}
+  dispatch({ type: 'GET_STACKS_REQUEST' });
+  api.fetch(`/posts/user/${response.data.id}`)
+      .then((response) => {
+        console.log(response);
+        dispatch({type: 'RECIEVE_ALL_STACKS', response})
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
 export function login(data, router) {
   return dispatch => api.post('/sessions', data)
