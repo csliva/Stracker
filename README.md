@@ -27,3 +27,8 @@ config :stracker, Stracker.Repo,
 ```
 * `mix deps.get`
 * `mix ecto.migrate`
+
+#### Populate Data
+* Create a new user through the UI
+* `cd` into the api directory
+* run `mix run priv/repo/seeds.exs` to populate user with content

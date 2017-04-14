@@ -17,7 +17,7 @@ defmodule Stracker.DatabaseSeeder do
     title = Elixilorem.words 2
     random_number = :rand.uniform(500)
     content = Elixilorem.words 5
-    random_user = :rand.uniform(3)
+    random_user = :rand.uniform(1)
     Repo.insert! %Post{
       post_title: title,
       time: random_number,
