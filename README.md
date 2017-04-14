@@ -1,4 +1,4 @@
-#Quanta Stack
+# Quanta Stack
 
 ### Setup instructions
 
