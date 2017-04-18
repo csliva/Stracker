@@ -3,25 +3,24 @@ defmodule Stracker.PostController do
 
   alias Stracker.Post
 
-  def index(conn, _params) do
-    posts = Repo.all(Post)
-    render(conn, "index.json", posts: posts)
-  end
-
-  def create(conn, %{"post" => post_params}) do
-    changeset = Post.changeset(%Post{}, post_params)
-
+  def create(conn, params) do
+    changeset = Post.changeset(%Post{}, params)
     case Repo.insert(changeset) do
       {:ok, post} ->
         conn
         |> put_status(:created)
         |> put_resp_header("location", post_path(conn, :show, post))
         |> render("show.json", post: post)
-      {:error, changeset} ->
+      {:error, params} ->
         conn
         |> put_status(:unprocessable_entity)
         |> render(Stracker.ChangesetView, "error.json", changeset: changeset)
     end
+  end
+
+  def index(conn, _params) do
+    posts = Repo.all(Post)
+    render(conn, "index.json", posts: posts)
   end
 
   def show(conn, %{"id" => id}) do
@@ -33,7 +32,8 @@ defmodule Stracker.PostController do
     posts = Repo.all(
       from p in Post,
       select: p,
-      where: ^user_id == p.user_id
+      where: ^user_id == p.user_id,
+      order_by: [desc: p.updated_at]
     )
     render(conn, "index.json", posts: posts)
   end

@@ -10,7 +10,7 @@ defmodule Stracker.Router do
   scope "/api", Stracker do
     pipe_through :api
     resources "/users", UserController, except: [:new, :edit]
-    resources "/posts", PostController, except: [:new, :edit]
+    resources "/posts", PostController
     get "/posts/user/:user_id", PostController, :get_by_user
     post "/sessions", SessionController, :create
     delete "/sessions", SessionController, :delete

@@ -7,7 +7,6 @@ function setCurrentUser(dispatch, response) {
   dispatch({ type: 'GET_STACKS_REQUEST' });
   api.fetch(`/posts/user/${response.data.id}`)
       .then((response) => {
-        console.log(response);
         dispatch({type: 'RECIEVE_ALL_STACKS', response})
       })
       .catch((err) => {
@@ -36,6 +35,7 @@ export function signup(data, router) {
 export function logout(router) {
   return dispatch => api.delete('/sessions')
     .then(() => {
+      dispatch({ type: 'RESET_TIMER' })
       localStorage.removeItem('token');
       dispatch({ type: 'LOGOUT' });
       router.transitionTo('/login');

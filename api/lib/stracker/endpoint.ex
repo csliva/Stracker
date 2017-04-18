@@ -36,7 +36,7 @@ defmodule Stracker.Endpoint do
     key: "_stracker_key",
     signing_salt: "TXh0YDJo"
 
-  plug CORSPlug 
+  plug CORSPlug
 
   plug Stracker.Router
 end

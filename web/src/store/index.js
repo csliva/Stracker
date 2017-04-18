@@ -3,10 +3,10 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import reducers from '../reducers';
 
-const loggingEnabled = false;
+const loggingEnabled = true;
 
 const middleWare = [thunk];
-loggingEnabled === true ? middleWare.push(logger) : console.log("logging disabled");
+loggingEnabled === true ? middleWare.push(logger) : console.log("Logger middleware is disabled");
 
 const createStoreWithMiddleware = applyMiddleware(...middleWare)(createStore);
 

@@ -1,5 +1,5 @@
 const initialState = {
-  formActive: false,
+  formActive: true,
   currentStack: {
     id: Number,
     notes: String,
@@ -7,23 +7,21 @@ const initialState = {
     time: Number,
     user_id: Number,
   },
-  allStacks: {}
+  allStacks: Object,
+  loadingStacks: Boolean,
 }
 export default function (state = initialState, action) {
-  console.log(action.type);
   switch (action.type) {
     case 'RECIEVE_ALL_STACKS':
       return {
         ...state,
         allStacks: action.response,
-      };
-    case 'RECIEVE_STACKS_ERROR':
-      return {
-        ...state,
+        loadingStacks: false,
       };
     case 'GET_STACKS_REQUEST':
       return {
         ...state,
+        loadingStacks: true,
       };
     case 'FORM_ACTIVATE':
       return {
@@ -43,6 +41,7 @@ export default function (state = initialState, action) {
         case 'SET_STACK_REQUEST':
           return {
             ...state,
+            formActive: false,
           };
     default:
         return state;

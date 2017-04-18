@@ -1,7 +1,7 @@
 // @flow
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import { setActiveStack } from '../../actions/app';
+import { setActiveStack, formDeactivate} from '../../actions/app';
 import { css, StyleSheet } from 'aphrodite';
 
 const styles = StyleSheet.create({
@@ -23,6 +23,7 @@ class Stack extends Component {
   props: Props
 
   clickHandler(id){
+    this.props.formDeactivate();
     this.props.setActiveStack(id);
   }
   render() {
@@ -37,5 +38,5 @@ export default connect(
     formActive: state.stack.formActive,
     currentStack: state.stack.currentStack,
   }),
-  { setActiveStack }
+  { setActiveStack, formDeactivate }
 )(Stack);

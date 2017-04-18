@@ -31,6 +31,7 @@ class StackDetails extends Component {
             propName="post_title"
             />
         </li>
+        <li>Time: {currentStack.time}</li>
         <li>Details:
           <RIEInput
             value={currentStack.notes}
