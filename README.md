@@ -35,7 +35,8 @@ config :stracker, Stracker.Repo,
 To populate data normally:
 * You may create a new user with http://localhost:3000/signup
 * Fill out the "New Stack" form on the SPA to add a new stack
-To populate data programmatically
+
+To populate data programmatically:
 * `cd` into the api directory
 * edit api/priv/repo/seeds.exs with an elixir script to fill data. insert_post() and insert_user() functions are available in the script currently.
 * run `mix run priv/repo/seeds.exs` to populate user with content
