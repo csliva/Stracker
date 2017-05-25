@@ -38,9 +38,10 @@ defmodule Stracker.PostController do
     render(conn, "index.json", posts: posts)
   end
 
-  def update(conn, %{"id" => id, "post" => post_params}) do
-    post = Repo.get!(Post, id)
-    changeset = Post.changeset(post, post_params)
+  def update(conn, params) do
+    IO.inspect params
+    post = Repo.get!(Post, params["id"])
+    changeset = Post.changeset(post, params["post_params"])
 
     case Repo.update(changeset) do
       {:ok, post} ->

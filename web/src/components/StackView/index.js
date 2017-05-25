@@ -2,9 +2,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { css, StyleSheet } from 'aphrodite';
-import { formActivate, newStack } from '../../actions/app';
+import { formActivate, newStack, editStack, setActiveStack } from '../../actions/app';
 import StackForm from '../../components/StackForm';
+import EditForm from '../../components/EditForm';
 import StackDetails from '../../components/StackDetails';
+import { setTimer } from '../../actions/timer';
 
 const styles = StyleSheet.create({
   card: {
@@ -22,18 +24,29 @@ class StackView extends Component {
     this.props.newStack(data);
   }
 
+  handleEditStack= data => {
+    this.props.editStack(data);
+    this.props.setActiveStack(this.props.currentStack.id)
+  }
+
   render() {
-    if (this.props.formActive){
+    if (this.props.formActive && !this.props.editActive){
       return (
         <div className={`card col-md-9 ${css(styles.card)}`}>
           < StackForm onSubmit={this.handleNewStack} />
         </div>
       );
     }
+    if (this.props.formActive && this.props.editActive){
+      return (
+        <div className={`card col-md-9 ${css(styles.card)}`}>
+          < EditForm onSubmit={this.handleEditStack} currentStack={this.props.currentStack} setTimer={this.props.setTimer} />
+        </div>
+      );
+    }
     else{
       return (
         <div className={`card col-md-9 ${css(styles.card)}`}>
-          <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>Stack Details</h3>
           < StackDetails />
         </div>
       );
@@ -44,8 +57,10 @@ class StackView extends Component {
 export default connect(
   state => ({
     formActive: state.stack.formActive,
+    editActive: state.stack.editActive,
     time: state.timer.time,
     currentUser: state.session.currentUser,
+    currentStack: state.stack.currentStack,
   }),
-  { formActivate, newStack }
+  { formActivate, newStack, setTimer, editStack, setActiveStack }
 )(StackView);

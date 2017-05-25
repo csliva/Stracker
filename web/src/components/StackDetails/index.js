@@ -1,16 +1,8 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { RIEInput, RIETags } from 'riek';
-import { css, StyleSheet } from 'aphrodite/no-important';
-
-const styles = StyleSheet.create({
-  tags: {
-    minWidth: '100%',
-    minHeight: '20px',
-    display: 'block',
-  },
-});
+import { deleteStack , activateEdit } from '../../actions/app';
+import TimeConverted from '../TimeConverted';
 
 type Props = {
   currentStack: Object
@@ -19,36 +11,30 @@ type Props = {
 class StackDetails extends Component {
   props: Props
 
+  deleteHandler(id){
+    this.props.deleteStack(id);
+  }
+
+  editHandler(id){
+    this.props.activateEdit(id);
+  }
+
   render() {
     let { currentStack } = this.props;
-    let tags = new Set();
     return (
-      <ul>
-        <li>Name:
-          <RIEInput
-            value={currentStack.post_title}
-            change={(text) => console.log(text)}
-            propName="post_title"
-            />
-        </li>
-        <li>Time: {currentStack.time}</li>
-        <li>Details:
-          <RIEInput
-            value={currentStack.notes}
-            change={(text) => console.log(text)}
-            propName="notes"
-          />
-        </li>
-        <li><span>Tags:</span>
-          <RIETags
-            className={`tags ${css(styles.tags)}`}
-            value={tags}
-            change={(text) => console.log(text)}
-            propName="tags"
-            placeholder="New"
-            />
-        </li>
-      </ul>
+      <div>
+      <div style={{ width: '100%', height: '60px' }}>
+        <div style={{ float: 'right', marginLeft: '.5rem' }} onClick={this.deleteHandler.bind(this, currentStack.id)} className="btn btn-danger">
+          Delete
+        </div>
+        <div style={{ float: 'right', marginLeft: '.5rem' }} onClick={this.editHandler.bind(this, currentStack.id)} className="btn btn-warning">
+          Edit
+        </div>
+      </div>
+        <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>{currentStack.post_title}</h3>
+        <div style={{ marginBottom: '.5rem', textAlign: 'center' }}><TimeConverted time={currentStack.time} /></div>
+        <div style={{ textAlign: 'center' }}>{currentStack.notes}</div>
+      </div>
     );
   }
 }
@@ -57,4 +43,5 @@ export default connect(
   state => ({
     currentStack: state.stack.currentStack,
   }),
+  {deleteStack, activateEdit}
 )(StackDetails);

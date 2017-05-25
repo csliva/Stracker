@@ -1,5 +1,6 @@
 const initialState = {
   formActive: true,
+  editActive: false,
   currentStack: {
     id: Number,
     notes: String,
@@ -27,6 +28,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         formActive: true,
+        editActive: false,
       };
       case 'FORM_DEACTIVATE':
         return {
@@ -37,11 +39,29 @@ export default function (state = initialState, action) {
         return {
           ...state,
           currentStack: action.response.data,
+          editActive: false,
         };
         case 'SET_STACK_REQUEST':
           return {
             ...state,
             formActive: false,
+          };
+        case 'DELETE_STACK':
+          return {
+            ...state,
+            formActive: true,
+          };
+        case 'EDIT_STACK':
+          return {
+            ...state,
+            formActive: false,
+            editActive: false,
+          };
+        case 'ACTIVATE_EDIT':
+          return {
+            ...state,
+            formActive: true,
+            editActive: true,
           };
     default:
         return state;

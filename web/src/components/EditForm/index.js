@@ -6,57 +6,40 @@ import { WithContext as ReactTags } from 'react-tag-input';
 import Input from '../Input';
 import Timer from '../Timer';
 
-type Props = {
-  onSubmit: () => void,
-  handleSubmit: () => void,
-  submitting: boolean,
-}
 
-
-class StackForm extends Component {
-
-  props: Props
+class EditForm extends Component {
 
   handleSubmit = data => {
     this.props.onSubmit(data);
   }
 
+  componentWillMount(){
+    this.props.change('post_title', this.props.currentStack.post_title);
+    this.props.change('notes', this.props.currentStack.notes);
+    this.props.setTimer();
+  }
+
   render() {
-    const { handleSubmit, submitting } = this.props;
 
     return (
       <form
-        onSubmit={handleSubmit(this.handleSubmit)}
+        onSubmit={this.props.handleSubmit(this.handleSubmit)}
       >
-        <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>New Stack</h3>
+        <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>Edit Stack</h3>
         <Field name="post_title" type="text" component={Input} placeholder="Stack Title" />
-        <Timer />
         <Field name="notes" type="text" component={Input} placeholder="Stack Description" />
         <ReactTags />
         <button
           type="submit"
-          disabled={submitting}
           className="btn btn-block btn-primary"
         >
-          {submitting ? 'Creating...' : 'Create'}
+          Edit
         </button>
       </form>
     );
   }
 }
 
-const validate = (values) => {
-  const errors = {};
-  if (!values.name) {
-    errors.name = 'Required';
-  }
-  if (!values.description) {
-    errors.description = 'Required';
-  }
-  return errors;
-};
-
 export default reduxForm({
-  form: 'newStack',
-  validate,
-})(StackForm);
+  form: 'editStack',
+})(EditForm);

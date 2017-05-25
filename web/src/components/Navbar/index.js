@@ -62,6 +62,12 @@ class Navbar extends Component {
             <div style={{float: 'right'}} className="btn btn-success" onClick={this.clickHandler.bind(this, this.props.id)}>Back to Stack</div>
           </div>
         }
+        {this.props.editActive &&
+          <div>
+            {this.props.timerActive && <span style={{float: 'left'}}> Time: {this.props.time}</span>}
+            <div style={{float: 'right'}} className="btn btn-success" onClick={this.clickHandler.bind(this, this.props.id)}>New Stack</div>
+          </div>
+        }
       </div>
       {isAuthenticated &&
           <div className="col-md-3" style={{float: 'right'}}>
@@ -81,6 +87,7 @@ export default connect(
     time: state.timer.time,
     timerActive: state.timer.timerActive,
     formActive: state.stack.formActive,
+    editActive: state.stack.editActive,
   }),
   { logout, formActivate }
 )(Navbar);

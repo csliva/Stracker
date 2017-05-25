@@ -16,6 +16,34 @@ export function setActiveStack(id) {
   };
 }
 
+export function deleteStack(id) {
+  return (dispatch, getState) => {
+    return api.delete(`/posts/${id}`)
+      .then(() => {
+        dispatch({ type: 'DELETE_STACK'});
+        updateStacks(getState().session.currentUser.id, dispatch);
+      })
+  };
+}
+
+export function activateEdit(id) {
+  return (dispatch) => {
+    dispatch({ type: 'ACTIVATE_EDIT'});
+  };
+}
+
+export function editStack(data) {
+  const post_params = {"post_params": data}
+  return (dispatch, getState) => {
+    return api.patch(`/posts/${getState().stack.currentStack.id}`, post_params)
+      .then(() => {
+        updateStacks(getState().session.currentUser.id, dispatch);
+        setActiveStack(getState().stack.currentStack.id);
+        dispatch({ type: 'EDIT_STACK'});
+      })
+  };
+}
+
 export function newStack(data) {
   return dispatch => api.post('/posts', data)
     .then((response) => {
@@ -71,4 +99,10 @@ export function getAllStacks(currentUserId) {
         console.log(err);
       });
   };
+}
+
+export function count(){
+  return (dispatch) => {
+    dispatch({ type: "COUNT_UP"});
+  }
 }

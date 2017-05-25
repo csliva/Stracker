@@ -11,6 +11,7 @@ function headers() {
 }
 
 function parseResponse(response) {
+  console.log(response);
   return response.json().then((json) => {
     if (!response.ok) {
       return Promise.reject(json);
@@ -50,7 +51,7 @@ export default {
     const body = JSON.stringify(data);
 
     return fetch(`${API}${url}`, {
-      method: 'PATCH',
+      method: 'PUT',
       headers: headers(),
       body,
     })
@@ -62,6 +63,5 @@ export default {
       method: 'DELETE',
       headers: headers(),
     })
-    .then(parseResponse);
   },
 };

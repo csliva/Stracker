@@ -30,6 +30,11 @@ export default function (state = initialState, action) {
         timer: clearInterval(state.timer),
         timerActive: false,
       };
+      case 'SET_TIMER':
+      console.log(state);
+        return {
+          ...state
+        };
     default:
       return state;
   }
