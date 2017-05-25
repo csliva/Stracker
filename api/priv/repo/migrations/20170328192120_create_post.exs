@@ -6,6 +6,7 @@ defmodule Stracker.Repo.Migrations.CreatePost do
       add :post_title, :string
       add :time, :integer
       add :notes, :string
+      add :tags, {:array, :string}
       add :user_id, references(:users), null: false
 
       timestamps()

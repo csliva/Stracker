@@ -14,6 +14,7 @@ defmodule Stracker.PostView do
       post_title: post.post_title,
       time: post.time,
       notes: post.notes,
+      tags: post.tags,
       user_id: post.user_id
     }
   end
