@@ -6,7 +6,7 @@ import reducers from '../reducers';
 const loggingEnabled = true;
 
 const middleWare = [thunk];
-loggingEnabled === true ? middleWare.push(logger) : console.log("Logger middleware is disabled");
+loggingEnabled ? middleWare.push(logger) : console.log("Logger middleware is disabled");
 
 const createStoreWithMiddleware = applyMiddleware(...middleWare)(createStore);
 

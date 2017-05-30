@@ -11,7 +11,6 @@ function headers() {
 }
 
 function parseResponse(response) {
-  console.log(response);
   return response.json().then((json) => {
     if (!response.ok) {
       return Promise.reject(json);
@@ -38,6 +37,7 @@ export default {
 
   post(url, data) {
     const body = JSON.stringify(data);
+    console.log("HEY LOOK HERE: THIS IS IMPORTANT:", body);
 
     return fetch(`${API}${url}`, {
       method: 'POST',

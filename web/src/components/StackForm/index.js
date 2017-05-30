@@ -2,9 +2,9 @@
 // @flow
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { WithContext as ReactTags } from 'react-tag-input';
 import Input from '../Input';
 import Timer from '../Timer';
+import Tags from '../Tags';
 
 type Props = {
   onSubmit: () => void,
@@ -32,7 +32,7 @@ class StackForm extends Component {
         <Field name="post_title" type="text" component={Input} placeholder="Stack Title" />
         <Timer />
         <Field name="notes" type="text" component={Input} placeholder="Stack Description" />
-        <ReactTags />
+        <Tags />
         <button
           type="submit"
           disabled={submitting}

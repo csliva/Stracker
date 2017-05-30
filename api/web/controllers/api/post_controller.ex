@@ -4,6 +4,7 @@ defmodule Stracker.PostController do
   alias Stracker.Post
 
   def create(conn, params) do
+    IO.inspect params
     changeset = Post.changeset(%Post{}, params)
     case Repo.insert(changeset) do
       {:ok, post} ->
@@ -39,7 +40,6 @@ defmodule Stracker.PostController do
   end
 
   def update(conn, params) do
-    IO.inspect params
     post = Repo.get!(Post, params["id"])
     changeset = Post.changeset(post, params["post_params"])
 

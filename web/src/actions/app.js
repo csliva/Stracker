@@ -10,8 +10,8 @@ export function setActiveStack(id) {
       .then((response) => {
         dispatch({ type: 'SET_ACTIVE_STACK', response });
       })
-      .catch(() => {
-        console.log("Uh oh")
+      .catch((err) => {
+        console.log(err)
       });
   };
 }

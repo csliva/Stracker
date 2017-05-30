@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { WithContext as ReactTags } from 'react-tag-input';
 import Input from '../Input';
-import Timer from '../Timer';
+import Tags from '../Tags';
 
 
 class EditForm extends Component {
@@ -28,7 +28,7 @@ class EditForm extends Component {
         <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>Edit Stack</h3>
         <Field name="post_title" type="text" component={Input} placeholder="Stack Title" />
         <Field name="notes" type="text" component={Input} placeholder="Stack Description" />
-        <ReactTags />
+        <Tags />
         <button
           type="submit"
           className="btn btn-block btn-primary"
