@@ -15,5 +15,8 @@ defmodule Stracker.Router do
     post "/sessions", SessionController, :create
     delete "/sessions", SessionController, :delete
     post "/sessions/refresh", SessionController, :refresh
+    get "/users/:id/boards", UserController, :boards
+    resources "/bords", BoardController, only: [:index, :create]
+    post "/board/:id/join", BoardController, :join
   end
 end

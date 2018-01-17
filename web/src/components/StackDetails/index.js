@@ -25,10 +25,10 @@ class StackDetails extends Component {
     return (
       <div>
       <div style={{ width: '100%', height: '60px' }}>
-        <div style={{ float: 'right', marginLeft: '.5rem' }} onClick={this.deleteHandler.bind(this, currentStack.id)} className="btn btn-danger">
+        <div style={{ float: 'right', marginLeft: '.5rem' }} onClick={this.deleteHandler.bind(this, currentStack.id)} className="button is-danger">
           Delete
         </div>
-        <div style={{ float: 'right', marginLeft: '.5rem' }} onClick={this.editHandler.bind(this, currentStack.id)} className="btn btn-warning">
+        <div style={{ float: 'right', marginLeft: '.5rem' }} onClick={this.editHandler.bind(this, currentStack.id)} className="button is-warning">
           Edit
         </div>
       </div>

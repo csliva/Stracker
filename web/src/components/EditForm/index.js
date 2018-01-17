@@ -26,12 +26,12 @@ class EditForm extends Component {
         onSubmit={this.props.handleSubmit(this.handleSubmit)}
       >
         <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>Edit Stack</h3>
-        <Field name="post_title" type="text" component={Input} placeholder="Stack Title" />
-        <Field name="notes" type="text" component={Input} placeholder="Stack Description" />
+        <Field name="post_title" className="input" type="text" component={Input} placeholder="Stack Title" />
+        <Field name="notes" className="input" type="text" component={Input} placeholder="Stack Description" />
         <Tags />
         <button
           type="submit"
-          className="btn btn-block btn-primary"
+          className="button is-primary"
         >
           Edit
         </button>

@@ -7,9 +7,6 @@ defmodule Stracker.Repo.Migrations.CreateUser do
       add :email, :string, null: false
       add :password_hash, :string, null: false
       add :subscriber, :boolean, default: false, null: false
-      add :name, :string
-
-      timestamps()
     end
 
     create unique_index(:users, [:username])

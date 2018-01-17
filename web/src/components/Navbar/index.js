@@ -4,30 +4,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { logout } from '../../actions/session';
 import { formActivate } from '../../actions/app';
-import { css, StyleSheet } from 'aphrodite';
-
-const styles = StyleSheet.create({
-  navbar: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '0 1rem',
-    height: '10%',
-    background: '#fff',
-    boxShadow: '0 1px 1px rgba(0,0,0,.1)',
-  },
-
-  link: {
-    color: '#555459',
-    fontSize: '22px',
-    fontWeight: 'bold',
-    ':hover': {
-      textDecoration: 'none',
-    },
-    ':focus': {
-      textDecoration: 'none',
-    },
-  },
-});
 
 type Props = {
   logout: () => void,
@@ -51,28 +27,28 @@ class Navbar extends Component {
   render() {
     const { currentUser, isAuthenticated } = this.props;
     return (
-      <div className={css(styles.navbar)}>
-      <nav className="col-md-5">
-        <Link to="/" className={css(styles.link)}>Quanta Stack</Link>
+      <div className="navbar box">
+      <nav className="navbar-brand navbar-start">
+        <Link className="title" to="/">&int;tracker</Link>
       </nav>
-      <div className="col-md-4" style={{float: 'right'}}>
+      <div className="col-md-4">
         {!this.props.formActive &&
           <div>
-            {this.props.timerActive && <span style={{float: 'left'}}> Time: {this.props.time}</span>}
-            <div style={{float: 'right'}} className="btn btn-success" onClick={this.clickHandler.bind(this, this.props.id)}>Back to Stack</div>
+            {this.props.timerActive && <span> Time: {this.props.time}</span>}
+            <div className="button is-success" onClick={this.clickHandler.bind(this, this.props.id)}>Back to Stack</div>
           </div>
         }
         {this.props.editActive &&
           <div>
-            {this.props.timerActive && <span style={{float: 'left'}}> Time: {this.props.time}</span>}
-            <div style={{float: 'right'}} className="btn btn-success" onClick={this.clickHandler.bind(this, this.props.id)}>New Stack</div>
+            {this.props.timerActive && <span> Time: {this.props.time}</span>}
+            <div className="button is-success" onClick={this.clickHandler.bind(this, this.props.id)}>New Stack</div>
           </div>
         }
       </div>
       {isAuthenticated &&
-          <div className="col-md-3" style={{float: 'right'}}>
+          <div className="navbar-end">
             <span>{currentUser.username}</span>
-            <button style={{ margin: '0 10px' }} className="btn btn-default" type="button" onClick={this.handleLogout}>Logout</button>
+            <button style={{ margin: '0 10px' }} className="button is-default" type="button" onClick={this.handleLogout}>Logout</button>
           </div>
       }
       </div>

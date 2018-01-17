@@ -8,14 +8,6 @@ import EditForm from '../../components/EditForm';
 import StackDetails from '../../components/StackDetails';
 import { setTimer } from '../../actions/timer';
 
-const styles = StyleSheet.create({
-  card: {
-    padding: '3rem 4rem',
-    height: '95%',
-    marginTop: '1%'
-  },
-});
-
 class StackView extends Component {
 
   handleNewStack= data => {
@@ -35,21 +27,21 @@ class StackView extends Component {
   render() {
     if (this.props.formActive && !this.props.editActive){
       return (
-        <div className={`card col-md-9 ${css(styles.card)}`}>
+        <div className={`card is-two-thirds column`}>
           < StackForm onSubmit={this.handleNewStack} />
         </div>
       );
     }
     if (this.props.formActive && this.props.editActive){
       return (
-        <div className={`card col-md-9 ${css(styles.card)}`}>
+        <div className={`card is-two-thirds column`}>
           < EditForm onSubmit={this.handleEditStack} currentStack={this.props.currentStack} setTimer={this.props.setTimer} />
         </div>
       );
     }
     else{
       return (
-        <div className={`card col-md-9 ${css(styles.card)}`}>
+        <div className={`card is-two-thirds column`}>
           < StackDetails />
         </div>
       );

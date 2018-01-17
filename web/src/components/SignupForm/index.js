@@ -32,7 +32,7 @@ class SignupForm extends Component {
         className={`card ${css(styles.card)}`}
         onSubmit={handleSubmit(this.handleSubmit)}
       >
-        <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>Create an account</h3>
+        <h3 className="title" style={{ marginBottom: '2rem', textAlign: 'center' }}>Create an account</h3>
         <Field
           name="username"
           type="text"
@@ -57,12 +57,12 @@ class SignupForm extends Component {
         <button
           type="submit"
           disabled={submitting}
-          className="btn btn-block btn-primary"
+          className="button is-primary"
         >
           {submitting ? 'Submitting...' : 'Sign up'}
         </button>
         <hr style={{ margin: '2rem 0' }} />
-        <Link to="/login" className="btn btn-block btn-secondary">
+        <Link to="/login" className="button is-secondary">
           Login to your account
         </Link>
       </form>

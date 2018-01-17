@@ -54,4 +54,11 @@ defmodule Stracker.UserController do
 
     send_resp(conn, :no_content, "")
   end
+
+  def boards(conn, _params) do
+    current_user = Guardian.Plug.current_resource(conn)
+    boards = Repo.all(assoc(current_user, :boards))
+    render(conn, Stracker.BoardView, "index.json", %{boards: boards})
+  end
+
 end

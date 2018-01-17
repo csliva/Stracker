@@ -13,9 +13,11 @@ class Home extends Component {
     return (
       <div style={{ flex: '1' }}>
         <Navbar />
-        <div style={{ flex: '1', height: '89%'}}>
-          <StackList />
-          <StackView />
+        <div className="container">
+          <div className="columns" style={{ flex: '1', height: '89%'}}>
+            <StackList />
+            <StackView />
+          </div>
         </div>
       </div>
     );

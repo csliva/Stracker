@@ -28,7 +28,7 @@ class Stack extends Component {
   }
   render() {
     return (
-      <li onClick={this.clickHandler.bind(this, this.props.id)} className={`stack ${css(styles.stack)}`}>{this.props.name}</li>
+      <li onClick={this.clickHandler.bind(this, this.props.id)} className={`card ${css(styles.stack)}`}>{this.props.name}</li>
     );
   }
 }

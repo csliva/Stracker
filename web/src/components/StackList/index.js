@@ -3,6 +3,7 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { css, StyleSheet } from 'aphrodite';
 import Stack from '../../components/Stack';
+import Search from '../../components/Search';
 
 const styles = StyleSheet.create({
   stacklist: {
@@ -30,15 +31,16 @@ class StackList extends Component {
   render() {
     if (this.props.loadingStacks) {
       return (
-        <div className={`col-md-3 ${css(styles.left_block)}`}>
-          <p>Loading…</p>
+        <div className={`column is-one-third ${css(styles.left_block)}`}>
+          <Search />
+          <p>No tasks stacked yet</p>
         </div>
       );
     }
     else{
     return (
-      <div className={`col-md-3 ${css(styles.left_block)}`}>
-        <ul className={`stacklist ${css(styles.stacklist)}`}>
+      <div className={`column is-one-third`}>
+        <ul className={`${css(styles.stacklist)}`}>
         {this.props.stacks.data.map(function(object, i){
           return <Stack name={object.post_title} key={i} id={object.id} />;
         })}

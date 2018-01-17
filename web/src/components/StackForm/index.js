@@ -28,7 +28,7 @@ class StackForm extends Component {
       <form
         onSubmit={handleSubmit(this.handleSubmit)}
       >
-        <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>New Stack</h3>
+        <h3 className="title" style={{ marginBottom: '2rem', textAlign: 'center' }}>New Stack</h3>
         <Field name="post_title" type="text" component={Input} placeholder="Stack Title" />
         <Timer />
         <Field name="notes" type="text" component={Input} placeholder="Stack Description" />
@@ -36,7 +36,7 @@ class StackForm extends Component {
         <button
           type="submit"
           disabled={submitting}
-          className="btn btn-block btn-primary"
+          className="button is-primary"
         >
           {submitting ? 'Creating...' : 'Create'}
         </button>

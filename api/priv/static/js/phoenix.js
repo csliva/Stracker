@@ -209,7 +209,6 @@ var Push = function () {
   //
   // channel - The Channel
   // event - The event, for example `"phx_join"`
-  // payload - The payload, for example `{user_id: 123}`
   // timeout - The push timeout in milliseconds
   //
 
@@ -678,8 +677,6 @@ var Socket = exports.Socket = function () {
       }
       callback && callback();
     }
-
-    // params - The params to send when connecting, for example `{user_id: userToken}`
 
   }, {
     key: "connect",
@@ -1268,4 +1265,3 @@ var Timer = function () {
 }();
 
 })(typeof(exports) === "undefined" ? window.Phoenix = window.Phoenix || {} : exports);
-

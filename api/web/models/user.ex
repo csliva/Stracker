@@ -2,15 +2,13 @@ defmodule Stracker.User do
   use Stracker.Web, :model
 
   schema "users" do
+    @primary_key {:id, autogenerate: true}
     field :username, :string
     field :email, :string
     field :password_hash, :string
     field :password, :string, virtual: true
     field :subscriber, :boolean, default: false
-    field :name, :string
-    has_many :posts , Stracker.Post
-
-    timestamps()
+    many_to_many :boards, Stracker.Board, join_through: "user_boards"
   end
 
   @doc """
@@ -19,6 +17,7 @@ defmodule Stracker.User do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:username, :email])
+    |> cast_assoc(:boards)
     |> validate_required([:username, :email])
     |> unique_constraint(:username)
     |> unique_constraint(:email)

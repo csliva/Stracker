@@ -33,18 +33,18 @@ class LoginForm extends Component {
         className={`card ${css(styles.card)}`}
         onSubmit={handleSubmit(this.handleSubmit)}
       >
-        <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>Login to Quanta Stack</h3>
+        <h3 className="title" style={{ marginBottom: '2rem', textAlign: 'center' }}>Login</h3>
         <Field name="email" type="text" component={Input} placeholder="Email" />
         <Field name="password" type="password" component={Input} placeholder="Password" />
         <button
           type="submit"
           disabled={submitting}
-          className="btn btn-block btn-primary"
+          className="button is-primary"
         >
           {submitting ? 'Logging in...' : 'Login'}
         </button>
         <hr style={{ margin: '2rem 0' }} />
-        <Link to="/signup" className="btn btn-block btn-secondary">
+        <Link to="/signup" className="button is-secondary">
           Create a new account
         </Link>
       </form>

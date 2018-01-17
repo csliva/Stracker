@@ -17,7 +17,7 @@ const Input = ({ input, label, type, placeholder, style, meta }: Props) =>
       {...input}
       type={type}
       placeholder={placeholder}
-      className="form-control"
+      className="input"
       style={style && style}
     />
     {meta.touched && meta.error &&

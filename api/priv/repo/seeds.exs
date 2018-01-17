@@ -10,42 +10,52 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 defmodule Stracker.DatabaseSeeder do
+  Code.load_file "priv/repo/utils.exs"
+  alias Stracker.Utils
   alias Stracker.Repo
-  alias Stracker.Post
+  alias Stracker.Board
   alias Stracker.User
+  alias Stracker.UserBoards
+  alias Stracker.Stack
+  alias Stracker.Event
+  alias Ecto.Changeset
 
-  def insert_post(count) do
-    IO.puts(count)
-    title = Elixilorem.words 2
-    random_number = :rand.uniform(500)
-    content = Elixilorem.words 5
-    #random_user = :rand.uniform(5)
-    random_user = count
-    Repo.insert! %Post{
-      post_title: title,
-      time: random_number,
-      notes: content,
-      user_id: random_user
-    }
+  ##### Test lifecycle ######
+  ###########################
+
+  # Create new admin user
+  # Create a board for this user
+  # Create 4 more users
+  # add them to the board
+  # Create a stack -> add events, create a stack -> add events
+
+  #############END###########
+
+
+  def dry_run() do
+
+    Utils.add_user! username: "csliva", email: "csliva@gmail.com", password: "hayden123"
+
+    Utils.add_board! name: "Test board", slug: "test_board", description: "This is my board!"
+
+    Utils.add_user_to_board!("csliva", "test_board")
+
+
+
+        Repo.insert! %Stack{
+          stack_title: "job1",
+          description: "work",
+          created_by: "csliva",
+          latest_contributor: "csliva"
+        }
+
+        Repo.insert! %Event{
+          start_time: NaiveDateTime.utc_now(),
+          end_time: NaiveDateTime.utc_now(),
+        }
+
   end
 
-  def insert_user(count) do
-    changeset = Stracker.User.registration_changeset(%Stracker.User{}, %{
-      username: "demo#{count}",
-      email: "demo#{count}@gmail.com",
-      password: "demo123"
-    })
-    Stracker.Repo.insert(changeset)
-  end
-
-  def add_100_posts(count) do
-    (1..100) |> Enum.each(fn _ -> Stracker.DatabaseSeeder.insert_post(count) end)
-  end
-
-  def clear do
-    Repo.delete_all
-  end
 end
 
-(1..1000) |> Enum.each(fn(count) -> Stracker.DatabaseSeeder.add_100_posts(count) end)
-#fn _ -> Stracker.DatabaseSeeder.clear end
+Stracker.DatabaseSeeder.dry_run()
