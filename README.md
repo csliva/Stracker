@@ -1,4 +1,4 @@
-# Quanta Stack
+# Stracker
 
 ### Setup instructions
 
