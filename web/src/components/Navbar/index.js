@@ -34,13 +34,11 @@ class Navbar extends Component {
       <div className="col-md-4">
         {!this.props.formActive &&
           <div>
-            {this.props.timerActive && <span> Time: {this.props.time}</span>}
             <div className="button is-success" onClick={this.clickHandler.bind(this, this.props.id)}>Back to Stack</div>
           </div>
         }
         {this.props.editActive &&
           <div>
-            {this.props.timerActive && <span> Time: {this.props.time}</span>}
             <div className="button is-success" onClick={this.clickHandler.bind(this, this.props.id)}>New Stack</div>
           </div>
         }
@@ -60,8 +58,6 @@ export default connect(
   state => ({
     isAuthenticated: state.session.isAuthenticated,
     currentUser: state.session.currentUser,
-    time: state.timer.time,
-    timerActive: state.timer.timerActive,
     formActive: state.stack.formActive,
     editActive: state.stack.editActive,
   }),

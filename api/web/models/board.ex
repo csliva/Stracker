@@ -12,7 +12,7 @@ defmodule Stracker.Board do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :topic])
+    |> cast(params, [:name, :description])
     |> validate_required([:name])
     |> unique_constraint(:name)
   end

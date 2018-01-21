@@ -2,15 +2,15 @@ import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
 import session from './session';
 import stack from './stack';
-import timer from './timer';
-import tags from './tags';
+import boards from './boards';
+import notification from './notification';
 
 const appReducer = combineReducers({
   form,
   session,
   stack,
-  tags,
-  timer
+  boards,
+  notification
 });
 
 export default function (state, action) {

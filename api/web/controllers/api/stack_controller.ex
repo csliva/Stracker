@@ -4,13 +4,12 @@ defmodule Stracker.StackController do
   alias Stracker.Stack
 
   def create(conn, params) do
-    IO.inspect params
     changeset = Stack.changeset(%Stack{}, params)
     case Repo.insert(changeset) do
       {:ok, stack} ->
         conn
         |> put_status(:created)
-        |> put_resp_header("location", post_path(conn, :show, stack))
+        |> put_resp_header("location", stack_path(conn, :show, stack))
         |> render("show.json", stack: stack)
       {:error, params} ->
         conn

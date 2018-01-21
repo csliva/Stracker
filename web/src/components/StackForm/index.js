@@ -3,8 +3,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import Input from '../Input';
-import Timer from '../Timer';
-import Tags from '../Tags';
 
 type Props = {
   onSubmit: () => void,
@@ -29,10 +27,8 @@ class StackForm extends Component {
         onSubmit={handleSubmit(this.handleSubmit)}
       >
         <h3 className="title" style={{ marginBottom: '2rem', textAlign: 'center' }}>New Stack</h3>
-        <Field name="post_title" type="text" component={Input} placeholder="Stack Title" />
-        <Timer />
-        <Field name="notes" type="text" component={Input} placeholder="Stack Description" />
-        <Tags />
+        <Field name="stack_title" type="text" component={Input} placeholder="Stack Title" />
+        <Field name="description" type="text" component={Input} placeholder="Stack Description" />
         <button
           type="submit"
           disabled={submitting}

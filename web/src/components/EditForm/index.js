@@ -2,10 +2,7 @@
 // @flow
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { WithContext as ReactTags } from 'react-tag-input';
 import Input from '../Input';
-import Tags from '../Tags';
-
 
 class EditForm extends Component {
 
@@ -16,7 +13,6 @@ class EditForm extends Component {
   componentWillMount(){
     this.props.change('post_title', this.props.currentStack.post_title);
     this.props.change('notes', this.props.currentStack.notes);
-    this.props.setTimer();
   }
 
   render() {
@@ -28,7 +24,6 @@ class EditForm extends Component {
         <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>Edit Stack</h3>
         <Field name="post_title" className="input" type="text" component={Input} placeholder="Stack Title" />
         <Field name="notes" className="input" type="text" component={Input} placeholder="Stack Description" />
-        <Tags />
         <button
           type="submit"
           className="button is-primary"

@@ -7,6 +7,8 @@ defmodule Stracker.Stack do
     field :description, :string
     field :created_by, :string
     field :latest_contributor, :string
+    belongs_to :user, Stracker.User
+    belongs_to :board, Stracker.Board
     timestamps()
   end
 
@@ -15,7 +17,7 @@ defmodule Stracker.Stack do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:stack_title, :description])
+    |> cast(params, [:stack_title, :description, :user, :board])
     |> validate_required([:stack_title])
   end
 end

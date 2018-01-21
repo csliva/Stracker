@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { signup } from '../../actions/session';
 import SignupForm from '../../components/SignupForm';
-import Navbar from '../../components/Navbar';
 
 type Props = {
   signup: () => void,
@@ -21,7 +20,6 @@ class Signup extends Component {
   render() {
     return (
       <div style={{ flex: '1' }}>
-        <Navbar />
         <SignupForm onSubmit={this.handleSignup} />
       </div>
     );

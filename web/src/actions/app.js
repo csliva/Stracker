@@ -6,7 +6,7 @@ import api from '../api';
 export function setActiveStack(id) {
   return (dispatch) => {
     dispatch({ type: 'SET_STACK_REQUEST' });
-    return api.fetch(`/posts/${id}`)
+    return api.fetch(`/stacks/${id}`)
       .then((response) => {
         dispatch({ type: 'SET_ACTIVE_STACK', response });
       })
@@ -18,7 +18,7 @@ export function setActiveStack(id) {
 
 export function deleteStack(id) {
   return (dispatch, getState) => {
-    return api.delete(`/posts/${id}`)
+    return api.delete(`/stacks/${id}`)
       .then(() => {
         dispatch({ type: 'DELETE_STACK'});
         updateStacks(getState().session.currentUser.id, dispatch);
@@ -35,7 +35,7 @@ export function activateEdit(id) {
 export function editStack(data) {
   const post_params = {"post_params": data}
   return (dispatch, getState) => {
-    return api.patch(`/posts/${getState().stack.currentStack.id}`, post_params)
+    return api.patch(`/stacks/${getState().stack.currentStack.id}`, post_params)
       .then(() => {
         updateStacks(getState().session.currentUser.id, dispatch);
         setActiveStack(getState().stack.currentStack.id);
@@ -45,9 +45,8 @@ export function editStack(data) {
 }
 
 export function newStack(data) {
-  return dispatch => api.post('/posts', data)
+  return dispatch => api.post('/stacks', data)
     .then((response) => {
-      dispatch({ type: 'RESET_TIMER' });
       dispatch(reset('newStack'));
       updateStacks(response.data.user_id, dispatch);
       updateActiveStack(response, dispatch);
@@ -76,7 +75,7 @@ function updateActiveStack(response, dispatch) {
 function updateStacks(currentUserId, dispatch) {
   console.log("Getting all stacks for " + currentUserId);
     dispatch({ type: 'GET_STACKS_REQUEST' });
-    return api.fetch(`/posts/user/${currentUserId}`)
+    return api.fetch(`/stacks/user/${currentUserId}`)
       .then((response) => {
         dispatch({type: 'RECIEVE_ALL_STACKS', response})
       })
@@ -91,7 +90,7 @@ export function getAllStacks(currentUserId) {
   console.log("Getting all stacks for " + currentUserId);
   return (dispatch) => {
     dispatch({ type: 'GET_STACKS_REQUEST' });
-    return api.fetch(`/posts/user/${currentUserId}`)
+    return api.fetch(`/stacks/user/${currentUserId}`)
       .then((response) => {
         dispatch({type: 'RECIEVE_ALL_STACKS', response})
       })

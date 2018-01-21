@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteStack , activateEdit } from '../../actions/app';
-import TimeConverted from '../TimeConverted';
 
 type Props = {
   currentStack: Object
@@ -21,7 +20,6 @@ class StackDetails extends Component {
 
   render() {
     let { currentStack } = this.props;
-    let that = this;
     return (
       <div>
       <div style={{ width: '100%', height: '60px' }}>
@@ -32,12 +30,8 @@ class StackDetails extends Component {
           Edit
         </div>
       </div>
-        <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>{currentStack.post_title}</h3>
-        <div style={{ marginBottom: '.5rem', textAlign: 'center' }}><TimeConverted time={currentStack.time} /></div>
+        <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>{currentStack.stack_title}</h3>
         <div style={{ textAlign: 'center' }}>{currentStack.notes}</div>
-        {that.props.currentStack.tags != undefined && that.props.currentStack.tags.map(function(tag, index){
-          return <li key={index}>{tag}</li>;})
-        }
       </div>
     );
   }

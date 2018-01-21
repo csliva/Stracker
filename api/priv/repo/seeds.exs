@@ -10,15 +10,6 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 defmodule Stracker.DatabaseSeeder do
-  Code.load_file "priv/repo/utils.exs"
-  alias Stracker.Utils
-  alias Stracker.Repo
-  alias Stracker.Board
-  alias Stracker.User
-  alias Stracker.UserBoards
-  alias Stracker.Stack
-  alias Stracker.Event
-  alias Ecto.Changeset
 
   ##### Test lifecycle ######
   ###########################
@@ -34,25 +25,7 @@ defmodule Stracker.DatabaseSeeder do
 
   def dry_run() do
 
-    Utils.add_user! username: "csliva", email: "csliva@gmail.com", password: "hayden123"
-
-    Utils.add_board! name: "Test board", slug: "test_board", description: "This is my board!"
-
-    Utils.add_user_to_board!("csliva", "test_board")
-
-
-
-        Repo.insert! %Stack{
-          stack_title: "job1",
-          description: "work",
-          created_by: "csliva",
-          latest_contributor: "csliva"
-        }
-
-        Repo.insert! %Event{
-          start_time: NaiveDateTime.utc_now(),
-          end_time: NaiveDateTime.utc_now(),
-        }
+    IO.puts("no seeds needed at this time")
 
   end
 

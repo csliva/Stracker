@@ -1,11 +1,14 @@
 import { reset } from 'redux-form';
 import api from '../api';
+import { fetchUserBoards } from './boards';
 
 function setCurrentUser(dispatch, response) {
   localStorage.setItem('token', JSON.stringify(response.meta.token));
   dispatch({ type: 'AUTHENTICATION_SUCCESS', response });
   dispatch({ type: 'GET_STACKS_REQUEST' });
-  api.fetch(`/posts/user/${response.data.id}`)
+  dispatch(fetchUserBoards(response.data.id)); // new line
+  console.log(response.data.id)
+  api.fetch(`/stacks/user/${response.data.id}`)
       .then((response) => {
         dispatch({type: 'RECIEVE_ALL_STACKS', response})
       })
@@ -19,7 +22,7 @@ export function login(data, router) {
     .then((response) => {
       setCurrentUser(dispatch, response);
       dispatch(reset('login'));
-      router.transitionTo('/');
+      router.transitionTo('/boards');
     });
 }
 
@@ -35,7 +38,6 @@ export function signup(data, router) {
 export function logout(router) {
   return dispatch => api.delete('/sessions')
     .then(() => {
-      dispatch({ type: 'RESET_TIMER' })
       localStorage.removeItem('token');
       dispatch({ type: 'LOGOUT' });
       router.transitionTo('/login');

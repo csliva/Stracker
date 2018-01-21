@@ -3,6 +3,8 @@ defmodule Stracker.UserController do
 
   alias Stracker.User
 
+  plug Guardian.Plug.EnsureAuthenticated, [handler: Stracker.SessionController] when action in [:boards]
+
   def index(conn, _params) do
     users = Repo.all(User)
     render(conn, "index.json", users: users)
