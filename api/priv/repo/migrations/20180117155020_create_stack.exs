@@ -5,8 +5,7 @@ defmodule Stracker.Repo.Migrations.CreateStack do
     create table(:stacks) do
       add :stack_title, :string
       add :description, :string
-      add :created_by, :string
-      add :latest_contributor, :string
+      add :board_id, references(:boards, on_delete: :nothing), null: false
       timestamps()
     end
 

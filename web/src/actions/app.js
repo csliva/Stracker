@@ -45,11 +45,12 @@ export function editStack(data) {
 }
 
 export function newStack(data) {
+  console.log(data)
   return dispatch => api.post('/stacks', data)
     .then((response) => {
       dispatch(reset('newStack'));
-      updateStacks(response.data.user_id, dispatch);
-      updateActiveStack(response, dispatch);
+      //updateStacks(response.data.user_id, dispatch);
+      //updateActiveStack(response, dispatch);
     });
 }
 
@@ -75,7 +76,7 @@ function updateActiveStack(response, dispatch) {
 function updateStacks(currentUserId, dispatch) {
   console.log("Getting all stacks for " + currentUserId);
     dispatch({ type: 'GET_STACKS_REQUEST' });
-    return api.fetch(`/stacks/user/${currentUserId}`)
+    return api.fetch(`/stacks/board/${currentUserId}`)
       .then((response) => {
         dispatch({type: 'RECIEVE_ALL_STACKS', response})
       })
@@ -88,9 +89,9 @@ function updateStacks(currentUserId, dispatch) {
 // event should fire on app load, and when a new stack has been created
 export function getAllStacks(currentUserId) {
   console.log("Getting all stacks for " + currentUserId);
-  return (dispatch) => {
+  return (dispatch, getState) => {
     dispatch({ type: 'GET_STACKS_REQUEST' });
-    return api.fetch(`/stacks/user/${currentUserId}`)
+    return api.fetch(`/stacks/board/${getState().boards.active}`)
       .then((response) => {
         dispatch({type: 'RECIEVE_ALL_STACKS', response})
       })
@@ -98,10 +99,4 @@ export function getAllStacks(currentUserId) {
         console.log(err);
       });
   };
-}
-
-export function count(){
-  return (dispatch) => {
-    dispatch({ type: "COUNT_UP"});
-  }
 }

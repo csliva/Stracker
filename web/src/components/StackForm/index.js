@@ -26,9 +26,9 @@ class StackForm extends Component {
       <form
         onSubmit={handleSubmit(this.handleSubmit)}
       >
-        <h3 className="title" style={{ marginBottom: '2rem', textAlign: 'center' }}>New Stack</h3>
-        <Field name="stack_title" type="text" component={Input} placeholder="Stack Title" />
-        <Field name="description" type="text" component={Input} placeholder="Stack Description" />
+        <h3 className="title" style={{ marginBottom: '2rem', textAlign: 'center' }}>Create a Task</h3>
+        <Field name="stack_title" type="text" component={Input} placeholder="Task Title" />
+        <Field name="description" type="text" component={Input} placeholder="Task Description" />
         <button
           type="submit"
           disabled={submitting}

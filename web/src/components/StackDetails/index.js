@@ -31,7 +31,7 @@ class StackDetails extends Component {
         </div>
       </div>
         <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>{currentStack.stack_title}</h3>
-        <div style={{ textAlign: 'center' }}>{currentStack.notes}</div>
+        <div style={{ textAlign: 'center' }}>{currentStack.description}</div>
       </div>
     );
   }

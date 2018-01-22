@@ -9,8 +9,7 @@ import StackDetails from '../../components/StackDetails';
 class StackView extends Component {
 
   handleNewStack= data => {
-    data.lastest_contributor = this.props.currentUser.id;
-    console.log(data);
+    data.board_id = localStorage.board;
     this.props.newStack(data);
   }
 
@@ -50,6 +49,7 @@ export default connect(
     editActive: state.stack.editActive,
     currentUser: state.session.currentUser,
     currentStack: state.stack.currentStack,
+    currentBoard: state.boards.activeBoard
   }),
   { formActivate, newStack, editStack, setActiveStack }
 )(StackView);

@@ -8,7 +8,7 @@ function setCurrentUser(dispatch, response) {
   dispatch({ type: 'GET_STACKS_REQUEST' });
   dispatch(fetchUserBoards(response.data.id)); // new line
   console.log(response.data.id)
-  api.fetch(`/stacks/user/${response.data.id}`)
+  api.fetch(`/stacks/board/${response.data.id}`)
       .then((response) => {
         dispatch({type: 'RECIEVE_ALL_STACKS', response})
       })

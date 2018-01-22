@@ -28,11 +28,11 @@ defmodule Stracker.StackController do
     render(conn, "show.json", stack: stack)
   end
 
-  def get_by_user(conn, %{"users" => users}) do
+  def get_by_board(conn, %{"board_id" => board_id}) do
     stacks = Repo.all(
       from p in Stack,
       select: p,
-      where: ^users == p.users,
+      where: ^board_id == p.board_id,
       order_by: [desc: p.updated_at]
     )
     render(conn, "index.json", stacks: stacks)

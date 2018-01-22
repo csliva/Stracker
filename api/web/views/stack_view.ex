@@ -13,7 +13,6 @@ defmodule Stracker.StackView do
     %{id: stack.id,
       stack_title: stack.stack_title,
       description: stack.description,
-      user_id: stack.user_id
     }
   end
 end

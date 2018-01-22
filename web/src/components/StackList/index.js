@@ -42,7 +42,7 @@ class StackList extends Component {
       <div className={`column is-one-third`}>
         <ul className={`${css(styles.stacklist)}`}>
         {this.props.stacks.data.map(function(object, i){
-          return <Stack name={object.post_title} key={i} id={object.id} />;
+          return <Stack name={object.stack_title} key={i} id={object.id} />;
         })}
         </ul>
        </div>
