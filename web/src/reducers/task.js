@@ -1,28 +1,27 @@
 const initialState = {
   formActive: true,
   editActive: false,
-  currentStack: {
+  currentTask: {
     id: Number,
-    notes: String,
-    post_title: String,
-    time: Number,
+    description: String,
+    task_title: String,
     user_id: Number,
   },
-  allStacks: Object,
-  loadingStacks: Boolean,
+  stack: Object,
+  loadingStack: Boolean,
 }
 export default function (state = initialState, action) {
   switch (action.type) {
-    case 'RECIEVE_ALL_STACKS':
+    case 'RECIEVE_STACK':
       return {
         ...state,
-        allStacks: action.response,
-        loadingStacks: false,
+        stack: action.response,
+        loadingStack: false,
       };
-    case 'GET_STACKS_REQUEST':
+    case 'LOAD_IN_STACK':
       return {
         ...state,
-        loadingStacks: true,
+        loadingStack: true,
       };
     case 'FORM_ACTIVATE':
       return {
@@ -35,29 +34,29 @@ export default function (state = initialState, action) {
           ...state,
           formActive: false,
         };
-      case 'SET_ACTIVE_STACK':
+      case 'SET_ACTIVE_TASK':
         return {
           ...state,
-          currentStack: action.response.data,
+          currentTask: action.response.data,
           editActive: false,
         };
-        case 'SET_STACK_REQUEST':
+        case 'CLOSE_FORM':
           return {
             ...state,
             formActive: false,
           };
-        case 'DELETE_STACK':
+        case 'DELETE_TASK':
           return {
             ...state,
             formActive: true,
           };
-        case 'EDIT_STACK':
+        case 'EDIT_TASK':
           return {
             ...state,
             formActive: false,
             editActive: false,
           };
-        case 'ACTIVATE_EDIT':
+        case 'VIEW_EDIT':
           return {
             ...state,
             formActive: true,

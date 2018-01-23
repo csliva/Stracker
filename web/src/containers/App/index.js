@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 //import { connect } from 'react-redux';
 //import { Link } from 'react-router';
 //import { logout } from '../../actions/session';
-import StackList from '../../components/StackList';
-import StackView from '../../components/StackView';
+import Stack from '../../components/Stack';
+import TaskView from '../../components/Task/TaskView';
 
 class App extends Component {
 
@@ -13,8 +13,8 @@ class App extends Component {
       <div style={{ flex: '1' }}>
         <div className="container">
           <div className="columns" style={{ flex: '1', height: '89%'}}>
-            <StackList />
-            <StackView />
+            <Stack/>
+            <TaskView />
           </div>
         </div>
       </div>

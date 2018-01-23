@@ -5,12 +5,12 @@ import { fetchUserBoards } from './boards';
 function setCurrentUser(dispatch, response) {
   localStorage.setItem('token', JSON.stringify(response.meta.token));
   dispatch({ type: 'AUTHENTICATION_SUCCESS', response });
-  dispatch({ type: 'GET_STACKS_REQUEST' });
+  dispatch({ type: 'LOAD_IN_STACK' });
   dispatch(fetchUserBoards(response.data.id)); // new line
-  console.log(response.data.id)
-  api.fetch(`/stacks/board/${response.data.id}`)
+  api.fetch(`/tasks/board/${response.data.id}`)
       .then((response) => {
-        dispatch({type: 'RECIEVE_ALL_STACKS', response})
+        console.log(`RESPONSE LOOK HERE: ${response}`)
+        dispatch({type: 'RECIEVE_STACK', response})
       })
       .catch((err) => {
         console.log(err);
@@ -52,7 +52,7 @@ export function authenticate() {
       .then((response) => {
         setCurrentUser(dispatch, response);
       })
-      .catch(() => {
+      .catch((response) => {
         localStorage.removeItem('token');
         window.location = '/login';
       });

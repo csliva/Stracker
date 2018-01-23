@@ -1,9 +1,8 @@
-defmodule Stracker.Stack do
+defmodule Stracker.Task do
   use Stracker.Web, :model
 
-  schema "stacks" do
-    @primary_key {:id, autogenerate: true}
-    field :stack_title, :string
+  schema "tasks" do
+    field :task_title, :string
     field :description, :string
     belongs_to :board, Stracker.Board
     timestamps()
@@ -14,7 +13,7 @@ defmodule Stracker.Stack do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:stack_title, :description, :board_id])
-    |> validate_required([:stack_title])
+    |> cast(params, [:task_title, :description, :board_id])
+    |> validate_required([:task_title])
   end
 end

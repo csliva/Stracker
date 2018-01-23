@@ -22,7 +22,7 @@ export function setActiveBoard(response, router) {
   localStorage.setItem('board', JSON.stringify(response));
   return (dispatch) => {
     dispatch({ type: 'SET_ACTIVE_BOARD', response });
-    router.transitionTo('/app');
+    router.transitionTo('/');
   };
 }
 
@@ -39,7 +39,7 @@ export function createBoard(data, router) {
     .then((response) => {
       dispatch({ type: 'CREATE_BOARD_SUCCESS', response });
       dispatch(reset('newBoard'));
-      router.transitionTo(`/app`);
+      router.transitionTo(`/`);
     });
 }
 
@@ -47,6 +47,6 @@ export function joinBoard(boardId, router) {
   return dispatch => api.post(`/boards/${boardId}/join`)
     .then((response) => {
       dispatch({ type: 'BOARD_JOINED', response });
-      router.transitionTo(`/app`);
+      router.transitionTo(`/`);
     });
 }

@@ -1,16 +1,16 @@
-defmodule Stracker.StackController do
+defmodule Stracker.TaskController do
   use Stracker.Web, :controller
 
-  alias Stracker.Stack
+  alias Stracker.Task
 
   def create(conn, params) do
-    changeset = Stack.changeset(%Stack{}, params)
+    changeset = Task.changeset(%Task{}, params)
     case Repo.insert(changeset) do
-      {:ok, stack} ->
+      {:ok, task} ->
         conn
         |> put_status(:created)
-        |> put_resp_header("location", stack_path(conn, :show, stack))
-        |> render("show.json", stack: stack)
+        |> put_resp_header("location", task_path(conn, :show, task))
+        |> render("show.json", task: task)
       {:error, params} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -19,32 +19,32 @@ defmodule Stracker.StackController do
   end
 
   def index(conn, _params) do
-    stacks = Repo.all(Stack)
-    render(conn, "index.json", stacks: stacks)
+    tasks = Repo.all(Task)
+    render(conn, "index.json", tasks: tasks)
   end
 
   def show(conn, %{"id" => id}) do
-    stack = Repo.get!(Stack, id)
-    render(conn, "show.json", stack: stack)
+    task = Repo.get!(Task, id)
+    render(conn, "show.json", task: task)
   end
 
   def get_by_board(conn, %{"board_id" => board_id}) do
-    stacks = Repo.all(
-      from p in Stack,
+    tasks = Repo.all(
+      from p in Task,
       select: p,
       where: ^board_id == p.board_id,
       order_by: [desc: p.updated_at]
     )
-    render(conn, "index.json", stacks: stacks)
+    render(conn, "index.json", tasks: tasks)
   end
 
   def update(conn, params) do
-    stack = Repo.get!(Stack, params["id"])
-    changeset = Stack.changeset(stack, params["stack_params"])
+    task = Repo.get!(Task, params["id"])
+    changeset = Task.changeset(task, params["task_params"])
 
     case Repo.update(changeset) do
-      {:ok, stack} ->
-        render(conn, "show.json", stack: stack)
+      {:ok, task} ->
+        render(conn, "show.json", task: task)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -53,11 +53,9 @@ defmodule Stracker.StackController do
   end
 
   def delete(conn, %{"id" => id}) do
-    stack = Repo.get!(Stack, id)
+    task = Repo.get!(Task, id)
 
-    # Here we use delete! (with a bang) because we expect
-    # it to always work (and if it does not, it will raise).
-    Repo.delete!(stack)
+    Repo.delete!(task)
 
     send_resp(conn, :no_content, "")
   end

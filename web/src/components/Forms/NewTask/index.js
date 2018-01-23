@@ -11,7 +11,7 @@ type Props = {
 }
 
 
-class StackForm extends Component {
+class TaskForm extends Component {
 
   props: Props
 
@@ -27,7 +27,7 @@ class StackForm extends Component {
         onSubmit={handleSubmit(this.handleSubmit)}
       >
         <h3 className="title" style={{ marginBottom: '2rem', textAlign: 'center' }}>Create a Task</h3>
-        <Field name="stack_title" type="text" component={Input} placeholder="Task Title" />
+        <Field name="task_title" type="text" component={Input} placeholder="Task Title" />
         <Field name="description" type="text" component={Input} placeholder="Task Description" />
         <button
           type="submit"
@@ -53,6 +53,6 @@ const validate = (values) => {
 };
 
 export default reduxForm({
-  form: 'newStack',
+  form: 'newTask',
   validate,
-})(StackForm);
+})(TaskForm);

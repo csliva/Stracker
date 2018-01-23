@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createBoard, fetchUserBoards } from '../../actions/boards';
-import NewBoardForm from '../../components/NewBoardForm';
+import NewBoardForm from '../../components/Forms/NewBoard';
 import BoardList from '../../components/BoardList';
 import { notify } from '../../actions/message'
 import { css, StyleSheet } from 'aphrodite';

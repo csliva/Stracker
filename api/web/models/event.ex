@@ -4,7 +4,7 @@ defmodule Stracker.Event do
   schema "events" do
     field :start_time, :naive_datetime
     field :end_time, :naive_datetime
-    belongs_to :stack, Stracker.Stack
+    belongs_to :task, Stracker.Task
     belongs_to :user, Stracker.User
   end
 
@@ -13,6 +13,8 @@ defmodule Stracker.Event do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:start_time, :end_time, :stack_id, :user_id])
+    |> cast(params, [:start_time, :end_time, :task_id, :user_id])
   end
+
+
 end

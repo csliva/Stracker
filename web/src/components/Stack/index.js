@@ -1,42 +1,72 @@
 // @flow
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import { setActiveStack, formDeactivate} from '../../actions/app';
 import { css, StyleSheet } from 'aphrodite';
+import Task from '../Task/TaskItem';
+import Search from './Search';
+import { formActivate } from '../../actions/app';
 
 const styles = StyleSheet.create({
-  stack: {
-    padding: '1rem .5rem',
-    backgroundColor: 'white',
-    margin: '10px 0px'
+  tasklist: {
+    padding: '0px',
+    listStyle: 'none',
   },
+  left_block:{
+    height: '95%',
+    marginTop: '1%',
+    overflowY: 'scroll',
+    //boxShadow: '0 1px 0 rgba(0,0,0,.25)',
+    //border: '1px solid #e8e8e8',
+  }
 });
 
 type Props = {
-  setActiveStack: () => void,
-  currentStack: Number,
-  formActive: boolean,
+  currentUser: Object,
+  tasks: Object,
+  loadingStacks: Boolean,
 }
 
 class Stack extends Component {
-
   props: Props
 
-  clickHandler(id){
-    this.props.formDeactivate();
-    this.props.setActiveStack(id);
+  clickHandler(){
+    this.props.formActivate();
   }
+
   render() {
+    if (this.props.loadingStack) {
+      return (
+        <div className={`column is-one-third ${css(styles.left_block)}`}>
+          <p>No tasks stacked yet</p>
+          <div>
+            <div className={"button is-success " + (this.props.formActive ? 'show' : 'is-disabled')} onClick={this.clickHandler.bind(this, this.props.id)}>Create your first one</div>
+          </div>
+        </div>
+      );
+    }
+    else{
     return (
-      <li onClick={this.clickHandler.bind(this, this.props.id)} className={`card ${css(styles.stack)}`}>{this.props.name}</li>
+      <div className={`column is-one-third`}>
+        <div>
+          <div className="button is-success" disabled={(this.props.formActive ? 'disabled' : '')} onClick={this.clickHandler.bind(this, this.props.id)}>New Task</div>
+        </div>
+        <Search />
+        <ul className={`${css(styles.tasklist)}`}>
+        {this.props.tasks.data.map(function(object, i){
+          return <Task name={object.task_title} key={i} id={object.id} />;
+        })}
+        </ul>
+       </div>
     );
   }
+  }
 }
-
 export default connect(
   state => ({
-    formActive: state.stack.formActive,
-    currentStack: state.stack.currentStack,
+    currentUser: state.session.currentUser,
+    tasks: state.task.stack,
+    loadingStack: state.task.loadingStack,
+    formActive: state.task.formActive,
   }),
-  { setActiveStack, formDeactivate }
+  { formActivate }
 )(Stack);

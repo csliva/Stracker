@@ -23,7 +23,7 @@ const MatchAuthenticated = ({
     render={(props) => {
       if (isAuthenticated) { return <Component {...props} />; }
       if (willAuthenticate) { return null; }
-      if (!willAuthenticate && !isAuthenticated) { return <Redirect to={{ pathname: '/login' }} />; }
+      if (!willAuthenticate && !isAuthenticated) { return <Redirect to={{ pathname: '/home' }} />; }
       return null;
     }}
   />;
