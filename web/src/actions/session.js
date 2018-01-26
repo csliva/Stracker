@@ -7,9 +7,9 @@ function setCurrentUser(dispatch, response) {
   dispatch({ type: 'AUTHENTICATION_SUCCESS', response });
   dispatch({ type: 'LOAD_IN_STACK' });
   dispatch(fetchUserBoards(response.data.id)); // new line
-  api.fetch(`/tasks/board/${response.data.id}`)
+  api.fetch(`/tasks/board/${localStorage.board}`)
       .then((response) => {
-        console.log(`RESPONSE LOOK HERE: ${response}`)
+        console.log(response)
         dispatch({type: 'RECIEVE_STACK', response})
       })
       .catch((err) => {

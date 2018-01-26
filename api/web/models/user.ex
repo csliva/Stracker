@@ -9,6 +9,7 @@ defmodule Stracker.User do
     field :password, :string, virtual: true
     field :subscriber, :boolean, default: false
     many_to_many :boards, Stracker.Board, join_through: "user_boards"
+    has_many :events, Stracker.Event
   end
 
   @doc """

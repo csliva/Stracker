@@ -35,6 +35,7 @@ defmodule Stracker.TaskController do
       where: ^board_id == p.board_id,
       order_by: [desc: p.updated_at]
     )
+    IO.inspect tasks
     render(conn, "index.json", tasks: tasks)
   end
 

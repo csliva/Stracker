@@ -32,6 +32,7 @@ class Navbar extends Component {
             <button style={{ margin: '0 10px' }} className="button is-default" type="button" onClick={this.handleLogout}>Logout</button>
           </div>
       }
+      <p className="has-text-centered"><Link to="/boards"><button className="button is-primary">Go to Boards</button></Link></p>
       </div>
     );
   }

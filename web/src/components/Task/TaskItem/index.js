@@ -22,14 +22,35 @@ class Task extends Component {
 
   props: Props
 
-  clickHandler(id){
+  // on the first click, we view the task
+  viewTaskHandler(id){
     this.props.formDeactivate();
     this.props.setActiveTask(id);
   }
+  // if the task is already being viewed, an event needs to be created
+  timeEventHandler(id){
+    if (id === this.props.currentTask.id)
+      console.log(`Make api call to add event`)
+    else { this.viewTaskHandler(id) }
+  }
   render() {
+    if(this.props.formActive){
     return (
-      <li onClick={this.clickHandler.bind(this, this.props.id)} className={`card ${css(styles.task)}`}>{this.props.name}</li>
-    );
+      <li
+        onClick={this.viewTaskHandler.bind(this, this.props.id)}
+        className={`card ${css(styles.task)}`}
+      >
+        {this.props.name}
+      </li>
+    );} else{
+    return (
+      <li
+        onClick={this.timeEventHandler.bind(this, this.props.id)}
+        className={`card ${css(styles.task)}`}
+      >
+        {this.props.name}
+      </li>
+    );}
   }
 }
 

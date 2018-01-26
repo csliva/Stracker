@@ -19,6 +19,9 @@ defmodule Stracker.Router do
     get "/users/:id/boards", UserController, :boards
     resources "/boards", BoardController, only: [:index, :create]
     post "/board/:id/join", BoardController, :join
-    get "/events/:event_id", EventController, :index
+    # get task events by task id
+    get "/task/events/:task_id", EventController, :get_by_task
+    resources "/events", EventController
+    get "/tester", EventController, :add_date
   end
 end

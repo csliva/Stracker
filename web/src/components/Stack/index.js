@@ -39,7 +39,7 @@ class Stack extends Component {
         <div className={`column is-one-third ${css(styles.left_block)}`}>
           <p>No tasks stacked yet</p>
           <div>
-            <div className={"button is-success " + (this.props.formActive ? 'show' : 'is-disabled')} onClick={this.clickHandler.bind(this, this.props.id)}>Create your first one</div>
+            <div className={"button is-success " + (this.props.formActive ? 'show' : 'is-disabled')} onClick={this.clickHandler.bind(this, this.props.id)}>Create your first Task</div>
           </div>
         </div>
       );
@@ -48,7 +48,7 @@ class Stack extends Component {
     return (
       <div className={`column is-one-third`}>
         <div>
-          <div className="button is-success" disabled={(this.props.formActive ? 'disabled' : '')} onClick={this.clickHandler.bind(this, this.props.id)}>New Task</div>
+          <div className="button is-success" disabled={(this.props.formActive ? 'disabled' : '')} onClick={this.clickHandler.bind(this, this.props.id)}><i className="fa fa-plus fa-2x" aria-hidden="true"></i></div>New Task
         </div>
         <Search />
         <ul className={`${css(styles.tasklist)}`}>

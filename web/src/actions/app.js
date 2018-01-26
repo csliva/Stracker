@@ -35,7 +35,6 @@ export function activateEdit(id) {
 export function editTask(data) {
   const task_params = {"task_params": data}
   return (dispatch, getState) => {
-    console.log(dispatch)
     return api.patch(`/tasks/${getState().task.currentTask.id}`, task_params)
       .then(() => {
         updateTasks(getState().session.currentUser.id, dispatch);
@@ -74,7 +73,7 @@ function updateActiveTask(response, dispatch) {
 }
 
 function updateTasks(dispatch) {
-  console.log(dispatch)
+    console.log(localStorage.board)
     dispatch({ type: 'LOAD_IN_STACK' });
     return api.fetch(`/tasks/board/${localStorage.board}`)
       .then((response) => {
@@ -88,9 +87,10 @@ function updateTasks(dispatch) {
 // get all tasks
 // event should fire on app load, and when a new task has been created
 export function getAllTasks(currentUserId) {
+  console.log(localStorage.board)
   return (dispatch, getState) => {
     dispatch({ type: 'LOAD_IN_STACK' });
-    return api.fetch(`/tasks/board/${getState().boards.active}`)
+    return api.fetch(`/tasks/board/${localStorage.board}}`)
       .then((response) => {
         dispatch({type: 'RECIEVE_STACK', response})
       })
