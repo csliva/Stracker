@@ -16,4 +16,10 @@ defmodule Stracker.ChangesetView do
     # as a JSON object. So we just pass it forward.
     %{errors: translate_errors(changeset)}
   end
+
+  def render("test.json", %{changeset: changeset}) do
+    # Do nothing to output data to API.
+    # This is a simple way to get the server to inspect data without worrying about the view
+    %{test: "good"}
+  end
 end

@@ -22,6 +22,7 @@ defmodule Stracker.Router do
     # get task events by task id
     get "/task/events/:task_id", EventController, :get_by_task
     resources "/events", EventController
-    get "/tester", EventController, :add_date
+    get "/read_last", EventController, :read_last
+    post "add_event/:user_id/:task_id", EventController, :add_entry
   end
 end

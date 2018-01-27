@@ -7,9 +7,11 @@ export function fetchEvents(stackId) {
     });
 }
 
-export function updateEvent(eventId) {
-  return dispatch => api.fetch(`/events/${eventId}`)
+export function addEvent(data) {
+  return (dispatch, getState) => {
+    return api.post(`/add_event/${getState().session.currentUser.id}/${data}`)
     .then((response) => {
-      dispatch({ type: 'UPDATE_EVENT_SUCCESS', response });
+      console.log(response)
     });
+  };
 }

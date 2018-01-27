@@ -2,6 +2,7 @@ defmodule Stracker.Event do
   use Stracker.Web, :model
 
   schema "events" do
+    @primary_key {:id, autogenerate: true}
     field :start_time, Ecto.DateTime
     field :end_time, Ecto.DateTime
     belongs_to :task, Stracker.Task

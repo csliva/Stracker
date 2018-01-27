@@ -2,6 +2,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { setActiveTask, formDeactivate} from '../../../actions/app';
+import { addEvent } from '../../../actions/events'
 import { css, StyleSheet } from 'aphrodite';
 
 const styles = StyleSheet.create({
@@ -30,7 +31,7 @@ class Task extends Component {
   // if the task is already being viewed, an event needs to be created
   timeEventHandler(id){
     if (id === this.props.currentTask.id)
-      console.log(`Make api call to add event`)
+      this.props.addEvent(id)
     else { this.viewTaskHandler(id) }
   }
   render() {
@@ -59,5 +60,5 @@ export default connect(
     formActive: state.task.formActive,
     currentTask: state.task.currentTask,
   }),
-  { setActiveTask, formDeactivate }
+  { setActiveTask, formDeactivate, addEvent }
 )(Task);
