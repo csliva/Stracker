@@ -73,23 +73,11 @@ defmodule Stracker.EventController do
     end
   end
 
- #%Stracker.Event{id: _, start_time: _, end_time: _, user_id: _, task_id: _}
-
-  def index(conn, _params) do
-    events = Repo.all(Event)
-    render(conn, "index.json", events: events)
-  end
-
-  def show(conn, %{"id" => id}) do
-    event = Repo.get!(Event, id)
-    render(conn, "show.json", event: event)
-  end
-
-  def get_by_task(conn, %{"task_id" => task_id}) do
+  def get_by_task(conn, %{"user_id" => user_id, "task_id" => task_id}) do
     events = Repo.all(
       from p in Event,
       select: p,
-      where: ^task_id == p.task_id,
+      where: ^task_id == e.task_id and ^user_id == e.user_id,
       order_by: [desc: p.updated_at]
     )
     render(conn, "index.json", events: events)
