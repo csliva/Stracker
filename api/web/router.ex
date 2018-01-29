@@ -15,6 +15,7 @@ defmodule Stracker.Router do
     get "/tasks/board/:board_id", TaskController, :get_by_board
     post "/sessions", SessionController, :create
     delete "/sessions", SessionController, :delete
+    delete "/tasks/:id", TaskController, :delete
     post "/sessions/refresh", SessionController, :refresh
     get "/users/:id/boards", UserController, :boards
     resources "/boards", BoardController, only: [:index, :create]
@@ -22,7 +23,6 @@ defmodule Stracker.Router do
     # get task events by task id
     get "/task/events/:task_id", EventController, :get_by_task
     resources "/events", EventController
-    get "/read_last", EventController, :read_last
     post "add_event/:user_id/:task_id", EventController, :add_entry
   end
 end

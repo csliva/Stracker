@@ -5,7 +5,7 @@ defmodule Stracker.Task do
     field :task_title, :string
     field :description, :string
     belongs_to :board, Stracker.Board
-    has_many :events, Stracker.Event
+    has_many :events, Stracker.Event, on_delete: :delete_all
     timestamps()
   end
 
