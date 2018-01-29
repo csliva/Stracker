@@ -38,18 +38,12 @@ defmodule Stracker.EventController do
           true ->
             ####### ADDING A NEW EVENT ROW ##########
             changeset = Event.changeset(%Event{},
-              %{ "start_time" => Ecto.DateTime.utc, "user_id" => user_id, "task_id" => task_id})
-            case Repo.insert(changeset) do
-              {:ok, event} ->
-                conn
-                |> put_status(:created)
-                |> put_resp_header("location", event_path(conn, :show, event))
-                |> render("show.json", event: event)
-              {:error} ->
-                conn
-                |> put_status(:unprocessable_entity)
-                |> render(Stracker.ChangesetView, "error.json", changeset: changeset)
-            end
+              %{
+                "start_time" => Ecto.DateTime.utc,
+                "user_id" => user_id,
+                "task_id" => task_id
+              })
+            new_row(conn, changeset)
         end
       :error ->
         # Nothing exists yet. We need to create the first row
@@ -59,26 +53,30 @@ defmodule Stracker.EventController do
             "user_id" => user_id,
             "task_id" => task_id
           })
-        case Repo.insert(changeset) do
-          {:ok, event} ->
-            conn
-            |> put_status(:created)
-            |> put_resp_header("location", event_path(conn, :show, event))
-            |> render("show.json", event: event)
-          {:error} ->
-            conn
-            |> put_status(:unprocessable_entity)
-            |> render(Stracker.ChangesetView, "error.json", changeset: changeset)
-        end
+        new_row(conn, changeset)
+    end
+  end
+
+  defp new_row(conn, changeset) do
+    case Repo.insert(changeset) do
+      {:ok, event} ->
+        conn
+        |> put_status(:created)
+        |> put_resp_header("location", event_path(conn, :show, event))
+        |> render("show.json", event: event)
+      {:error} ->
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render(Stracker.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
   def get_by_task(conn, %{"user_id" => user_id, "task_id" => task_id}) do
     events = Repo.all(
-      from p in Event,
-      select: p,
+      from e in Event,
+      select: e,
       where: ^task_id == e.task_id and ^user_id == e.user_id,
-      order_by: [desc: p.updated_at]
+      order_by: [desc: e.updated_at]
     )
     render(conn, "index.json", events: events)
   end
