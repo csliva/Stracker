@@ -14,15 +14,19 @@ defmodule Stracker.EventController do
     )
     # Get our model from event.
     case Enum.fetch(last_event,0) do
+      # pattern match, last event does exist
       {:ok, event_model} ->
-        IO.inspect event_model
         cond do
+          # check to see if end time exists in row
           event_model.end_time == nil ->
             ###### UPDATE ROW #######
+            # get our row by id
             event = Repo.get!(Event, event_model.id)
+            # apply change to row
             changeset = Event.changeset(event, %{"end_time" => Ecto.DateTime.utc})
-
+            # apply change
             case Repo.update(changeset) do
+              # if it works render the result, if not throw api error
               {:ok, event} ->
                 render(conn, "show.json", event: event)
               {:error, changeset} ->
@@ -30,14 +34,11 @@ defmodule Stracker.EventController do
                 |> put_status(:unprocessable_entity)
                 |> render(Stracker.ChangesetView, "error.json", changeset: changeset)
             end
+          # default action, previous event exists with filled in end_time
           true ->
             ####### ADDING A NEW EVENT ROW ##########
             changeset = Event.changeset(%Event{},
-              %{
-                "start_time" => Ecto.DateTime.utc,
-                "user_id" => user_id,
-                "task_id" => task_id
-              })
+              %{ "start_time" => Ecto.DateTime.utc, "user_id" => user_id, "task_id" => task_id})
             case Repo.insert(changeset) do
               {:ok, event} ->
                 conn
@@ -50,7 +51,7 @@ defmodule Stracker.EventController do
                 |> render(Stracker.ChangesetView, "error.json", changeset: changeset)
             end
         end
-      :error -> IO.puts "must create first row"
+      :error ->
         # Nothing exists yet. We need to create the first row
         changeset = Event.changeset(%Event{},
           %{
