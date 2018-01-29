@@ -16,6 +16,6 @@ defmodule Stracker.Event do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:start_time, :end_time, :user_id, :task_id])
+    |> cast(params, [:id, :start_time, :end_time, :user_id, :task_id])
   end
 end
