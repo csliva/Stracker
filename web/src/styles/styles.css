@@ -15,7 +15,7 @@ body {
   margin: 0;
   font-size: 16px;
   line-height: 26px;
-  color: #666; }
+  color: #777; }
 
 h1, h2, h3, h4, h5 {
   font-family: 'Raleway', sans-serif;
@@ -114,7 +114,7 @@ figure {
     display: block; }
   .app__footer {
     padding: 26px;
-    color: #999; }
+    color: #bbb; }
 
 .section {
   display: block; }
@@ -133,9 +133,10 @@ figure {
 
 .nav {
   background: #1e215b;
-  background: -moz-linear-gradient(left, #1e215b 0%, #5c457e 100%);
-  background: -webkit-linear-gradient(left, #1e215b 0%, #5c457e 100%);
-  background: linear-gradient(to right, #1e215b 0%, #5c457e 100%);
+  /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #1e215b 0%, #5c457e 100%);
+  background: -webkit-linear-gradient(-45deg, #1e215b 0%, #5c457e 100%);
+  background: linear-gradient(135deg, #1e215b 0%, #5c457e 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$clr-a', endColorstr='$clr-b',GradientType=1 ); }
   .nav__list {
     margin: 0;

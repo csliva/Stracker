@@ -52,7 +52,7 @@ class Main extends Component {
             <Miss component={NotFound} />
           </div>
           <footer className="app__footer">
-            © &int;tracker 2018
+            © &int;tracker 2018 | Colt Sliva | Kyle Treptow
           </footer>
         </div>
       </BrowserRouter>
