@@ -23,19 +23,21 @@ class Navbar extends Component {
     const { currentUser, isAuthenticated } = this.props;
     return (
       <header className="app__header">
-
         <nav className="nav">
+          <div className="nav__hero">
+            <h1 className="nav__title">&int;tracker</h1>
+          </div>
           <ul className="nav__list">
             <li className="nav__item">
-              <Link className="nav__link nav__link--branding" to="/">&int;tracker</Link>
+              <Link className="nav__link nav__link--branding" to="/">Home</Link>
             </li>
             {isAuthenticated &&
-                <li className="nav__item ">
+                <li className="nav__item">
                   <button
                     className="nav__button"
                     type="button"
                     onClick={this.handleLogout}>
-                     Logout | <span>{currentUser.username}</span>
+                     Logout (<span>{currentUser.username}</span>)
                   </button>
                 </li>
             }
