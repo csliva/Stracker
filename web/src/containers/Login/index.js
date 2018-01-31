@@ -19,7 +19,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div style={{ flex: '1' }}>
+      <div className="container">
         <LoginForm onSubmit={this.handleLogin} />
       </div>
     );

@@ -40,15 +40,20 @@ class Main extends Component {
 
     return (
       <BrowserRouter>
-        <div>
+        <div className="app">
           <Navbar />
-          <Notification/>
-          <Match exactly pattern="/home" component={Home} {...authProps} />
-          <MatchAuthenticated exactly pattern="/" component={App} {...authProps} />
-          <MatchAuthenticated exactly pattern="/boards" component={BoardManagement} {...authProps} />
-          <RedirectAuthenticated pattern="/login" component={Login} {...authProps} />
-          <RedirectAuthenticated pattern="/signup" component={Signup} {...authProps} />
-          <Miss component={NotFound} />
+          <div className="app__body">
+            <Notification/>
+            <Match exactly pattern="/home" component={Home} {...authProps} />
+            <MatchAuthenticated exactly pattern="/" component={App} {...authProps} />
+            <MatchAuthenticated exactly pattern="/boards" component={BoardManagement} {...authProps} />
+            <RedirectAuthenticated pattern="/login" component={Login} {...authProps} />
+            <RedirectAuthenticated pattern="/signup" component={Signup} {...authProps} />
+            <Miss component={NotFound} />
+          </div>
+          <footer className="app__footer">
+            © &int;tracker 2018
+          </footer>
         </div>
       </BrowserRouter>
     );

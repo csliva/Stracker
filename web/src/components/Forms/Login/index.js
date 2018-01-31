@@ -6,13 +6,6 @@ import { Link } from 'react-router';
 import { css, StyleSheet } from 'aphrodite';
 import Input from '../Input';
 
-const styles = StyleSheet.create({
-  card: {
-    maxWidth: '500px',
-    padding: '3rem 4rem',
-    margin: '2rem auto',
-  },
-});
 
 type Props = {
   onSubmit: () => void,
@@ -30,23 +23,29 @@ class LoginForm extends Component {
 
     return (
       <form
-        className={`card ${css(styles.card)}`}
+        className="form"
         onSubmit={handleSubmit(this.handleSubmit)}
       >
-        <h3 className="title" style={{ marginBottom: '2rem', textAlign: 'center' }}>Login</h3>
+        <h3 className="#">Login</h3>
         <Field name="email" type="text" component={Input} placeholder="Email" />
         <Field name="password" type="password" component={Input} placeholder="Password" />
-        <button
-          type="submit"
-          disabled={submitting}
-          className="button is-primary"
-        >
-          {submitting ? 'Logging in...' : 'Login'}
-        </button>
-        <hr style={{ margin: '2rem 0' }} />
-        <Link to="/signup" className="button is-secondary">
-          Create a new account
-        </Link>
+
+        <div className="form__#">
+          <button
+            type="submit"
+            disabled={submitting}
+            className="form__button"
+          >
+            {submitting ? 'Logging in...' : 'Login'}
+          </button>
+        </div>
+
+        <div className="form__#">
+          <Link to="/signup" className="form__link">
+            Create a new account
+          </Link>
+        </div>
+
       </form>
     );
   }
