@@ -24,12 +24,9 @@ class Navbar extends Component {
     return (
       <header className="app__header">
         <nav className="nav">
-          <div className="nav__hero">
-            <h1 className="nav__title">&int;tracker</h1>
-          </div>
           <ul className="nav__list">
             <li className="nav__item">
-              <Link className="nav__link nav__link--branding" to="/">Home</Link>
+              <Link className="nav__link nav__link--branding" to="/">&int;tracker</Link>
             </li>
             {isAuthenticated &&
                 <li className="nav__item">
