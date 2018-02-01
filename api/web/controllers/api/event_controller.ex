@@ -28,7 +28,7 @@ defmodule Stracker.EventController do
             case Repo.update(changeset) do
               # if it works render the result, if not throw api error
               {:ok, event} ->
-                render_events_success(conn, user_id, task_id)
+                render_events_success(conn, task_id)
               {:error, changeset} ->
                 add_event_error(conn, changeset)
             end
@@ -42,7 +42,7 @@ defmodule Stracker.EventController do
                 "task_id" => task_id
               })
               case Repo.insert(changeset) do
-                {:ok, _} -> render_events_success(conn, user_id, task_id)
+                {:ok, _} -> render_events_success(conn, task_id)
                 {:error} -> add_event_error(conn, changeset)
               end
         end
@@ -55,17 +55,17 @@ defmodule Stracker.EventController do
             "task_id" => task_id
           })
           case Repo.insert(changeset) do
-            {:ok, _} -> render_events_success(conn, user_id, task_id)
+            {:ok, _} -> render_events_success(conn, task_id)
             {:error} -> add_event_error(conn, changeset)
           end
     end
   end
 
-  defp render_events_success(conn, user_id, task_id) do
+  defp render_events_success(conn, task_id) do
     events = Repo.all(
       from e in Event,
       select: e,
-      where: ^task_id == e.task_id and ^user_id == e.user_id,
+      where: ^task_id == e.task_id,
       order_by: [desc: e.updated_at]
     )
     render(conn, "index.json", events: events)

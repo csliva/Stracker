@@ -12,6 +12,7 @@ defmodule Stracker.EventView do
   def render("event.json", %{event: event}) do
     %{id: event.id,
       start_time: event.start_time,
-      end_time: event.end_time}
+      end_time: event.end_time,
+      user_id: event.user_id}
   end
 end

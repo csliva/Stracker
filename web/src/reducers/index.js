@@ -4,13 +4,15 @@ import session from './session';
 import task from './task';
 import boards from './boards';
 import notification from './notification';
+import event from './event';
 
 const appReducer = combineReducers({
   form,
   session,
   task,
   boards,
-  notification
+  notification,
+  event
 });
 
 export default function (state, action) {

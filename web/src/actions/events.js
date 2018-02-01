@@ -9,9 +9,10 @@ export function fetchEvents(stackId) {
 
 export function addEvent(data) {
   return (dispatch, getState) => {
+    dispatch({ type: 'LOAD_IN_EVENTS'});
     return api.post(`/add_event/${getState().session.currentUser.id}/${data}`)
     .then((response) => {
-      console.log(response)
+      dispatch({ type: 'GET_EVENTS', response})
     });
   };
 }

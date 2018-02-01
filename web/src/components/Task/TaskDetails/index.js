@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Event from '../../Event';
 import { deleteTask , activateEdit } from '../../../actions/app';
 
 type Props = {
@@ -32,6 +33,7 @@ class TaskDetails extends Component {
       </div>
         <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>{currentTask.task_title}</h3>
         <div style={{ textAlign: 'center' }}>{currentTask.description}</div>
+        < Event />
       </div>
     );
   }
