@@ -10,9 +10,9 @@ class App extends Component {
 
   render() {
     return (
-      <div style={{ flex: '1' }}>
+      <div className="temp">
         <div className="container">
-          <div className="columns" style={{ flex: '1', height: '89%'}}>
+          <div className="columns">
             <Stack/>
             <TaskView />
           </div>

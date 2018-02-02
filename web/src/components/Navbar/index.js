@@ -22,18 +22,28 @@ class Navbar extends Component {
   render() {
     const { currentUser, isAuthenticated } = this.props;
     return (
-      <div className="navbar box">
-      <nav className="navbar-brand navbar-start">
-        <Link className="title" to="/">&int;tracker</Link>
-      </nav>
-      {isAuthenticated &&
-          <div className="navbar-end">
-            <span>{currentUser.username}</span>
-            <button style={{ margin: '0 10px' }} className="button is-default" type="button" onClick={this.handleLogout}>Logout</button>
-          </div>
-      }
-      <p className="has-text-centered"><Link to="/boards"><button className="button is-primary">Go to Boards</button></Link></p>
-      </div>
+      <header className="app__header">
+        <nav className="nav">
+          <ul className="nav__list">
+            <li className="nav__item">
+              <Link className="nav__link nav__link--branding" to="/">&int;tracker</Link>
+            </li>
+            <li className="nav__item nav__item--right">
+              <Link className="nav__link"  to="/boards">
+                Go to Boards
+              </Link>
+            </li>
+            {isAuthenticated &&
+              <li className="nav__item">
+                <button className="nav__button" type="button" onClick={this.handleLogout}>
+                  Logout (<span>{currentUser.username}</span>)
+                </button>
+              </li>
+            }
+          </ul>
+        </nav>
+
+    </header>
     );
   }
 }

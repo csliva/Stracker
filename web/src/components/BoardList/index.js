@@ -36,16 +36,16 @@ class BoardList extends Component {
         <ul>
         {this.props.boards.map(function(object, i){
           return (
-              <div className="columns" key={i} onClick={that.clickHandler.bind(that, object.id)}>
-              <div className="box column">
-                <div className="content">
-                <article className="media">
-                  <div className="media-left">
-                    <span className={`title is-size-3 ${css(styles.letter)}`}>{object.name.charAt(0)}</span>
+              <div className="#" key={i} onClick={that.clickHandler.bind(that, object.id)}>
+              <div className="#">
+                <div className="#">
+                <article className="#">
+                  <div className="#">
+                    <span className="#">{object.name.charAt(0)}</span>
                   </div>
-                  <div className="media-content">
-                    <div className="content">
-                      <strong><p className="is-size-3">{object.name}</p></strong>
+                  <div className="#">
+                    <div className="#">
+                      <strong><p className="#">{object.name}</p></strong>
                       <small><p>{object.description}</p></small>
                     </div>
                   </div>
