@@ -39,10 +39,10 @@ class BoardManagement extends Component {
 
   render() {
     return (
-      <div style={{ flex: '1' }}>
+      <div>
         <div className="container">
-          <div className={`card ${css(styles.card)}`}>
-            <h3 className="title" style={{ marginBottom: '2rem', textAlign: 'center' }}>New Board</h3>
+          <div className="#">
+            <h3 className="#">New Board</h3>
             <div className="card-content">
               <NewBoardForm onSubmit={this.handleNewBoard} />
             </div>

@@ -40,6 +40,7 @@ defmodule Stracker.TaskController do
   end
 
   def update(conn, params) do
+    IO.inspect params
     task = Repo.get!(Task, params["id"])
     changeset = Task.changeset(task, params["task_params"])
 

@@ -19,7 +19,7 @@ class Signup extends Component {
 
   render() {
     return (
-      <div style={{ flex: '1' }}>
+      <div className="container">
         <SignupForm onSubmit={this.handleSignup} />
       </div>
     );

@@ -1,38 +1,151 @@
-@import "../../node_modules/bulma/sass/utilities/initial-variables";
-@import "../../node_modules/bulma/sass/utilities/functions";
+// sass --watch css
+// sass --watch css --style compressed
 
-// 2. Set your own initial variables
-// Update blue
-$blue: #72d0eb;
-// Add pink and its invert
-$pink: #ffb3b3;
-$purple: #ba81d4;
-$pink-invert: #fff;
+@import "modules/_functions.sass"
+@import "modules/_mixins.sass"
+@import "modules/_colors.sass"
 
-// 3. Set the derived variables
-// Use the new pink as the primary color
-$primary: $purple;
-$primary-invert: $pink-invert;
-// Use the existing orange as the danger color
-$danger: $orange;
+//////////////////////////////////////////////
+// Global Vars
+//////////////////////////////////////////////
 
-$bg-color: lighten( desaturate( $primary, 30% ), 25%);
-$nav-color: lighten($primary, 10%);
+// Typography
+$fs-base: 16px
+$line-height: 1.6
+$blh: round($fs-base * $line-height)
+
+$font-text: "'Open Sans', sans-serif"
+$font-title: "'Raleway', sans-serif"
+$title-trans: "none"
+$title-weight: 300
+
+// Font Scale Factor
+// 1.067: Minor Second
+// 1.125: Major Second
+// 1.200: Minor Third
+// 1.250: Major Third
+// 1.333: Perfect Fourth
+// 1.414: Augmented Fourth
+// 1.500: Perfect Fifth
+// 1.618: Golden Ratio
+
+$scale-factor: 1.333
+$xs-scale-factor: 1.125
+
+// media breakpoints (min)
+$media-min-xs: "screen and (min-width: 576px)"
+$media-min-sm: "screen and (min-width: 768px)"
+$media-min-md: "screen and (min-width: 992px)"
+$media-min-lg: "screen and (min-width: 1200px)"
+$media-min-xl: "screen and (min-width: 1400px)"
+
+// media breakpoints (max)
+$media-max-xs: "screen and (max-width: 575px)"
+$media-max-sm: "screen and (max-width: 767px)"
+$media-max-md: "screen and (max-width: 991px)"
+$media-max-lg: "screen and (max-width: 1199px)"
+$media-max-xl: "screen and (max-width: 1399px)"
+
+@import "modules/_reset.sass"
+
+//////////////////////////////////////////////
+// Component: App
+//////////////////////////////////////////////
+
+.app
+  position: relative
+  min-height: 100vh
+  background: $clr-bg
+  &__header
+    display: block
+  &__body
+    display: block
+  &__footer
+    padding: $blh
+    color: #bbb
+
+//////////////////////////////////////////////
+// Component: Section
+//////////////////////////////////////////////
+
+.section
+  display: block
+
+//////////////////////////////////////////////
+// Component: Container
+//////////////////////////////////////////////
+
+.container
+  max-width: 100%
+  padding: $blh*2
+  background: #fff
+
+//////////////////////////////////////////////
+// Component: Panel
+//////////////////////////////////////////////
+
+.panel
+  width: 600px
+  max-width: 100%
+  margin: auto
+  padding: $blh*2
+  background: #fff
+
+//////////////////////////////////////////////
+// Component: Nav
+//////////////////////////////////////////////
+
+.nav
+  +gradient-bg-diag($clr-main, $clr-alt)
+  &__list
+    margin: 0
+    padding: 0
+  &__item
+    display: inline-block
+  &__link,
+  &__button
+    font-size: $fs-base
+    line-height: $blh
+    background: transparent
+    display: block
+    padding: $blh/2 $blh
+    color: #fff
+    text-decoration: none
+    border: 0
+    border-right: solid 1px darken($clr-main, 5%)
+    &:hover,
+    &:focus,
+    &:active
+      background: darken($clr-main, 5%)
+    &--branding
+      font-weight: 700
 
 
-// 4. Setup your Custom Colors
-$linkedin: #0077b5;
-$linkedin-invert: findColorInvert($linkedin);
-$twitter: #55acee;
-$twitter-invert: findColorInvert($twitter);
-$github: #333;
-$github-invert: findColorInvert($github);
 
-// 5. Add new color variables to the color map.
-@import "../../node_modules/bulma/sass/utilities/derived-variables.sass";
+//////////////////////////////////////////////
+// Component: #
+//////////////////////////////////////////////
 
-// 6. Import the rest of Bulma
-@import "../../node_modules/bulma/bulma";
+.form
+  &__item
+    display: block
+  &__input
+    padding: 8px
+    border-radius: 4px
+    border: solid 1px #ddd
+    margin-bottom: $blh/2
+    width: 300px
+    max-width: 100%
+  &__error
+    color: $clr-hlt
 
-html { background-color: $bg-color; }
-.navbar { background-color: $nav-color; }
+//////////////////////////////////////////////
+// Component: #
+//////////////////////////////////////////////
+
+.block
+  display: block
+  &__element
+    display: inline
+  &--modifier
+    display: inline-block
