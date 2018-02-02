@@ -2,6 +2,8 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { getEvents } from '../../actions/events';
+import Moment from 'react-moment';
+import moment from 'moment';
 
 type Props = {
   getEvents: () => void,
@@ -10,18 +12,15 @@ type Props = {
 }
 
 class Event extends Component {
-  componentWillMount(){
-
-  }
   render() {
-    if (this.props.loadingEvents == false) {
+    if (this.props.loadingEvents == false && this.props.taskEvents) {
       return (
       <div>
       {this.props.taskEvents.map(function(object, i){
         return (
           <ul key={i} id={object.id}>
-            <li>Start: {object.start_time}</li>
-            <li>End: {object.end_time}</li>
+            {object.end_time != null && <li>Seconds: {(Date.parse(object.end_time) - Date.parse(object.start_time))/1000}</li>}
+            {object.end_time == null && <li>Seconds: {<Moment diff={moment.utc().valueOf()} interval={1}>{moment.utc(object.start_time).valueOf()}</Moment>}</li>}
           </ul>
         );
       })}

@@ -1,4 +1,5 @@
 import api from '../api';
+import moment from 'moment';
 
 export function fetchEvents(stackId) {
   return dispatch => api.fetch(`/stacks/${stackId}/events`)
@@ -13,6 +14,7 @@ export function addEvent(data) {
     return api.post(`/add_event/${getState().session.currentUser.id}/${data}`)
     .then((response) => {
       dispatch({ type: 'GET_EVENTS', response})
+
     });
   };
 }
