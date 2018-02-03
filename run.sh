@@ -1,3 +1,3 @@
 #!/bin/bash
-cd web && yarn start &
-cd api && mix phoenix.server
+cd /Users/kyletreptow/Desktop/colt/Stracker/web && yarn start &
+cd /Users/kyletreptow/Desktop/colt/Stracker/api && mix phoenix.server
