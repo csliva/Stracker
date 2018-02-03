@@ -18,9 +18,32 @@ class Navbar extends Component {
   props: Props
 
   handleLogout = () => this.props.logout(this.context.router);
-
-  render() {
+  renderBoardsLink(){
+    const { isAuthenticated } = this.props;
+    if (isAuthenticated){
+      return (
+        <li className="nav__item nav__item--right">
+          <Link className="nav__link"  to="/boards">
+            Go to Boards
+          </Link>
+        </li>
+      );
+    }
+  }
+  renderLogoutLink(){
     const { currentUser, isAuthenticated } = this.props;
+    if (isAuthenticated){
+      return (
+        <li className="nav__item">
+          <button className="nav__button" type="button" onClick={this.handleLogout}>
+            Logout (<span>{currentUser.username}</span>)
+          </button>
+        </li>
+      );
+    }
+  }
+  render() {
+    const { currentUser } = this.props;
     return (
       <header className="app__header">
         <nav className="nav">
@@ -28,18 +51,8 @@ class Navbar extends Component {
             <li className="nav__item">
               <Link className="nav__link nav__link--branding" to="/">&int;tracker</Link>
             </li>
-            <li className="nav__item nav__item--right">
-              <Link className="nav__link"  to="/boards">
-                Go to Boards
-              </Link>
-            </li>
-            {isAuthenticated &&
-              <li className="nav__item">
-                <button className="nav__button" type="button" onClick={this.handleLogout}>
-                  Logout (<span>{currentUser.username}</span>)
-                </button>
-              </li>
-            }
+            { this.renderBoardsLink() }
+            { this.renderLogoutLink() }
           </ul>
         </nav>
 
