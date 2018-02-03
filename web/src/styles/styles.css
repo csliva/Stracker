@@ -172,6 +172,13 @@ figure {
 .form__error {
   color: #e36ddd; }
 
+.boardlist {
+  padding: 0; }
+  .boardlist__item {
+    display: block;
+    border: solid 1px #ddd;
+    padding: 26px; }
+
 .block {
   display: block; }
   .block__element {
