@@ -5,13 +5,6 @@ import { css, StyleSheet } from 'aphrodite';
 import { setActiveBoard } from '../../actions/boards';
 
 
-const styles = StyleSheet.create({
-  letter: {
-    color:'#dadada'
-  },
-});
-
-
 type Props = {
   currentUser: Object,
   boards: Object,
@@ -26,6 +19,10 @@ class BoardList extends Component {
   }
 
   clickHandler(id){
+    //Board selected
+    //Set active board
+    //Reset and get tasks
+    //route to app
     this.props.setActiveBoard(id, this.context.router);
   }
 

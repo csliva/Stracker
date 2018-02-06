@@ -17,6 +17,12 @@ export default function (state = initialState, action) {
         loadingEvents: true,
         taskEvents: {}
       };
+    case 'FETCH_EVENTS_SUCCESS':
+     return {
+       ...state,
+       loadingEvents: false,
+       taskEvents: action.response.data
+     }
     default:
       return state;
   }

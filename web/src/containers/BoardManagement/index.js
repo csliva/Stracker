@@ -5,16 +5,6 @@ import { createBoard, fetchUserBoards } from '../../actions/boards';
 import NewBoardForm from '../../components/Forms/NewBoard';
 import BoardList from '../../components/BoardList';
 import { notify } from '../../actions/message'
-import { css, StyleSheet } from 'aphrodite';
-
-
-const styles = StyleSheet.create({
-  card: {
-    maxWidth: '500px',
-    padding: '3rem 4rem',
-    margin: '2rem auto',
-  },
-});
 
 type Props = {
   createBoard: () => void,
@@ -43,7 +33,7 @@ class BoardManagement extends Component {
         <div className="container">
           <div className="#">
             <h3 className="#">New Board</h3>
-            <div className="card-content">
+            <div className="#">
               <NewBoardForm onSubmit={this.handleNewBoard} />
             </div>
           </div>

@@ -77,11 +77,12 @@ defmodule Stracker.EventController do
     |> render(Stracker.ChangesetView, "error.json", changeset: changeset)
   end
 
-  def get_by_task(conn, %{"user_id" => user_id, "task_id" => task_id}) do
+  def get_by_task(conn, %{"task_id" => task_id}) do
+    IO.inspect("*_*_*_*_*_*_*_*_ GETTING BY TASK *_*_*_*_*_*_*_*_")
     events = Repo.all(
       from e in Event,
       select: e,
-      where: ^task_id == e.task_id and ^user_id == e.user_id,
+      where: ^task_id == e.task_id,
       order_by: [desc: e.updated_at]
     )
     render(conn, "index.json", events: events)

@@ -1,12 +1,17 @@
 // @flow
 import React, { Component } from 'react';
-//import { connect } from 'react-redux';
-//import { Link } from 'react-router';
-//import { logout } from '../../actions/session';
+import { connect } from 'react-redux';
 import Stack from '../../components/Stack';
 import TaskView from '../../components/Task/TaskView';
+import { getAllTasks } from '../../actions/app';
+
 
 class App extends Component {
+
+  componentDidMount(){
+    //Get and reset stack data on first load
+    getAllTasks(this.props.currentUserId)
+  }
 
   render() {
     return (
@@ -22,4 +27,8 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(
+  state => ({
+    currentUserId: state.session.currentUser.id,
+  }),
+  { getAllTasks })(App);

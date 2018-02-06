@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import reducers from '../reducers';
 
-const loggingEnabled = false;
+const loggingEnabled = true;
 
 const middleWare = [thunk];
 loggingEnabled ? middleWare.push(logger) : console.log("Logger middleware is disabled");
