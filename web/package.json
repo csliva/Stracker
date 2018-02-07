@@ -12,6 +12,7 @@
     "lodash": "^4.17.4",
     "md5": "^2.2.1",
     "moment": "^2.20.1",
+    "moment-timezone": "^0.5.14",
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.1.2",
     "phoenix": "^1.2.1",

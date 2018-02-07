@@ -23,7 +23,7 @@ defmodule Stracker.EventController do
             # get our row by id
             event = Repo.get!(Event, event_model.id)
             # apply change to row
-            changeset = Event.changeset(event, %{"end_time" => Ecto.DateTime.utc})
+            changeset = Event.changeset(event, %{"end_time" => Ecto.DateTime.utc(:sec)})
             # apply change
             case Repo.update(changeset) do
               # if it works render the result, if not throw api error
@@ -37,7 +37,7 @@ defmodule Stracker.EventController do
             ####### ADDING A NEW EVENT ROW ##########
             changeset = Event.changeset(%Event{},
               %{
-                "start_time" => Ecto.DateTime.utc,
+                "start_time" => Ecto.DateTime.utc(:sec),
                 "user_id" => user_id,
                 "task_id" => task_id
               })
@@ -50,7 +50,7 @@ defmodule Stracker.EventController do
         # Nothing exists yet. We need to create the first row
         changeset = Event.changeset(%Event{},
           %{
-            "start_time" => Ecto.DateTime.utc,
+            "start_time" => Ecto.DateTime.utc(:sec),
             "user_id" => user_id,
             "task_id" => task_id
           })

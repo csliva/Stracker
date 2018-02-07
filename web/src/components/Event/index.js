@@ -6,7 +6,7 @@ import { getEvents } from '../../actions/events';
 type Props = {
   getEvents: () => void,
   taskEvents: Object,
-  loadingEvents: Boolean
+  loadingEvents: Boolean,
 }
 
 class Event extends Component {
@@ -14,10 +14,11 @@ class Event extends Component {
     if (this.props.loadingEvents == false && this.props.taskEvents) {
       return (
       <div>
-      {this.props.taskEvents.map(function(object, i){
+      {this.props.taskEvents.map((object, i) => {
         return (
           <ul key={i} id={object.id}>
             {object.end_time != null && <li>Seconds: {(Date.parse(object.end_time) - Date.parse(object.start_time))/1000}</li>}
+            {object.end_time == null && <p>{Math.ceil((this.props.datetimeNow - Date.parse(object.start_time + '+00:00'))/1000)} seconds</p>}
           </ul>
         );
       })}
@@ -27,21 +28,11 @@ class Event extends Component {
   }
 }
 
-/*
-{this.props.taskEvents.map(function(object, i){
-  return (
-    <ul key={i} id={object.id}>
-      <li>Start: {object.start_time}</li>
-      <li>End: {object.end_time}</li>
-    </ul>
-  );
-})}
-*/
-
 export default connect(
   state => ({
     taskEvents: state.event.taskEvents,
-    loadingEvents: state.event.loadingEvents
+    loadingEvents: state.event.loadingEvents,
+    datetimeNow: state.timer.datetimeNow
   }),
   { getEvents }
 )(Event);

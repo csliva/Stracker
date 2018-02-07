@@ -5,10 +5,9 @@ import Stack from '../../components/Stack';
 import TaskView from '../../components/Task/TaskView';
 import { getAllTasks } from '../../actions/app';
 
-
 class App extends Component {
 
-  componentDidMount(){
+  componentWillMount(){
     //Get and reset stack data on first load
     getAllTasks(this.props.currentUserId)
   }

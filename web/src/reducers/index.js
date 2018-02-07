@@ -5,14 +5,16 @@ import task from './task';
 import boards from './boards';
 import notification from './notification';
 import event from './event';
+import timer from './timer';
 
 const appReducer = combineReducers({
   form,
   session,
   task,
   boards,
+  timer,
   notification,
-  event
+  event,
 });
 
 export default function (state, action) {
