@@ -33,6 +33,7 @@ class BoardManagement extends Component {
         <div className="container">
           <div className="#">
             <h3 className="#">New Board</h3>
+            <p>Boards are where you can create tasks, invite team members, and track time together</p>
             <div className="#">
               <NewBoardForm onSubmit={this.handleNewBoard} />
             </div>

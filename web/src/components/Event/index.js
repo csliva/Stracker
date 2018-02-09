@@ -17,7 +17,7 @@ class Event extends Component {
       {this.props.taskEvents.map((object, i) => {
         return (
           <ul key={i} id={object.id}>
-            {object.end_time != null && <li>Seconds: {(Date.parse(object.end_time) - Date.parse(object.start_time))/1000}</li>}
+            {object.end_time != null && <li>Seconds: {Math.ceil(Date.parse(object.end_time) - Date.parse(object.start_time))/1000}</li>}
             {object.end_time == null && <p>{Math.ceil((this.props.datetimeNow - Date.parse(object.start_time + '+00:00'))/1000)} seconds</p>}
           </ul>
         );

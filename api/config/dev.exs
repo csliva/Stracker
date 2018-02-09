@@ -24,5 +24,10 @@ config :phoenix, :stacktrace_depth, 20
 config :guardian, Guardian,
   secret_key: "UUM8UpQUtRafnGe1nJSCCxKutbkWqjKq6sYdgMATZkr8oqjIc7uH0ZquUgpbmSey"
 
+config :stracker, Stracker.Mailer,
+  adapter: Bamboo.MailgunAdapter,
+  domain: "mg.stracker.io",
+  api_key: "key-5cdf461acccade606f95fc667fe444ad"
+
 # Configure your database
 import_config "dev.secret.exs"

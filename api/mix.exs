@@ -19,7 +19,7 @@ defmodule Stracker.Mixfile do
   def application do
     [mod: {Stracker, []},
      applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :bamboo]]
   end
 
   # Specifies which paths to compile per environment.
@@ -39,7 +39,7 @@ defmodule Stracker.Mixfile do
      {:comeonin, "~> 2.5"},
      {:guardian, "~> 0.13.0"},
      {:cors_plug, "~> 1.1"},
-     {:elixilorem, "~> 0.0.1"}]
+     {:bamboo, "~> 0.8"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

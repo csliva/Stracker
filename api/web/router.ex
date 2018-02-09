@@ -23,5 +23,6 @@ defmodule Stracker.Router do
     resources "/boards", BoardController, only: [:index, :create]
     resources "/events", EventController
     resources "/tasks", TaskController
+    post "/invite", InviteController, :invite
   end
 end

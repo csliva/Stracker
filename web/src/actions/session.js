@@ -26,6 +26,14 @@ export function login(data, router) {
     });
 }
 
+export function invite(data, router) {
+  return dispatch => api.post('/invite', data)
+    .then((response) => {
+      dispatch(reset('invite'));
+      //router.transitionTo('/boards');
+    });
+}
+
 export function signup(data, router) {
   return dispatch => api.post('/users', data)
     .then((response) => {

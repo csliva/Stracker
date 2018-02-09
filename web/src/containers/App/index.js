@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import Stack from '../../components/Stack';
 import TaskView from '../../components/Task/TaskView';
 import { getAllTasks } from '../../actions/app';
@@ -16,6 +17,7 @@ class App extends Component {
     return (
       <div className="temp">
         <div className="container">
+        <Link className="container__link" to="/invite">Invite Another User</Link>
           <div className="columns">
             <Stack/>
             <TaskView />

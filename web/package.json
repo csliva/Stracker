@@ -26,7 +26,8 @@
     "redux-form": "^6.5.0",
     "redux-logger": "^3.0.1",
     "redux-search": "^2.4.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "victory": "^0.25.4"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
