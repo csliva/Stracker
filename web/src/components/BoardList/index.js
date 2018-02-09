@@ -32,11 +32,10 @@ class BoardList extends Component {
   render() {
     var that = this;
     return (
-      <div>
-        <ul className="boardlist">
+      <div className="boardlist">
         {this.props.boards.map(function(object, i){
           return (
-            <li className="boardlist__item" key={i} onClick={that.clickHandler.bind(that, object.id)}>
+            <button className="boardlist__item" key={i} onClick={that.clickHandler.bind(that, object.id)}>
               <div className="boardlist__inner">
                 <span className="boardlist__letter">{object.name.charAt(0)}</span>
                 <div className="boardlist__info">
@@ -44,10 +43,9 @@ class BoardList extends Component {
                   <p className="boardlist__description">{object.description}</p>
                 </div>
               </div>
-            </li>
+            </button>
           );
         })}
-        </ul>
       </div>
     );
   }

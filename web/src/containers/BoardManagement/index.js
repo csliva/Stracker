@@ -7,15 +7,6 @@ import BoardList from '../../components/BoardList';
 import { notify } from '../../actions/message'
 import { css, StyleSheet } from 'aphrodite';
 
-
-const styles = StyleSheet.create({
-  card: {
-    maxWidth: '500px',
-    padding: '3rem 4rem',
-    margin: '2rem auto',
-  },
-});
-
 type Props = {
   createBoard: () => void,
   notify: () => void,
@@ -39,20 +30,22 @@ class BoardManagement extends Component {
 
   render() {
     return (
-      <div>
-        <div className="container">
-          <div className="#">
+      <div class="app__sections">
+        <section className="section">
+          <div className="container">
             <h3 className="#">New Board</h3>
             <div className="card-content">
               <NewBoardForm onSubmit={this.handleNewBoard} />
             </div>
           </div>
+        </section>
         {this.props.boards.length > 0 &&
-        <div>
-          <BoardList/>
-        </div>
+        <section className="section section--alt">
+          <div className="container">
+            <BoardList/>
+          </div>
+        </section>
         }
-        </div>
       </div>
     );
   }

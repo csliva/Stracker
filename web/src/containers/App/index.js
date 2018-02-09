@@ -13,7 +13,7 @@ class App extends Component {
       <div className="temp">
         <div className="container">
           <div className="columns">
-            <Stack/>
+            <Stack />
             <TaskView />
           </div>
         </div>

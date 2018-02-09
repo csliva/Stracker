@@ -19,9 +19,15 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container">
-        <LoginForm onSubmit={this.handleLogin} />
-      </div>
+      <main className="app__sections">
+        <section className="section">
+          <div className="panel">
+            <div className="content">
+                <LoginForm onSubmit={this.handleLogin} />
+            </div>
+          </div>
+        </section>
+      </main>
     );
   }
 }
