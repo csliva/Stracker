@@ -149,6 +149,11 @@ figure {
   margin: auto;
   padding: 52px; }
 
+.dropdown {
+  display: none; }
+  .dropdown--active {
+    display: block; }
+
 .content {
   color: #666;
   max-width: 100%; }

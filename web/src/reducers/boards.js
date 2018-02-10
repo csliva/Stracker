@@ -1,6 +1,7 @@
 const initialState = {
   currentUserBoards: [],
-  activeBoard: []
+  activeBoard: [],
+  boardFormActive: false
 };
 
 export default function (state = initialState, action) {
@@ -30,6 +31,11 @@ export default function (state = initialState, action) {
         return {
           ...state,
           activeBoard: action.boardData
+        };
+      case 'TOGGLE_BOARD_FORM':
+        return {
+          ...state,
+          boardFormActive: action.boardFormActive
         };
     default:
       return state;

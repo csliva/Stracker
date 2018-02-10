@@ -1,7 +1,7 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { createBoard, fetchUserBoards } from '../../actions/boards';
+import { createBoard, fetchUserBoards, toggleBoardForm } from '../../actions/boards';
 import NewBoardForm from '../../components/Forms/NewBoard';
 import BoardList from '../../components/BoardList';
 import { notify } from '../../actions/message'
@@ -24,9 +24,20 @@ class BoardManagement extends Component {
     this.props.createBoard(data, this.context.router);
   }
 
+  toggleFormAction = (currentBool) => {
+    this.props.toggleBoardForm(!currentBool);
+  }
+
   //handleNewBoard = data => this.props.createBoard(data, this.context.router);
 
-
+  renderNewBoardForm(){
+    var dropdownClass = this.props.boardFormActive ? 'dropdown dropdown--active' :  'dropdown';
+    return (
+      <div className={dropdownClass}>
+        <NewBoardForm onSubmit={this.handleNewBoard} />
+      </div>
+    );
+  }
   render() {
     return (
       <div class="app__sections">
@@ -34,9 +45,8 @@ class BoardManagement extends Component {
           <div className="container">
             <h3 className="#">New Board</h3>
             <p>Boards are where you can create tasks, invite team members, and track time together</p>
-            <div className="#">
-              <NewBoardForm onSubmit={this.handleNewBoard} />
-            </div>
+            <button className="button" onClick={this.toggleFormAction.bind(this, this.props.boardFormActive)}>Toggle Form</button>
+            {this.renderNewBoardForm()}
           </div>
         </section>
         {this.props.boards.length > 0 &&
@@ -54,5 +64,6 @@ class BoardManagement extends Component {
 export default connect(
   state => ({
     boards: state.boards.currentUserBoards,
+    boardFormActive: state.boards.boardFormActive
   }),
-  { createBoard, fetchUserBoards, notify })(BoardManagement);
+  { createBoard, fetchUserBoards, notify, toggleBoardForm })(BoardManagement);

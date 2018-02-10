@@ -65,3 +65,9 @@ export function joinBoard(boardId, router) {
       router.transitionTo(`/`);
     });
 }
+
+export function toggleBoardForm(boardFormActive){
+ return (dispatch) => {
+   dispatch({ type: 'TOGGLE_BOARD_FORM', boardFormActive });
+ };
+}
