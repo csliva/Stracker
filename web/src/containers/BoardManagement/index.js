@@ -31,7 +31,7 @@ class BoardManagement extends Component {
   //handleNewBoard = data => this.props.createBoard(data, this.context.router);
 
   renderNewBoardForm(){
-    var dropdownClass = this.props.boardFormActive ? 'dropdown dropdown--active' :  'dropdown';
+    var dropdownClass = this.props.boardFormActive ? 'dropdown dropdown--active' : 'dropdown';
     return (
       <div className={dropdownClass}>
         <NewBoardForm onSubmit={this.handleNewBoard} />
