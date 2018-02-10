@@ -29,10 +29,15 @@ class Invite extends Component {
   render() {
     return (
       <div className="container">
+        <h3 className="#">Invite Another User to {this.props.boardName}</h3>
         <InviteForm onSubmit={this.handleInvite} />
       </div>
     );
   }
 }
 
-export default connect(null, { invite })(Invite);
+export default connect(
+  state => ({
+    boardName: state.boards.activeBoard.name,
+  }),
+  { invite })(Invite);

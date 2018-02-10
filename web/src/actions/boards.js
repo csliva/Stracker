@@ -31,11 +31,11 @@ function getBoardStack(dispatch, boardId) {
       });
 }
 
-export function setActiveBoard(response, router) {
-  localStorage.setItem('board', JSON.stringify(response));
+export function setActiveBoard(idNum, boardData, router) {
+  localStorage.setItem('board', JSON.stringify(idNum));
   return dispatch => {
-    getBoardStack(dispatch, response)
-    dispatch({ type: 'SET_ACTIVE_BOARD', response });
+    getBoardStack(dispatch, idNum)
+    dispatch({ type: 'SET_ACTIVE_BOARD', boardData });
     dispatch({ type: 'FORM_ACTIVATE' });
     router.transitionTo('/');
   };

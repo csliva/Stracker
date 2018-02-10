@@ -26,6 +26,11 @@ export default function (state = initialState, action) {
           action.response.data,
         ],
       };
+      case 'SET_ACTIVE_BOARD':
+        return {
+          ...state,
+          activeBoard: action.boardData
+        };
     default:
       return state;
   }

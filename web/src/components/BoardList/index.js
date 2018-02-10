@@ -18,12 +18,12 @@ class BoardList extends Component {
     router: PropTypes.object,
   }
 
-  clickHandler(id){
+  clickHandler(id, index){
     //Board selected
     //Set active board
     //Reset and get tasks
     //route to app
-    this.props.setActiveBoard(id, this.context.router);
+    this.props.setActiveBoard(id, this.props.boards[index], this.context.router);
   }
 
   render() {
@@ -33,7 +33,7 @@ class BoardList extends Component {
         <ul>
         {this.props.boards.map(function(object, i){
           return (
-              <div className="#" key={i} onClick={that.clickHandler.bind(that, object.id)}>
+              <div className="#" key={i} onClick={that.clickHandler.bind(that, object.id, i)}>
               <div className="#">
                 <div className="#">
                 <article className="#">

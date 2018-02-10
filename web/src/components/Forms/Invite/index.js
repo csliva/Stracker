@@ -31,8 +31,7 @@ class InviteForm extends Component {
         className="form"
         onSubmit={handleSubmit(this.handleSubmit)}
       >
-        <h3 className="#">Invite Another User to</h3>
-        <Field name="email" type="text" component={Input} placeholder="Email" />
+      <Field name="email" type="text" component={Input} placeholder="Email" />
 
         <div className="form__#">
           <button

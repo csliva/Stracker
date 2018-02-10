@@ -16,6 +16,7 @@ const MatchAuthenticated = ({
   isAuthenticated,
   willAuthenticate,
   component: Component,
+  boardSet
 }: Props) =>
   <Match
     exactly={exactly}
