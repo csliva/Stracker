@@ -23,7 +23,7 @@ defmodule Stracker.EventController do
             # get our row by id
             event = Repo.get!(Event, event_model.id)
             # apply change to row
-            changeset = Event.changeset(event, %{"end_time" => Ecto.DateTime.utc})
+            changeset = Event.changeset(event, %{"end_time" => Ecto.DateTime.utc(:sec)})
             # apply change
             case Repo.update(changeset) do
               # if it works render the result, if not throw api error
@@ -37,7 +37,7 @@ defmodule Stracker.EventController do
             ####### ADDING A NEW EVENT ROW ##########
             changeset = Event.changeset(%Event{},
               %{
-                "start_time" => Ecto.DateTime.utc,
+                "start_time" => Ecto.DateTime.utc(:sec),
                 "user_id" => user_id,
                 "task_id" => task_id
               })
@@ -50,7 +50,7 @@ defmodule Stracker.EventController do
         # Nothing exists yet. We need to create the first row
         changeset = Event.changeset(%Event{},
           %{
-            "start_time" => Ecto.DateTime.utc,
+            "start_time" => Ecto.DateTime.utc(:sec),
             "user_id" => user_id,
             "task_id" => task_id
           })
@@ -77,11 +77,12 @@ defmodule Stracker.EventController do
     |> render(Stracker.ChangesetView, "error.json", changeset: changeset)
   end
 
-  def get_by_task(conn, %{"user_id" => user_id, "task_id" => task_id}) do
+  def get_by_task(conn, %{"task_id" => task_id}) do
+    IO.inspect("*_*_*_*_*_*_*_*_ GETTING BY TASK *_*_*_*_*_*_*_*_")
     events = Repo.all(
       from e in Event,
       select: e,
-      where: ^task_id == e.task_id and ^user_id == e.user_id,
+      where: ^task_id == e.task_id,
       order_by: [desc: e.updated_at]
     )
     render(conn, "index.json", events: events)

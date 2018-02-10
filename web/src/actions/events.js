@@ -1,8 +1,9 @@
 import api from '../api';
 import moment from 'moment';
 
-export function fetchEvents(stackId) {
-  return dispatch => api.fetch(`/stacks/${stackId}/events`)
+export function fetchEvents(taskId) {
+  console.log(taskId)
+  return dispatch => api.fetch(`/task/${taskId}/events`)
     .then((response) => {
       dispatch({ type: 'FETCH_EVENTS_SUCCESS', response });
     });

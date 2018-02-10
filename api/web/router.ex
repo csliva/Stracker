@@ -10,7 +10,6 @@ defmodule Stracker.Router do
   scope "/api", Stracker do
     pipe_through :api
     resources "/users", UserController, except: [:new, :edit]
-    resources "/tasks", TaskController
     patch "/tasks/:id", TaskController, :update
     get "/tasks/board/:board_id", TaskController, :get_by_board
     post "/sessions", SessionController, :create
@@ -18,11 +17,12 @@ defmodule Stracker.Router do
     delete "/tasks/:id", TaskController, :delete
     post "/sessions/refresh", SessionController, :refresh
     get "/users/:id/boards", UserController, :boards
-    resources "/boards", BoardController, only: [:index, :create]
     post "/board/:id/join", BoardController, :join
-    # get task events by task id
-    get "/task/events/:task_id", EventController, :get_by_task
-    resources "/events", EventController
+    get "/task/:task_id/events", EventController, :get_by_task
     post "add_event/:user_id/:task_id", EventController, :add_entry
+    resources "/boards", BoardController, only: [:index, :create]
+    resources "/events", EventController
+    resources "/tasks", TaskController
+    post "/invite", InviteController, :invite
   end
 end

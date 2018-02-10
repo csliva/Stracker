@@ -18,10 +18,25 @@ export function fetchBoards() {
     });
 }
 
-export function setActiveBoard(response, router) {
-  localStorage.setItem('board', JSON.stringify(response));
-  return (dispatch) => {
-    dispatch({ type: 'SET_ACTIVE_BOARD', response });
+function getBoardStack(dispatch, boardId) {
+    // if board is not set, use localStorage number
+    var board = boardId || localStorage.board
+    dispatch({ type: 'LOAD_IN_STACK' });
+    return api.fetch(`/tasks/board/${board}`)
+      .then((response) => {
+        dispatch({type: 'RECIEVE_STACK', response})
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+}
+
+export function setActiveBoard(idNum, boardData, router) {
+  localStorage.setItem('board', JSON.stringify(idNum));
+  return dispatch => {
+    getBoardStack(dispatch, idNum)
+    dispatch({ type: 'SET_ACTIVE_BOARD', boardData });
+    dispatch({ type: 'FORM_ACTIVATE' });
     router.transitionTo('/');
   };
 }

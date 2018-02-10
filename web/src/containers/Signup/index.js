@@ -19,9 +19,15 @@ class Signup extends Component {
 
   render() {
     return (
-      <div className="container">
-        <SignupForm onSubmit={this.handleSignup} />
-      </div>
+      <main className="app__sections">
+        <section className="section">
+          <div className="panel">
+            <div className="content">
+              <SignupForm onSubmit={this.handleSignup} />
+            </div>
+          </div>
+        </section>
+      </main>
     );
   }
 }

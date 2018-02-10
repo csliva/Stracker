@@ -1,6 +1,14 @@
 import { reset } from 'redux-form';
 import api from '../api';
 
+
+function getTaskEvents(taskId, dispatch) {
+  return api.fetch(`/task/${taskId}/events`)
+    .then((response) => {
+      dispatch({ type: 'FETCH_EVENTS_SUCCESS', response });
+    });
+}
+
 // set the active task by accepting the task ID
 // makes an api call to get all the post information
 export function setActiveTask(id) {
@@ -8,6 +16,7 @@ export function setActiveTask(id) {
     dispatch({ type: 'SET_TASK' });
     return api.fetch(`/tasks/${id}`)
       .then((response) => {
+        getTaskEvents(id, dispatch)
         dispatch({ type: 'SET_ACTIVE_TASK', response });
       })
       .catch((err) => {
@@ -37,7 +46,7 @@ export function editTask(data) {
   return (dispatch, getState) => {
     return api.patch(`/tasks/${getState().task.currentTask.id}`, task_params)
       .then(() => {
-        updateTasks(getState().session.currentUser.id, dispatch);
+        updateTasks(dispatch, getState().session.currentUser.id);
         setActiveTask(getState().task.currentTask.id);
         dispatch({ type: 'EDIT_STACK'});
       })
@@ -72,10 +81,11 @@ function updateActiveTask(response, dispatch) {
     dispatch({ type: 'SET_ACTIVE_STACK', response });
 }
 
-function updateTasks(dispatch) {
-    console.log(localStorage.board)
+function updateTasks(dispatch, boardId) {
+    // if board is not set, use localStorage number
+    var board = boardId || localStorage.board
     dispatch({ type: 'LOAD_IN_STACK' });
-    return api.fetch(`/tasks/board/${localStorage.board}`)
+    return api.fetch(`/tasks/board/${board}`)
       .then((response) => {
         dispatch({type: 'RECIEVE_STACK', response})
       })
@@ -87,7 +97,6 @@ function updateTasks(dispatch) {
 // get all tasks
 // event should fire on app load, and when a new task has been created
 export function getAllTasks(currentUserId) {
-  console.log(localStorage.board)
   return (dispatch, getState) => {
     dispatch({ type: 'LOAD_IN_STACK' });
     return api.fetch(`/tasks/board/${localStorage.board}}`)

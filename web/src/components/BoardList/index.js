@@ -5,13 +5,6 @@ import { css, StyleSheet } from 'aphrodite';
 import { setActiveBoard } from '../../actions/boards';
 
 
-const styles = StyleSheet.create({
-  letter: {
-    color:'#dadada'
-  },
-});
-
-
 type Props = {
   currentUser: Object,
   boards: Object,
@@ -25,18 +18,21 @@ class BoardList extends Component {
     router: PropTypes.object,
   }
 
-  clickHandler(id){
-    this.props.setActiveBoard(id, this.context.router);
+  clickHandler(id, index){
+    //Board selected
+    //Set active board
+    //Reset and get tasks
+    //route to app
+    this.props.setActiveBoard(id, this.props.boards[index], this.context.router);
   }
 
   render() {
     var that = this;
     return (
-      <div>
-        <ul className="boardlist">
+      <div className="boardlist">
         {this.props.boards.map(function(object, i){
           return (
-            <li className="boardlist__item" key={i} onClick={that.clickHandler.bind(that, object.id)}>
+            <button className="boardlist__item" key={i} onClick={that.clickHandler.bind(that, object.id, i)}>
               <div className="boardlist__inner">
                 <span className="boardlist__letter">{object.name.charAt(0)}</span>
                 <div className="boardlist__info">
@@ -44,10 +40,9 @@ class BoardList extends Component {
                   <p className="boardlist__description">{object.description}</p>
                 </div>
               </div>
-            </li>
+            </button>
           );
         })}
-        </ul>
       </div>
     );
   }

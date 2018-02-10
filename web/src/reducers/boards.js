@@ -1,5 +1,6 @@
 const initialState = {
   currentUserBoards: [],
+  activeBoard: []
 };
 
 export default function (state = initialState, action) {
@@ -25,6 +26,11 @@ export default function (state = initialState, action) {
           action.response.data,
         ],
       };
+      case 'SET_ACTIVE_BOARD':
+        return {
+          ...state,
+          activeBoard: action.boardData
+        };
     default:
       return state;
   }

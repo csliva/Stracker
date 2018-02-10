@@ -5,11 +5,16 @@
 *,
 *:before,
 *:after
-  -webkit-box-sizing: inherit
-  -moz-box-sizing: inherit
-  box-sizing: inherit
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
 
 // Baseline for HTML & Body
+html,
+body
+  width: 100%
+  // overflow: hidden
+
 html
   font-size: $fs-base
   -webkit-font-smoothing: antialiased
