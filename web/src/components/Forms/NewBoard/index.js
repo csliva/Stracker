@@ -17,27 +17,13 @@ class NewBoardForm extends Component {
     const { handleSubmit, submitting } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.handleSubmit)}>
-        <div className="input-group">
-          <Field
-            name="name"
-            type="text"
-            placeholder="Name"
-            component={Input}
-            className="input"
-          />
-          <Field
-            name="description"
-            type="text"
-            placeholder="Description"
-            component={Input}
-            className="input"
-          />
-          <div className="input-group-btn">
-            <button type="submit" className="button is-primary" disabled={submitting}>
-              {submitting ? 'Saving...' : 'Submit'}
-            </button>
-          </div>
+      <form className="form" onSubmit={handleSubmit(this.handleSubmit)}>
+        <Field name="name" type="text" placeholder="Name" component={Input} />
+        <Field name="description" type="text" placeholder="Description" component={Input} className="input" />
+        <div className="form__submit">
+          <button type="submit" className="button" disabled={submitting}>
+            {submitting ? 'Saving...' : 'Submit'}
+          </button>
         </div>
       </form>
     );

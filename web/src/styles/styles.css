@@ -1,9 +1,13 @@
 *,
 *:before,
 *:after {
-  -webkit-box-sizing: inherit;
-  -moz-box-sizing: inherit;
-  box-sizing: inherit; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html,
+body {
+  width: 100%; }
 
 html {
   font-size: 16px;
@@ -104,6 +108,9 @@ figure {
   figure img {
     max-width: 100%; }
 
+.fa {
+  display: inline-block; }
+
 .app {
   position: relative;
   min-height: 100vh;
@@ -115,21 +122,42 @@ figure {
   .app__footer {
     padding: 26px;
     color: #bbb; }
+  .app__sections {
+    overflow: hidden; }
 
 .section {
-  display: block; }
+  display: block;
+  background: #fff;
+  width: 100%; }
+  .section--hero {
+    background-color: #111335;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: #fff; }
+  .section--alt {
+    background: #fafafa; }
 
 .container {
   max-width: 100%;
-  padding: 52px;
-  background: #fff; }
+  padding: 52px 26px;
+  background: transparent; }
 
 .panel {
   width: 600px;
   max-width: 100%;
   margin: auto;
-  padding: 52px;
-  background: #fff; }
+  padding: 52px; }
+
+.content {
+  color: #666;
+  max-width: 100%; }
+  .content__headline {
+    color: #1e215b; }
+    .content--negative .content__headline {
+      color: #fff; }
+  .content--negative {
+    color: #eee; }
 
 .nav {
   background: #1e215b;
@@ -159,18 +187,90 @@ figure {
       font-weight: 700; }
 
 .form__item {
-  display: block; }
+  display: block;
+  margin-bottom: 13px; }
 
 .form__input {
   padding: 8px;
   border-radius: 4px;
   border: solid 1px #ddd;
-  margin-bottom: 13px;
+  margin-bottom: 0;
   width: 300px;
   max-width: 100%; }
 
 .form__error {
-  color: #e36ddd; }
+  font-size: 12.003px;
+  color: #e36ddd;
+  padding-top: 6.5px; }
+
+.form__submit {
+  margin-bottom: 26px; }
+
+.boardlist {
+  padding: 0;
+  display: block;
+  position: relative; }
+  .boardlist__item {
+    display: block;
+    width: 100%;
+    border: solid 1px #fafafa;
+    padding: 26px;
+    background: #fff; }
+  @media screen and (max-width: 575px) {
+    .boardlist__item {
+      margin-bottom: 13px; } }
+  @media screen and (min-width: 576px) {
+    .boardlist {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 13px; }
+      .boardlist__item {
+        -webkit-transition: transform 0.3s ease-out, border-color 0.3s ease-out, box-shadow 0.3s ease-out;
+        -moz-transition: transform 0.3s ease-out, border-color 0.3s ease-out, box-shadow 0.3s ease-out;
+        -ms-transition: transform 0.3s ease-out, border-color 0.3s ease-out, box-shadow 0.3s ease-out;
+        -o-transition: transform 0.3s ease-out, border-color 0.3s ease-out, box-shadow 0.3s ease-out;
+        transition: transform 0.3s ease-out, border-color 0.3s ease-out, box-shadow 0.3s ease-out;
+        position: relative;
+        z-index: 0;
+        display: block;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.15); }
+        .boardlist__item:hover, .boardlist__item:focus, .boardlist__item:active {
+          -webkit-transform: scale(1.1, 1.1);
+          -moz-transform: scale(1.1, 1.1);
+          -ms-transform: scale(1.1, 1.1);
+          -o-transform: scale(1.1, 1.1);
+          transform: scale(1.1, 1.1);
+          box-shadow: 0 0 13px rgba(0, 0, 0, 0.15);
+          border-color: #e36ddd;
+          z-index: 100; } }
+  @media screen and (min-width: 992px) {
+    .boardlist {
+      grid-template-columns: repeat(3, 1fr); } }
+  @media screen and (min-width: 1200px) {
+    .boardlist {
+      grid-template-columns: repeat(4, 1fr); } }
+
+.button {
+  -webkit-transition: background-color 0.3s ease-out;
+  -moz-transition: background-color 0.3s ease-out;
+  -ms-transition: background-color 0.3s ease-out;
+  -o-transition: background-color 0.3s ease-out;
+  transition: background-color 0.3s ease-out;
+  font-family: 'Raleway', sans-serif;
+  display: inline-block;
+  background: #e782e2;
+  color: #fff;
+  padding: 6.5px 13px;
+  border-radius: 3.25px;
+  border: 0;
+  font-weight: 700;
+  text-transform: uppercase; }
+  .button:hover, .button:focus, .button:after {
+    cursor: pointer;
+    background: #e36ddd; }
+
+.link {
+  display: inline-block; }
 
 .block {
   display: block; }

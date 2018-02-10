@@ -29,21 +29,23 @@ class BoardManagement extends Component {
 
   render() {
     return (
-      <div>
-        <div className="container">
-          <div className="#">
+      <div class="app__sections">
+        <section className="section">
+          <div className="container">
             <h3 className="#">New Board</h3>
             <p>Boards are where you can create tasks, invite team members, and track time together</p>
             <div className="#">
               <NewBoardForm onSubmit={this.handleNewBoard} />
             </div>
           </div>
+        </section>
         {this.props.boards.length > 0 &&
-        <div>
-          <BoardList/>
-        </div>
+        <section className="section section--alt">
+          <div className="container">
+            <BoardList/>
+          </div>
+        </section>
         }
-        </div>
       </div>
     );
   }

@@ -29,30 +29,20 @@ class BoardList extends Component {
   render() {
     var that = this;
     return (
-      <div>
-        <ul>
+      <div className="boardlist">
         {this.props.boards.map(function(object, i){
           return (
-              <div className="#" key={i} onClick={that.clickHandler.bind(that, object.id, i)}>
-              <div className="#">
-                <div className="#">
-                <article className="#">
-                  <div className="#">
-                    <span className="#">{object.name.charAt(0)}</span>
-                  </div>
-                  <div className="#">
-                    <div className="#">
-                      <strong><p className="#">{object.name}</p></strong>
-                      <small><p>{object.description}</p></small>
-                    </div>
-                  </div>
-                  </article>
+            <button className="boardlist__item" key={i} onClick={that.clickHandler.bind(that, object.id, i)}>
+              <div className="boardlist__inner">
+                <span className="boardlist__letter">{object.name.charAt(0)}</span>
+                <div className="boardlist__info">
+                  <h3 className="boardlist__title">{object.name}</h3>
+                  <p className="boardlist__description">{object.description}</p>
                 </div>
               </div>
-              </div>
+            </button>
           );
         })}
-        </ul>
       </div>
     );
   }

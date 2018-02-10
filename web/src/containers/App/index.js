@@ -19,7 +19,7 @@ class App extends Component {
         <div className="container">
         <Link className="container__link" to="/invite">Invite Another User</Link>
           <div className="columns">
-            <Stack/>
+            <Stack />
             <TaskView />
           </div>
         </div>

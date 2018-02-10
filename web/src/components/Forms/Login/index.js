@@ -22,30 +22,25 @@ class LoginForm extends Component {
     const { handleSubmit, submitting } = this.props;
 
     return (
-      <form
-        className="form"
-        onSubmit={handleSubmit(this.handleSubmit)}
-      >
+      <form className="form form--login" onSubmit={handleSubmit(this.handleSubmit)} >
         <h3 className="#">Login</h3>
         <Field name="email" type="text" component={Input} placeholder="Email" />
         <Field name="password" type="password" component={Input} placeholder="Password" />
 
-        <div className="form__#">
+        <div className="form__submit">
           <button
             type="submit"
             disabled={submitting}
-            className="form__button"
+            className="button"
           >
             {submitting ? 'Logging in...' : 'Login'}
           </button>
         </div>
-
-        <div className="form__#">
-          <Link to="/signup" className="form__link">
+        <div className="form__link">
+          <Link to="/signup" className="link">
             Create a new account
           </Link>
         </div>
-
       </form>
     );
   }
