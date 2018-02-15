@@ -18,6 +18,13 @@ export function fetchBoards() {
     });
 }
 
+export function fetchCurrentBoard(boardId){
+  return dispatch => api.fetch(`/board/${boardId}`)
+    .then((response) => {
+      dispatch({ type: 'SET_ACTIVE_BOARD', response });
+    });
+}
+
 function getBoardStack(dispatch, boardId) {
     // if board is not set, use localStorage number
     var board = boardId || localStorage.board

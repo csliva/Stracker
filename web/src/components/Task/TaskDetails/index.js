@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Event from '../../Event';
 import { deleteTask , activateEdit } from '../../../actions/app';
+import { start_timer, end_timer, tick_tock } from '../../../actions/timer';
 
 type Props = {
   currentTask: Object
@@ -17,6 +18,19 @@ class TaskDetails extends Component {
 
   editHandler(id){
     this.props.activateEdit(id);
+  }
+
+  timer = () => {
+   this.props.tick_tock()
+  }
+
+  componentWillMount(){
+   var intervalId = setInterval(this.timer, 1000);
+   this.props.start_timer(intervalId);
+  }
+
+  componentWillUnmount() {
+   this.props.end_timer(this.props.intervalId)
   }
 
   render() {
@@ -42,6 +56,7 @@ class TaskDetails extends Component {
 export default connect(
   state => ({
     currentTask: state.task.currentTask,
+    intervalId: state.timer.intervalId
   }),
-  {deleteTask, activateEdit}
+  {deleteTask, activateEdit, start_timer, end_timer, tick_tock}
 )(TaskDetails);

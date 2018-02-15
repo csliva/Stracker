@@ -35,12 +35,10 @@ defmodule Stracker.TaskController do
       where: ^board_id == p.board_id,
       order_by: [desc: p.updated_at]
     )
-    IO.inspect tasks
     render(conn, "index.json", tasks: tasks)
   end
 
   def update(conn, params) do
-    IO.inspect params
     task = Repo.get!(Task, params["id"])
     changeset = Task.changeset(task, params["task_params"])
 

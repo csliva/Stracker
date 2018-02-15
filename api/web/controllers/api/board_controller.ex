@@ -32,7 +32,7 @@ defmodule Stracker.BoardController do
     end
   end
 
-  def join(conn, %{"id" => board_id}) do
+  def invite_join(conn, %{"user_id" => user_id, "board_id" => board_id}) do
     current_user = Guardian.Plug.current_resource(conn)
     board = Repo.get(Board, board_id)
 
@@ -40,6 +40,8 @@ defmodule Stracker.BoardController do
       %Stracker.UserBoard{},
       %{board_id: board.id, user_id: current_user.id}
     )
+
+    ## somewhere in here we check board id against
 
     case Repo.insert(changeset) do
       {:ok, _user_board} ->
@@ -52,4 +54,10 @@ defmodule Stracker.BoardController do
         |> render(Stracker.ChangesetView, "error.json", changeset: changeset)
     end
   end
+
+  def get_board(conn, %{"board_id" => board_id}) do
+    board = Repo.get!(Board, board_id)
+    render(conn, "board.json", board: board)
+  end
+
 end

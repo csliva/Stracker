@@ -30,7 +30,7 @@ export default function (state = initialState, action) {
       case 'SET_ACTIVE_BOARD':
         return {
           ...state,
-          activeBoard: action.boardData
+          activeBoard: action.response
         };
       case 'TOGGLE_BOARD_FORM':
         return {

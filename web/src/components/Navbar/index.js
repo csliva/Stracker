@@ -43,7 +43,6 @@ class Navbar extends Component {
     }
   }
   render() {
-    const { currentUser } = this.props;
     return (
       <header className="app__header">
         <nav className="nav">

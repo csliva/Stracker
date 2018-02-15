@@ -40,7 +40,7 @@ class BoardManagement extends Component {
   }
   render() {
     return (
-      <div class="app__sections">
+      <div className="app__sections">
         <section className="section">
           <div className="container">
             <h3 className="#">New Board</h3>

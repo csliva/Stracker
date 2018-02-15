@@ -1,5 +1,4 @@
 import api from '../api';
-import moment from 'moment';
 
 export function fetchEvents(taskId) {
   console.log(taskId)

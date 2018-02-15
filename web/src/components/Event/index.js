@@ -10,15 +10,34 @@ type Props = {
 }
 
 class Event extends Component {
+
+  props: Props
+
+  parsetime(time){
+    return new Date(time).toISOString().substr(11, 8);
+  }
+  event_view(object){
+    let event_time = Date;
+    //if end time is available from the database, then it is a complete event
+    if ( object.end_time != null ){
+      event_time = this.parsetime(Math.ceil(Date.parse(object.end_time) - Date.parse(object.start_time)))
+    }
+    // if end time is null, we use a javascript clock to get the time difference
+    else if ( object.end_time === null ){
+      event_time = this.parsetime(Math.ceil((this.props.datetimeNow - Date.parse(object.start_time + '+00:00'))))
+    }
+    return(
+      <li>{event_time}</li>
+    );
+  }
   render() {
-    if (this.props.loadingEvents == false && this.props.taskEvents) {
+    if (this.props.loadingEvents === false && this.props.taskEvents) {
       return (
       <div>
       {this.props.taskEvents.map((object, i) => {
         return (
           <ul key={i} id={object.id}>
-            {object.end_time != null && <li>Seconds: {Math.ceil(Date.parse(object.end_time) - Date.parse(object.start_time))/1000}</li>}
-            {object.end_time == null && <p>{Math.ceil((this.props.datetimeNow - Date.parse(object.start_time + '+00:00'))/1000)} seconds</p>}
+            {this.event_view(object)}
           </ul>
         );
       })}

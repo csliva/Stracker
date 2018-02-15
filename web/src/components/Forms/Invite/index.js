@@ -9,7 +9,6 @@ Used in Invite Container
 // @flow
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Link } from 'react-router';
 import Input from '../Input';
 
 type Props = {
