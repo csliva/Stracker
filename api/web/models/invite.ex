@@ -4,16 +4,18 @@ defmodule Stracker.Invite do
   # Invites between one board user to another
 
   schema "invites" do
-    belongs_to :user_board, Stracker.UserBoard
+    belongs_to :board, Stracker.Board
     belongs_to :sender, Stracker.User
-    belongs_to :recipient, Stracker.User
+    field :recipient, :string
   end
 
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
   def changeset(struct, params \\ %{}) do
+    IO.inspect params
     struct
-    |> cast(params, [:id, :user_board, :sender, :recipient])
+    |> cast(params, [:id, :board, :sender, :recipient])
+    |> validate_required([:board, :sender, :recipient])
   end
 end

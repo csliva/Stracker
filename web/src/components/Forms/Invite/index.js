@@ -30,7 +30,7 @@ class InviteForm extends Component {
         className="form"
         onSubmit={handleSubmit(this.handleSubmit)}
       >
-      <Field name="email" type="text" component={Input} placeholder="Email" />
+      <Field name="recipient" type="text" component={Input} placeholder="Email" />
 
         <div className="form__#">
           <button

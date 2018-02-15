@@ -37,7 +37,15 @@ class Invite extends Component {
     }
   }
 
-  handleInvite = data => this.props.invite(data, this.context.router);
+  handleInvite = data => {
+    //store form data as well as current user information
+    data = {
+      ...data,
+      user_id: this.props.currentUserId,
+      board_id: this.props.activeBoard.id
+    }
+    this.props.invite(data, this.context.router);
+  }
 
   render() {
     return (
@@ -52,5 +60,6 @@ class Invite extends Component {
 export default connect(
   state => ({
     activeBoard: state.boards.activeBoard,
+    currentUserId: state.session.currentUser.id
   }),
   { invite, fetchCurrentBoard })(Invite);
