@@ -7,15 +7,15 @@ defmodule Stracker.InviteController do
 
   def invite(conn, params) do
     # check if email exists in DB
-    email_query = Repo.one(
-      from u in User,
-      select: u,
-      where: ^params["email"] == u.email
-    )
+  #  email_query = Repo.any(
+  #    from u in User,
+  #    select: u,
+  #    where: ^params["email"] == u.email
+  #  )
+  #  IO.inspect(email_query)
     cond do
-      is_nil(email_query) -> store_invite(conn, params)
-      is_nil(email_query) -> IO.inspect("User does exit. Add to board")
-      true -> IO.inspect("There is a bug somewhere in InviteController")
+      true -> store_invite(conn, params)
+      false -> IO.inspect("User does exit. Add to board")
     end
     # email is sent from lib/stracker/user_email.ex
     # UserEmail.send_welcome(email) |> Mailer.deliver_now

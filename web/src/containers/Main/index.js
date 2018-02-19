@@ -18,6 +18,8 @@ import NotFound from '../../components/Navigation/NotFound';
 import Login from '../Login';
 import Signup from '../Signup';
 import Invite from '../Invite';
+import Settings from '../Settings';
+import Analytics from '../Analytics';
 import MatchAuthenticated from '../../components/Navigation/MatchAuthenticated';
 import RedirectAuthenticated from '../../components/Navigation/RedirectAuthenticated';
 import Navbar from '../../components/Navbar';
@@ -55,6 +57,8 @@ class Main extends Component {
             <Match exactly pattern="/home" component={Home} {...authProps} />
             <MatchAuthenticated exactly pattern="/" component={App} {...authProps} />
             <MatchAuthenticated exactly pattern="/boards" component={BoardManagement} {...authProps} />
+            <MatchAuthenticated exactly pattern="/analytics" component={Analytics} {...authProps} />
+            <MatchAuthenticated exactly pattern="/settings" component={Settings} {...authProps} />
             <MatchAuthenticated exactly pattern="/invite" component={Invite} {...authProps} />
             <RedirectAuthenticated pattern="/login" component={Login} {...authProps} />
             <RedirectAuthenticated pattern="/signup" component={Signup} {...authProps} />

@@ -26,10 +26,33 @@ class Home extends Component {
       <section className="section">
         <div className="panel">
           <div className="content">
-            <h2 className="content__headline">Another Section Here</h2>
-            <p>Lorem ipsum dolor sit amet, mazim dissentias eu mel. Ex duo aeque offendit reformidans. Et facer erroribus iracundia pro. Ne esse minimum mea, dicam eirmod sea an.</p>
-            <p>Elit tollit vidisse mea eu. Eam an debitis mandamus, in est maiorum insolens. At qui commodo graecis invidunt, nam ferri contentiones et, ei vim quodsi verear. Eruditi contentiones cu sea.</p>
-            <p><button className="button">Get Started</button></p>
+            <h2 className="content__headline">Analyze and Improve</h2>
+            <p>How much has this project cost?</p>
+            <p>How productive is my team?</p>
+            <p>What task is the holdup?</p>
+            <p><button className="button">Find these Answers</button></p>
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="panel">
+          <div className="content">
+            <h2 className="content__headline">Why Use Stracker?</h2>
+            <p>Your data is yours. Export and graph time on tasks.</p>
+            <p>Simple click timers, so everyone can work more, and track more.</p>
+            <p>Project management agnostic. Whether you scrum, agile, kanban, pomodoro, or just do your thing.</p>
+            <p><button className="button">Get started</button></p>
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="panel">
+          <div className="content">
+            <h2 className="content__headline">One Month Free</h2>
+            <p>No credit cards will be charged for the first month.</p>
+            <p>No card necessary to take a trial run.</p>
+            <p>Annual subscribers will get two months free. Every year.</p>
+            <p><button className="button">Get started</button></p>
           </div>
         </div>
       </section>
