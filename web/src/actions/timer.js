@@ -5,10 +5,11 @@ export function start_timer(intervalId) {
 }
 
 export function tick_tock(){
-  return (dispatch) => {
-    var stamp = new Date().getTime()
-    console.log(stamp)
-    dispatch({ type: 'TICK_TOCK', stamp });
+  return (dispatch, getState) => {
+    if (getState().timer.isTiming){
+      var stamp = new Date().getTime()
+      dispatch({ type: 'TICK_TOCK', stamp });
+    }
   };
 }
 

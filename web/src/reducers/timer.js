@@ -2,7 +2,7 @@ const initialState = {
   isTiming: false,
   datetimeNow: Number,
   intervalId: Number, //Not sure what interval ID type is
-  runningTimer: Array
+  runningTimer: []
 };
 
 export default function (state = initialState, action) {
@@ -27,7 +27,7 @@ export default function (state = initialState, action) {
         return {
           ...state,
           isTiming: true,
-          runningTimer: [action.response]
+          runningTimer: [action.taskId]
         }
     default:
       return state;
