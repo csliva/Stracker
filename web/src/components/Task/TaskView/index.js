@@ -50,13 +50,7 @@ export default connect(
     editActive: state.task.editActive,
     currentUser: state.session.currentUser,
     currentTask: state.task.currentTask,
-<<<<<<< HEAD
-    currentBoard: state.boards.activeBoard,
-  }),
-  { formActivate, newTask, editTask, setActiveTask }
-=======
     currentBoard: state.boards.activeBoard
   }),
   { formActivate, newTask, editTask, setActiveTask  }
->>>>>>> b752c14d7183441a863578c72492eb7488d6c75f
 )(TaskView);

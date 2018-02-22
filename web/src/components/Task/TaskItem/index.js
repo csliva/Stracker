@@ -30,24 +30,15 @@ class Task extends Component {
     return (
       <li
         onClick={this.viewTaskHandler.bind(this, this.props.id)}
-<<<<<<< HEAD
-        className="#"
-      >
-=======
         className="#" >
->>>>>>> b752c14d7183441a863578c72492eb7488d6c75f
         {this.props.name}
       </li>
     );} else{
     return (
       <li
         onClick={this.timeEventHandler.bind(this, this.props.id)}
-<<<<<<< HEAD
         className="#"
       >
-=======
-        className="#" >
->>>>>>> b752c14d7183441a863578c72492eb7488d6c75f
         {this.props.name}
       </li>
     );}
