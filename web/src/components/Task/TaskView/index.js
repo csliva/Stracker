@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { formActivate, newTask, editTask, setActiveTask } from '../../../actions/app';
+
 import TaskForm from '../../Forms/NewTask';
 import EditForm from '../../Forms/EditTask';
 import TaskDetails from '../TaskDetails';
@@ -21,14 +22,14 @@ class TaskView extends Component {
   render() {
     if (this.props.formActive && !this.props.editActive){
       return (
-        <div className={`card is-two-thirds column`}>
+        <div className="#">
           < TaskForm onSubmit={this.handleNewTask} />
         </div>
       );
     }
     if (this.props.formActive && this.props.editActive){
       return (
-        <div className={`card is-two-thirds column`}>
+        <div className="#">
           < EditForm onSubmit={this.handleEditTask} currentTask={this.props.currentTask}/>
         </div>
       );
@@ -49,7 +50,13 @@ export default connect(
     editActive: state.task.editActive,
     currentUser: state.session.currentUser,
     currentTask: state.task.currentTask,
+<<<<<<< HEAD
     currentBoard: state.boards.activeBoard,
   }),
   { formActivate, newTask, editTask, setActiveTask }
+=======
+    currentBoard: state.boards.activeBoard
+  }),
+  { formActivate, newTask, editTask, setActiveTask  }
+>>>>>>> b752c14d7183441a863578c72492eb7488d6c75f
 )(TaskView);

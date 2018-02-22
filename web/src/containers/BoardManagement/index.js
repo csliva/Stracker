@@ -16,7 +16,6 @@ class BoardManagement extends Component {
     router: PropTypes.object,
   }
 
-
   props: Props
 
   handleNewBoard = (data) => {
