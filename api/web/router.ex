@@ -20,10 +20,11 @@ defmodule Stracker.Router do
     post "/board/:id/join", BoardController, :join
     get "/board/:board_id", BoardController, :get_board
     get "/task/:task_id/events", EventController, :get_by_task
-    post "add_event/:user_id/:task_id", EventController, :add_entry
+    post "/add_event/:user_id/:task_id", EventController, :add_entry
     resources "/boards", BoardController, only: [:index, :create]
     resources "/events", EventController
     resources "/tasks", TaskController
+    resources "/invite", InviteController, only: [:index, :show]
     post "/invite", InviteController, :invite
   end
 end

@@ -7,6 +7,7 @@ defmodule Stracker.Invite do
     belongs_to :board, Stracker.Board
     belongs_to :sender, Stracker.User
     field :recipient, :string
+    timestamps()
   end
 
   @doc """
@@ -15,7 +16,7 @@ defmodule Stracker.Invite do
   def changeset(struct, params \\ %{}) do
     IO.inspect params
     struct
-    |> cast(params, [:id, :board, :sender, :recipient])
-    |> validate_required([:board, :sender, :recipient])
+    |> cast(params, [:id, :board_id, :sender_id, :recipient])
+    |> validate_required([:board_id, :sender_id, :recipient])
   end
 end

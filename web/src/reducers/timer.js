@@ -1,7 +1,8 @@
 const initialState = {
   isTiming: false,
   datetimeNow: Number,
-  intervalId: Number //Not sure what interval ID type is
+  intervalId: Number, //Not sure what interval ID type is
+  runningTimer: []
 };
 
 export default function (state = initialState, action) {
@@ -22,6 +23,12 @@ export default function (state = initialState, action) {
           ...state,
           isTiming: false
         };
+      case 'SET_TIMING_TASK':
+        return {
+          ...state,
+          isTiming: true,
+          runningTimer: [action.taskId]
+        }
     default:
       return state;
   }

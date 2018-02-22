@@ -41,7 +41,7 @@ class Invite extends Component {
     //store form data as well as current user information
     data = {
       ...data,
-      user_id: this.props.currentUserId,
+      sender_id: this.props.currentUserId,
       board_id: this.props.activeBoard.id
     }
     this.props.invite(data, this.context.router);

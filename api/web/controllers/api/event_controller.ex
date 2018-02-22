@@ -3,6 +3,7 @@ defmodule Stracker.EventController do
 
 
   alias Stracker.Event
+  alias Stracker.Task
 
   def add_entry(conn, %{"user_id" => user_id, "task_id" => task_id}) do
     last_event = Repo.all(
@@ -10,7 +11,8 @@ defmodule Stracker.EventController do
       select: e,
       where: ^task_id == e.task_id and ^user_id == e.user_id,
       order_by: [desc: e.updated_at],
-      limit: 1
+      limit: 1,
+      preload: [:task]
     )
     # Get our model from event.
     case Enum.fetch(last_event,0) do
@@ -22,6 +24,12 @@ defmodule Stracker.EventController do
             ###### UPDATE ROW #######
             # get our row by id
             event = Repo.get!(Event, event_model.id)
+            task = Repo.get!(Task, task_id)
+
+            #SQL to updated `updated at`
+            query = "UPDATE tasks SET updated_at = now() at time zone 'utc' where id = $1"
+            Ecto.Adapters.SQL.query(Repo, query, [String.to_integer(task_id)]) |> IO.inspect
+
             # apply change to row
             changeset = Event.changeset(event, %{"end_time" => Ecto.DateTime.utc(:sec)})
             # apply change
