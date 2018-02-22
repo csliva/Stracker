@@ -277,6 +277,11 @@ figure {
 .link {
   display: inline-block; }
 
+.notification {
+  padding: 26px;
+  border: solid 1px #ddd;
+  background: #fff; }
+
 .block {
   display: block; }
   .block__element {

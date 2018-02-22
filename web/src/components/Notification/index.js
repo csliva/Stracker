@@ -4,27 +4,22 @@ import { connect } from 'react-redux';
 import { css, StyleSheet } from 'aphrodite';
 import { clearNotification } from '../../actions/message';
 
-const styles = StyleSheet.create({
-  message: {
-    maxWidth:'500px',
-    margin:'0 auto',
-  },
-});
 
 class Notification extends Component {
-
 
   render() {
     if(this.props.isNotified){
       return(
-        <article id="message" className={`message ${this.props.messageStyle} ${css(styles.message)}`}>
-          <p className="message-header">Notification
-            <button onClick={this.props.clearNotification} className="delete" aria-label="delete">X</button>
+        <div id="message" className="notification">
+          <p className="notification__message">Notification
+            <button className="notification__close" onClick={this.props.clearNotification} aria-label="delete">
+              X
+            </button>
           </p>
-          <div className="message-body">
+          <div className="notification__body">
             <p>{this.props.message}</p>
           </div>
-        </article>
+        </div>
       );
     } else {
       return null;

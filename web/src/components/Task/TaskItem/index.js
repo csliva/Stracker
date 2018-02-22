@@ -3,15 +3,6 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { setActiveTask, formDeactivate} from '../../../actions/app';
 import { addEvent } from '../../../actions/events'
-import { css, StyleSheet } from 'aphrodite';
-
-const styles = StyleSheet.create({
-  task: {
-    padding: '1rem .5rem',
-    backgroundColor: 'white',
-    margin: '10px 0px'
-  },
-});
 
 type Props = {
   setActiveTask: () => void,
@@ -39,16 +30,14 @@ class Task extends Component {
     return (
       <li
         onClick={this.viewTaskHandler.bind(this, this.props.id)}
-        className={`card ${css(styles.task)}`}
-      >
+        className="#" >
         {this.props.name}
       </li>
     );} else{
     return (
       <li
         onClick={this.timeEventHandler.bind(this, this.props.id)}
-        className={`card ${css(styles.task)}`}
-      >
+        className="#" >
         {this.props.name}
       </li>
     );}
@@ -58,7 +47,7 @@ class Task extends Component {
 export default connect(
   state => ({
     formActive: state.task.formActive,
-    currentTask: state.task.currentTask,
+    currentTask: state.task.currentTask
   }),
-  { setActiveTask, formDeactivate, addEvent }
+  { setActiveTask, formDeactivate, addEvent}
 )(Task);

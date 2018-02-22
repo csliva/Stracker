@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { formActivate, newTask, editTask, setActiveTask } from '../../../actions/app';
-import { start_timer, end_timer, tick_tock } from '../../../actions/timer';
+
 import TaskForm from '../../Forms/NewTask';
 import EditForm from '../../Forms/EditTask';
 import TaskDetails from '../TaskDetails';
@@ -19,30 +19,17 @@ class TaskView extends Component {
     this.props.setActiveTask(this.props.currentTask.id)
   }
 
-  timer = () => {
-   this.props.tick_tock()
-  }
-
-  componentWillMount(){
-   var intervalId = setInterval(this.timer, 1000);
-   this.props.start_timer(intervalId);
-  }
-
-  componentWillUnmount() {
-   this.props.end_timer(this.props.intervalId)
-  }
-
   render() {
     if (this.props.formActive && !this.props.editActive){
       return (
-        <div className={`card is-two-thirds column`}>
+        <div className="#">
           < TaskForm onSubmit={this.handleNewTask} />
         </div>
       );
     }
     if (this.props.formActive && this.props.editActive){
       return (
-        <div className={`card is-two-thirds column`}>
+        <div className="#">
           < EditForm onSubmit={this.handleEditTask} currentTask={this.props.currentTask}/>
         </div>
       );
@@ -63,8 +50,7 @@ export default connect(
     editActive: state.task.editActive,
     currentUser: state.session.currentUser,
     currentTask: state.task.currentTask,
-    currentBoard: state.boards.activeBoard,
-    intervalId: state.timer.intervalId
+    currentBoard: state.boards.activeBoard
   }),
-  { formActivate, newTask, editTask, setActiveTask, start_timer, end_timer, tick_tock }
+  { formActivate, newTask, editTask, setActiveTask  }
 )(TaskView);
