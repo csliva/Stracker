@@ -1,4 +1,5 @@
 import api from '../api';
+import { getAllTasks } from './app.js'
 
 export function fetchEvents(taskId) {
   console.log(taskId)
@@ -17,6 +18,7 @@ export function addEvent(taskId, runningTimer) {
       return api.post(`/add_event/${getState().session.currentUser.id}/${taskId}`)
       .then((response) => {
         dispatch({ type: 'GET_EVENTS', response})
+        getAllTasks(getState().session.currentUser.id)
       });
     };
   } else {
@@ -28,6 +30,7 @@ export function addEvent(taskId, runningTimer) {
         .then((response) => {
           dispatch({ type: 'SET_TIMING_TASK', taskId})
           dispatch({ type: 'GET_EVENTS', response})
+          getAllTasks(getState().session.currentUser.id)
         });
     };
   }
