@@ -27,20 +27,22 @@ class Event extends Component {
       event_time = this.parsetime(Math.ceil((this.props.datetimeNow - Date.parse(object.start_time + '+00:00'))))
     }
     return(
-      <li>{event_time}</li>
+      <span><i className="fa fa-plus"></i> {event_time}</span>
     );
   }
   render() {
     if (this.props.loadingEvents === false && this.props.taskEvents) {
       return (
-      <div>
-      {this.props.taskEvents.map((object, i) => {
-        return (
-          <ul key={i} id={object.id}>
-            {this.event_view(object)}
-          </ul>
-        );
-      })}
+      <div className="timer">
+        <ul className="timer__list">
+        {this.props.taskEvents.map((object, i) => {
+          return (
+            <li className="timer__item" key={i} id={object.id}>
+              {this.event_view(object)}
+            </li>
+          );
+        })}
+        </ul>
       </div>
     );}
   else {return (<div></div>);}
