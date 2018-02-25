@@ -18,7 +18,7 @@ class Task extends Component {
     else { this.viewTaskHandler(id) }
   }
 
-  setClassName(){return this.props.id === this.props.runningTimer[0] ? "task__active" : "task__inactive"}
+  setClassName(){return this.props.id === this.props.runningTimer[0] ? "task task--active" : "task task--inactive"}
 
   render() {
     //this is rendered if a task is not active

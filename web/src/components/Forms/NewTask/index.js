@@ -26,13 +26,13 @@ class TaskForm extends Component {
       <form
         onSubmit={handleSubmit(this.handleSubmit)}
       >
-        <h3 className="title" style={{ marginBottom: '2rem', textAlign: 'center' }}>Create a Task</h3>
+        <h3 className="title">Create a Task</h3>
         <Field name="task_title" type="text" component={Input} placeholder="Task Title" />
         <Field name="description" type="text" component={Input} placeholder="Task Description" />
         <button
           type="submit"
           disabled={submitting}
-          className="button is-primary"
+          className="button"
         >
           {submitting ? 'Creating...' : 'Create'}
         </button>

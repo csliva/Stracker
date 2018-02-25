@@ -21,19 +21,26 @@ class Stack extends Component {
   render() {
     if (this.props.loadingStack) {
       return (
-        <div className={`column is-one-third`}>
+        <div className="stack">
           <p>No tasks stacked yet</p>
           <div>
-            <div className={"button is-success " + (this.props.formActive ? 'show' : 'is-disabled')} onClick={this.clickHandler.bind(this, this.props.id)}>Create your first Task</div>
+            <div
+              className={"button button--success " + (this.props.formActive ? 'button--show' : 'button--disabled')} 
+              onClick={this.clickHandler.bind(this, this.props.id)}>Create your first Task</div>
           </div>
         </div>
       );
     }
     else{
     return (
-      <div className={`column is-one-third`}>
+      <div className="stack">
         <div>
-          <div className="button is-success" disabled={(this.props.formActive ? 'disabled' : '')} onClick={this.clickHandler.bind(this, this.props.id)}><i className="fa fa-plus fa-2x" aria-hidden="true"></i></div>New Task
+          <button className="button"
+            disabled={(this.props.formActive ? 'button--disabled' : '')}
+            onClick={this.clickHandler.bind(this, this.props.id)}>
+            <i className="fa fa-plus fa-2x" aria-hidden="true"></i>
+          </button>
+          <span>New Task</span>
         </div>
         <Search />
         <ul>

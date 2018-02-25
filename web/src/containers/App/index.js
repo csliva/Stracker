@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <div className="temp">
         <div className="container">
-        <Link className="container__link" to="/invite">Invite Another User</Link>
+        <Link className="button" to="/invite">Invite Another User</Link>
           <div className="columns">
             <Stack />
             <TaskView />

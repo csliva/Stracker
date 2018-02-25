@@ -269,7 +269,9 @@ figure {
   border-radius: 3.25px;
   border: 0;
   font-weight: 700;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-bottom: 26px; }
   .button:hover, .button:focus, .button:after {
     cursor: pointer;
     background: #e36ddd; }
@@ -282,9 +284,38 @@ figure {
   border: solid 1px #ddd;
   background: #fff; }
 
-.block {
+@media screen and (min-width: 576px) {
+  .columns {
+    height: 65vh;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 0; } }
+
+.task {
   display: block; }
-  .block__element {
-    display: inline; }
-  .block--modifier {
-    display: inline-block; }
+  .task--active {
+    color: blue; }
+  .task--inactive {
+    color: red; }
+
+.form--task {
+  background: #fff;
+  padding: 26px;
+  text-align: left;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.15); }
+
+.form--taskedit {
+  border: solid 1px green; }
+
+.form--taskdetails {
+  border: solid 1px purple; }
+
+.stack {
+  border: dotted 1px orange; }
+
+.details {
+  background: #fff;
+  padding: 26px;
+  text-align: left;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.15); }

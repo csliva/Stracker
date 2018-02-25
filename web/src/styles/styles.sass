@@ -245,6 +245,8 @@ $media-max-xl: "screen and (max-width: 1399px)"
   border: 0
   font-weight: 700
   text-transform: uppercase
+  text-decoration: none
+  margin-bottom: $blh
   &:hover,
   &:focus,
   &:after
@@ -266,19 +268,44 @@ $media-max-xl: "screen and (max-width: 1399px)"
   &__close
   &__body
 
+
 //////////////////////////////////////////////
-// Component: #
+// Component: NEW
 //////////////////////////////////////////////
 
-.block
+.columns
+  @media #{$media-min-xs}
+    height: 65vh
+    overflow: hidden
+    display: grid
+    grid-template-columns: 1fr 2fr
+    grid-gap: 0
+
+.task
   display: block
-  &__element
-    display: inline
-  &--modifier
-    display: inline-block
+  &--active
+    color: blue
+  &--inactive
+    color: red
 
-//////////////////////////////////////////////
-// Component: #
-//////////////////////////////////////////////
+.form
+  &--task
+    background: #fff
+    padding: $blh
+    text-align: left
+    box-shadow: 0 0 0 rgba(0,0,0,0.15)
+  &--taskedit
+    border: solid 1px green
+  &--taskdetails
+    border: solid 1px purple
+
+.stack
+  border: dotted 1px orange
+
+.details
+  background: #fff
+  padding: $blh
+  text-align: left
+  box-shadow: 0 0 0 rgba(0,0,0,0.15)
 
 // elements...

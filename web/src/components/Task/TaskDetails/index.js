@@ -50,8 +50,8 @@ class TaskDetails extends Component {
   render() {
     let { currentTask } = this.props;
     return (
-      <div>
-        <div className="#">
+      <div className="temp#1">
+        <div className="temp#2">
           <div className="button" onClick={this.deleteHandler.bind(this, currentTask.id)}>
             Delete
           </div>
@@ -61,7 +61,7 @@ class TaskDetails extends Component {
         </div>
         <h3 className="#">{currentTask.task_title}</h3>
         <div className="#">{currentTask.description}</div>
-        < Event />
+        <Event />
       </div>
     );
   }

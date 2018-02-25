@@ -22,22 +22,22 @@ class TaskView extends Component {
   render() {
     if (this.props.formActive && !this.props.editActive){
       return (
-        <div className="#">
-          < TaskForm onSubmit={this.handleNewTask} />
+        <div className="form form--task">
+          <TaskForm onSubmit={this.handleNewTask} />
         </div>
       );
     }
     if (this.props.formActive && this.props.editActive){
       return (
-        <div className="#">
-          < EditForm onSubmit={this.handleEditTask} currentTask={this.props.currentTask}/>
+        <div className="form form--taskedit">
+          <EditForm onSubmit={this.handleEditTask} currentTask={this.props.currentTask}/>
         </div>
       );
     }
     else{
       return (
-        <div className={`card is-two-thirds column`}>
-          < TaskDetails />
+        <div className="details">
+          <TaskDetails />
         </div>
       );
     }
