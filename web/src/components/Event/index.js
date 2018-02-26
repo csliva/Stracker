@@ -1,6 +1,7 @@
 // @flow
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
+import { deleteEvent } from '../../actions/events';
 import distanceInWords from 'date-fns/distance_in_words'
 import differenceInSeconds from 'date-fns/difference_in_seconds'
 
@@ -13,27 +14,37 @@ class Event extends Component {
 
   props: Props
 
-  parsetime(time){
+  parseTime(time){
+    //FUNC: take a time and turn it into HH:MM:SS format
     return new Date(time).toISOString().substr(11, 8);
   }
-  event_view(object){
-    let event_time = Date;
-    //if end time is available from the database, then it is a complete event
-    if ( object.end_time != null ){
-      event_time = this.parsetime(Date.parse(object.end_time) - Date.parse(object.start_time))
-    }
-    // if end time is null, we use a javascript clock to get the time difference
-    else if ( object.end_time === null ){
-      event_time = this.parsetime((this.props.datetimeNow - Date.parse(object.start_time + '+00:00')))
-    }
-    return(
-      <li>{event_time} - {this.date_view(object.inserted_at)} ago</li>
-    );
+
+  deleteEvent(eventId){
+    this.props.deleteEvent(eventId)
   }
-  date_view(inserted_at){
+
+  dateView(inserted_at){
     let dt = distanceInWords(Date.parse(inserted_at), Date.now())
     return (
       <span className = "date">{dt}</span>
+    );
+  }
+
+  eventView(object){
+    //FUNC: test if end_time exists and then return an li
+    let event_time = Date;
+
+    //if end time is available from the database, then it is a complete event
+    if ( object.end_time != null ){
+      event_time = this.parseTime(Date.parse(object.end_time) - Date.parse(object.start_time))
+    }
+    // if end time is null, we use a javascript clock to get the time difference
+    else if ( object.end_time === null ){
+      event_time = this.parseTime((this.props.datetimeNow - Date.parse(object.start_time + '+00:00')))
+    }
+    // this is the actual event value
+    return(
+      <li>{event_time} - {this.dateView(object.inserted_at)} ago <span onClick={this.deleteEvent.bind(this,object.id)} className="button button__delete">X</span></li>
     );
   }
   render() {
@@ -42,8 +53,8 @@ class Event extends Component {
       <div>
       {this.props.taskEvents.map((object, i) => {
         return (
-          <ul key={i} id={object.id}>
-            {this.event_view(object)}
+          <ul key={i}>
+            {this.eventView(object)}
           </ul>
         );
       })}
@@ -59,5 +70,5 @@ export default connect(
     loadingEvents: state.event.loadingEvents,
     datetimeNow: state.timer.datetimeNow
   }),
-  {}
+  { deleteEvent }
 )(Event);
