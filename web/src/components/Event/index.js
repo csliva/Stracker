@@ -1,10 +1,10 @@
 // @flow
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import { getEvents } from '../../actions/events';
+import distanceInWords from 'date-fns/distance_in_words'
+import differenceInSeconds from 'date-fns/difference_in_seconds'
 
 type Props = {
-  getEvents: () => void,
   taskEvents: Object,
   loadingEvents: Boolean,
 }
@@ -20,14 +20,20 @@ class Event extends Component {
     let event_time = Date;
     //if end time is available from the database, then it is a complete event
     if ( object.end_time != null ){
-      event_time = this.parsetime(Math.ceil(Date.parse(object.end_time) - Date.parse(object.start_time)))
+      event_time = this.parsetime(Date.parse(object.end_time) - Date.parse(object.start_time))
     }
     // if end time is null, we use a javascript clock to get the time difference
     else if ( object.end_time === null ){
-      event_time = this.parsetime(Math.ceil((this.props.datetimeNow - Date.parse(object.start_time + '+00:00'))))
+      event_time = this.parsetime((this.props.datetimeNow - Date.parse(object.start_time + '+00:00')))
     }
     return(
-      <li>{event_time}</li>
+      <li>{event_time} - {this.date_view(object.inserted_at)} ago</li>
+    );
+  }
+  date_view(inserted_at){
+    let dt = distanceInWords(Date.parse(inserted_at), Date.now())
+    return (
+      <span className = "date">{dt}</span>
     );
   }
   render() {
@@ -53,5 +59,5 @@ export default connect(
     loadingEvents: state.event.loadingEvents,
     datetimeNow: state.timer.datetimeNow
   }),
-  { getEvents }
+  {}
 )(Event);

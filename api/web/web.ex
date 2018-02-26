@@ -23,6 +23,8 @@ defmodule Stracker.Web do
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
+      # force all models that use the timestamp to convert to UTC time.
+      @timestamps_opts type: :utc_datetime
     end
   end
 

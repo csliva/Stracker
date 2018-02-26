@@ -1,12 +1,18 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import reducers from '../reducers';
 
 const loggingEnabled = true;
 
 const middleWare = [thunk];
-loggingEnabled ? middleWare.push(logger) : console.log("Logger middleware is disabled");
+
+// Prevents certain logging events from logging
+const reduxlogger = createLogger({
+  predicate: (getState, action) => action.type !== 'TICK_TOCK'
+});
+
+loggingEnabled ? middleWare.push(reduxlogger) : console.log("Logger middleware is disabled");
 
 const createStoreWithMiddleware = applyMiddleware(...middleWare)(createStore);
 
