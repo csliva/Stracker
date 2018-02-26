@@ -86,7 +86,6 @@ defmodule Stracker.EventController do
   end
 
   def get_by_task(conn, %{"task_id" => task_id}) do
-    IO.inspect("*_*_*_*_*_*_*_*_ GETTING BY TASK *_*_*_*_*_*_*_*_")
     events = Repo.all(
       from e in Event,
       select: e,

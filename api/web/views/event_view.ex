@@ -13,6 +13,7 @@ defmodule Stracker.EventView do
     %{id: event.id,
       start_time: event.start_time,
       end_time: event.end_time,
-      user_id: event.user_id}
+      user_id: event.user_id,
+      inserted_at: event.inserted_at}
   end
 end

@@ -1700,6 +1700,10 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
+date-fns@^1.29.0:
+  version "1.29.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.29.0.tgz#12e609cdcb935127311d04d33334e2960a2a54e6"
+
 date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
@@ -4934,10 +4938,6 @@ react-dom@^15.4.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
-react-moment@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/react-moment/-/react-moment-0.7.0.tgz#9ccb5c87be683d08c253b48469167443f09c3d89"
-
 react-redux@^5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.3.tgz#86c3b68d56e74294a42e2a740ab66117ef6c019f"
@@ -6111,17 +6111,28 @@ verror@1.3.6:
   dependencies:
     extsprintf "1.0.2"
 
-victory-chart@^25.0.5:
-  version "25.0.5"
-  resolved "https://registry.yarnpkg.com/victory-chart/-/victory-chart-25.0.5.tgz#3cd02a9fc28848a8f6e8d35e92b1dee1ffbb0a2c"
+victory-chart@^25.1.1:
+  version "25.1.1"
+  resolved "https://registry.yarnpkg.com/victory-chart/-/victory-chart-25.1.1.tgz#5b5d9bde802eea774f1105af6fb723d478717532"
   dependencies:
     d3-voronoi "^1.1.2"
     lodash "^4.17.4"
-    victory-core "^21.0.3"
+    victory-core "^21.0.4"
 
-victory-core@^21.0.2, victory-core@^21.0.3:
+victory-core@^21.0.2:
   version "21.0.3"
   resolved "https://registry.yarnpkg.com/victory-core/-/victory-core-21.0.3.tgz#c821ea87d2b6ab0df5b0bd0a784a99141a043a9c"
+  dependencies:
+    d3-ease "^1.0.0"
+    d3-interpolate "^1.1.1"
+    d3-scale "^1.0.0"
+    d3-shape "^1.2.0"
+    d3-timer "^1.0.0"
+    lodash "^4.17.4"
+
+victory-core@^21.0.4:
+  version "21.0.4"
+  resolved "https://registry.yarnpkg.com/victory-core/-/victory-core-21.0.4.tgz#5ac6d495a43e5d95249c56973290b182ec607b4a"
   dependencies:
     d3-ease "^1.0.0"
     d3-interpolate "^1.1.1"
@@ -6138,12 +6149,12 @@ victory-pie@^14.0.1:
     lodash "^4.17.4"
     victory-core "^21.0.2"
 
-victory@^0.25.4:
-  version "0.25.4"
-  resolved "https://registry.yarnpkg.com/victory/-/victory-0.25.4.tgz#d76840a37438a20063bad6f650b6e115a9ca49b7"
+victory@^0.25.6:
+  version "0.25.6"
+  resolved "https://registry.yarnpkg.com/victory/-/victory-0.25.6.tgz#3b5b0a1d2a773caf75cc916e6ace9ad3d7d75024"
   dependencies:
-    victory-chart "^25.0.5"
-    victory-core "^21.0.3"
+    victory-chart "^25.1.1"
+    victory-core "^21.0.4"
     victory-pie "^14.0.1"
 
 vm-browserify@0.0.4:

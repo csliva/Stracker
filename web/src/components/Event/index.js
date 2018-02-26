@@ -1,10 +1,11 @@
 // @flow
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import { getEvents } from '../../actions/events';
+import { deleteEvent } from '../../actions/events';
+import distanceInWords from 'date-fns/distance_in_words'
+import differenceInSeconds from 'date-fns/difference_in_seconds'
 
 type Props = {
-  getEvents: () => void,
   taskEvents: Object,
   loadingEvents: Boolean,
 }
@@ -13,21 +14,37 @@ class Event extends Component {
 
   props: Props
 
-  parsetime(time){
+  parseTime(time){
+    //FUNC: take a time and turn it into HH:MM:SS format
     return new Date(time).toISOString().substr(11, 8);
   }
-  event_view(object){
+
+  deleteEvent(eventId){
+    this.props.deleteEvent(eventId)
+  }
+
+  dateView(inserted_at){
+    let dt = distanceInWords(Date.parse(inserted_at), Date.now())
+    return (
+      <span className = "date">{dt}</span>
+    );
+  }
+
+  eventView(object){
+    //FUNC: test if end_time exists and then return an li
     let event_time = Date;
+
     //if end time is available from the database, then it is a complete event
     if ( object.end_time != null ){
-      event_time = this.parsetime(Math.ceil(Date.parse(object.end_time) - Date.parse(object.start_time)))
+      event_time = this.parseTime(Date.parse(object.end_time) - Date.parse(object.start_time))
     }
     // if end time is null, we use a javascript clock to get the time difference
     else if ( object.end_time === null ){
-      event_time = this.parsetime(Math.ceil((this.props.datetimeNow - Date.parse(object.start_time + '+00:00'))))
+      event_time = this.parseTime((this.props.datetimeNow - Date.parse(object.start_time + '+00:00')))
     }
+    // this is the actual event value
     return(
-      <span><i className="fa fa-plus"></i> {event_time}</span>
+      <span>{event_time} - {this.dateView(object.inserted_at)} ago <span onClick={this.deleteEvent.bind(this,object.id)} className="button button__delete"><i className="fa fa-minus"></i></span></span>
     );
   }
   render() {
@@ -38,7 +55,7 @@ class Event extends Component {
         {this.props.taskEvents.map((object, i) => {
           return (
             <li className="timer__item" key={i} id={object.id}>
-              {this.event_view(object)}
+              {this.eventView(object)}
             </li>
           );
         })}
@@ -55,5 +72,5 @@ export default connect(
     loadingEvents: state.event.loadingEvents,
     datetimeNow: state.timer.datetimeNow
   }),
-  { getEvents }
+  { deleteEvent }
 )(Event);
