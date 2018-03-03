@@ -25,6 +25,14 @@ class BoardList extends Component {
     this.props.setActiveBoard(id, this.props.boards[index], this.context.router);
   }
 
+  boardDelete(id, index){
+    //Board selected
+    //Set active board
+    //Reset and get tasks
+    //route to app
+    alert('Board Delete '+id)
+  }
+
   render() {
     var that = this;
     return (
@@ -32,7 +40,7 @@ class BoardList extends Component {
         {this.props.boards.map(function(object, i){
           return (
             <div className="boardlist__item" key={i}>
-              <button><i className="fa fa-times"></i></button>
+              <button onClick={that.boardDelete.bind(that, object.id, i)}><i className="fa fa-times"></i></button>
               <button className="boardlist__inner" onClick={that.clickHandler.bind(that, object.id, i)}>
                 <span className="boardlist__letter">{object.name.charAt(0)}</span>
                 <div className="boardlist__info">
