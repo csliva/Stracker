@@ -1,7 +1,8 @@
 const initialState = {
   currentUserBoards: [],
   activeBoard: [],
-  boardFormActive: false
+  boardFormActive: false,
+  boardUsers: Object
 };
 
 export default function (state = initialState, action) {
@@ -18,6 +19,7 @@ export default function (state = initialState, action) {
           ...state.currentUserBoards,
           action.response.data,
         ],
+        activeBoard: []
       };
     case 'BOARD_JOINED':
       return {
@@ -26,6 +28,11 @@ export default function (state = initialState, action) {
           ...state.currentUserBoards,
           action.response.data,
         ],
+      };
+    case 'FETCH_BOARD_USERS':
+      return {
+        ...state,
+        boardUsers: action.response.data,
       };
       case 'SET_ACTIVE_BOARD':
         return {

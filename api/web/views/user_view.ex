@@ -15,4 +15,8 @@ defmodule Stracker.UserView do
       email: user.email,
       subscriber: user.subscriber}
   end
+
+  def render("board_users.json", %{users: users}) do
+    %{data: render_many(users, Stracker.UserView, "user.json")}
+  end
 end

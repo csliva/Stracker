@@ -30,10 +30,10 @@ defmodule Stracker.TaskController do
 
   def get_by_board(conn, %{"board_id" => board_id}) do
     tasks = Repo.all(
-      from p in Task,
-      select: p,
-      where: ^board_id == p.board_id,
-      order_by: [desc: p.updated_at]
+      from t in Task,
+      select: t,
+      where: ^board_id == t.board_id,
+      order_by: [desc: t.updated_at]
     )
     render(conn, "index.json", tasks: tasks)
   end

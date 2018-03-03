@@ -17,15 +17,6 @@ class TaskDetails extends Component {
    this.props.tick_tock()
   }
 
-  componentWillMount(){
-   var intervalId = setInterval(this.timer, 1000);
-   this.props.start_timer(intervalId);
-  }
-
-  componentWillUnmount() {
-   this.props.end_timer(this.props.intervalId)
-  }
-
   deleteHandler(id){
     this.props.deleteTask(id);
   }

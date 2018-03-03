@@ -14,29 +14,11 @@ import { invite } from '../../actions/session';
 import InviteForm from '../../components/Forms/Invite';
 import { fetchCurrentBoard } from '../../actions/boards';
 
-type Props = {
-  invite: () => void,
-}
-
 class Invite extends Component {
   static contextTypes = {
     router: PropTypes.object,
   }
-
-  props: Props
-
-  componentWillMount(){
-    // if board is not set in localStorage
-    if ( localStorage.board === undefined ||
-        localStorage.board === null ) {
-      window.location.href = '/boards';
-    }
-    else if ( this.props.activeBoard.length === 0 ){
-      // if board is set in localStorage but board data is not stored in the client
-      this.props.fetchCurrentBoard(localStorage.board)
-    }
-  }
-
+  
   handleInvite = data => {
     //store form data as well as current user information
     data = {
@@ -47,13 +29,26 @@ class Invite extends Component {
     this.props.invite(data, this.context.router);
   }
 
+  renderPreload = () => {
+    if ( localStorage.board === undefined || localStorage.board === null ) {
+      window.location.href = '/boards';
+    }
+    else if (this.props.activeBoard === undefined || this.props.activeBoard.length === 0){
+      this.props.fetchCurrentBoard(localStorage.board)
+      return ( <p>Loading</p> );
+    }
+    else{
+      return (
+        <div className="container">
+          <h3 className="#">Invite Another User to {this.props.activeBoard.name}</h3>
+          <InviteForm onSubmit={this.handleInvite} />
+        </div>
+      );
+    }
+  }
+
   render() {
-    return (
-      <div className="container">
-        <h3 className="#">Invite Another User to {this.props.activeBoard.name}</h3>
-        <InviteForm onSubmit={this.handleInvite} />
-      </div>
-    );
+    return this.renderPreload();
   }
 }
 
