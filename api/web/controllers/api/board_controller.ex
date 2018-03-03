@@ -60,4 +60,12 @@ defmodule Stracker.BoardController do
     render(conn, "board.json", board: board)
   end
 
+  def delete_board(conn, %{"board_id" => id}) do
+    task = Repo.get!(Board, id)
+
+    Repo.delete!(board)
+
+    send_resp(conn, :no_content, "")
+  end
+
 end

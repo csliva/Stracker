@@ -44,6 +44,10 @@ export default function (state = initialState, action) {
           ...state,
           boardFormActive: action.boardFormActive
         };
+      case 'DELETE_BOARD_SUCCESS':
+        return {
+          ...state
+        };
     default:
       return state;
   }
