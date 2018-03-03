@@ -55,8 +55,8 @@ class Main extends Component {
           <div className="app__body">
             <Notification/>
             <Match exactly pattern="/home" component={Home} {...authProps} />
-            <MatchAuthenticated exactly pattern="/" component={App} {...authProps} />
             <MatchAuthenticated exactly pattern="/boards" component={BoardManagement} {...authProps} />
+            <MatchAuthenticated exactly pattern="/" component={App} {...authProps} />
             <MatchAuthenticated exactly pattern="/analytics" component={Analytics} {...authProps} />
             <MatchAuthenticated exactly pattern="/settings" component={Settings} {...authProps} />
             <MatchAuthenticated exactly pattern="/invite" component={Invite} {...authProps} />

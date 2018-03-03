@@ -1,8 +1,5 @@
 // @flow
 import React, { Component } from 'react';
-//import { connect } from 'react-redux';
-import { Link } from 'react-router';
-//import { logout } from '../../actions/session';
 
 class Settings extends Component {
 

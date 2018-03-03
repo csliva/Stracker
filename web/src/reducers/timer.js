@@ -21,7 +21,8 @@ export default function (state = initialState, action) {
       case 'STOP_TIMER':
         return {
           ...state,
-          isTiming: false
+          isTiming: false,
+          runningTimer: [null]
         };
       case 'SET_TIMING_TASK':
         return {

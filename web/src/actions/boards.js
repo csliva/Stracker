@@ -18,6 +18,13 @@ export function fetchBoards() {
     });
 }
 
+export function fetchBoardUsers(board_id) {
+  return dispatch => api.fetch(`/board/${board_id}/users`)
+    .then((response) => {
+      dispatch({ type: 'FETCH_BOARD_USERS', response })
+    });
+}
+
 export function fetchCurrentBoard(boardId){
   return dispatch => api.fetch(`/board/${boardId}`)
     .then((response) => {
@@ -61,7 +68,7 @@ export function createBoard(data, router) {
     .then((response) => {
       dispatch({ type: 'CREATE_BOARD_SUCCESS', response });
       dispatch(reset('newBoard'));
-      router.transitionTo(`/`);
+      router.transitionTo(`/boards`);
     });
 }
 

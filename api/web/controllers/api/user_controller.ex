@@ -57,6 +57,17 @@ defmodule Stracker.UserController do
     send_resp(conn, :no_content, "")
   end
 
+  def get_board_users(conn, %{"board_id" => board_id}) do
+    #GET: user_ids where board_id is param value
+    users = Repo.all(
+      from u in User,
+      join: b in assoc(u, :boards),
+      where: ^board_id == b.id,
+      select: u
+    )
+    render(conn, "board_users.json", users: users)
+  end
+
   def boards(conn, _params) do
     current_user = Guardian.Plug.current_resource(conn)
     boards = Repo.all(assoc(current_user, :boards))

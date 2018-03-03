@@ -22,7 +22,6 @@ export function deleteEvent(eventId) {
   };
 }
 
-
 export function addEvent(taskId, runningTimer) {
   if (runningTimer.length === 0 || runningTimer[0] === taskId){
     //no previous timer exists or previous timer is same as taskId so add event as normal
@@ -32,7 +31,14 @@ export function addEvent(taskId, runningTimer) {
       return api.post(`/add_event/${getState().session.currentUser.id}/${taskId}`)
       .then((response) => {
         dispatch({ type: 'GET_EVENTS', response})
-        getAllTasks(getState().session.currentUser.id)
+        // UPDATE STACK
+        return api.fetch(`/tasks/board/${localStorage.board}`)
+          .then((response) => {
+            dispatch({type: 'RECIEVE_STACK', response})
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       });
     };
   } else {
@@ -44,8 +50,19 @@ export function addEvent(taskId, runningTimer) {
         .then((response) => {
           dispatch({ type: 'SET_TIMING_TASK', taskId})
           dispatch({ type: 'GET_EVENTS', response})
-          getAllTasks(getState().session.currentUser.id)
+          // UPDATE STACK
+          return api.fetch(`/tasks/board/${localStorage.board}`)
+            .then((response) => {
+              dispatch({type: 'RECIEVE_STACK', response})
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         });
     };
   }
 }
+
+//FUNC:
+// GET: running tasks -- tasks with null end time
+// GET: my running task
