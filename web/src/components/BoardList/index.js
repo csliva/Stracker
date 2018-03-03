@@ -32,6 +32,7 @@ class BoardList extends Component {
         {this.props.boards.map(function(object, i){
           return (
             <button className="boardlist__item" key={i} onClick={that.clickHandler.bind(that, object.id, i)}>
+              <button><i className="fa fa-times"></i></button>
               <div className="boardlist__inner">
                 <span className="boardlist__letter">{object.name.charAt(0)}</span>
                 <div className="boardlist__info">
