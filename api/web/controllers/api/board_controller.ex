@@ -61,7 +61,7 @@ defmodule Stracker.BoardController do
   end
 
   def delete_board(conn, %{"board_id" => id}) do
-    task = Repo.get!(Board, id)
+    board = Repo.get!(Board, id)
 
     Repo.delete!(board)
 
