@@ -59,13 +59,15 @@ h1, h2, h3, h4, h5 {
 
 @media screen and (min-width: 768px) {
   h3,
-  .fs-h3 {
+  .fs-h3,
+  .boardlist__letter {
     font-size: 21.328px;
     line-height: 39px; } }
 
 @media screen and (max-width: 767px) {
   h3,
-  .fs-h3 {
+  .fs-h3,
+  .boardlist__letter {
     font-size: 18px; } }
 
 h4,
@@ -215,13 +217,39 @@ figure {
   display: block;
   position: relative; }
   .boardlist__item {
-    display: block; }
+    display: block;
+    position: relative; }
   .boardlist__inner {
     display: block;
     width: 100%;
     border: solid 1px #fafafa;
     padding: 26px;
     background: #fff; }
+  .boardlist__letter {
+    display: inline-block;
+    border: solid 2px #ddd;
+    padding: 6.5px;
+    border-radius: 100%;
+    width: 52px;
+    height: 52px;
+    text-transform: uppercase;
+    line-height: 35.1px; }
+  .boardlist__close {
+    -webkit-transition: color 0.3s ease-out;
+    -moz-transition: color 0.3s ease-out;
+    -ms-transition: color 0.3s ease-out;
+    -o-transition: color 0.3s ease-out;
+    transition: color 0.3s ease-out;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 6.5px;
+    display: inline-block;
+    background: transparent;
+    border: 0;
+    color: #ccc; }
+    .boardlist__close:hover, .boardlist__close:focus, .boardlist__close:active {
+      color: #e36ddd; }
   @media screen and (max-width: 575px) {
     .boardlist__item {
       margin-bottom: 13px; } }
