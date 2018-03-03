@@ -215,6 +215,8 @@ figure {
   display: block;
   position: relative; }
   .boardlist__item {
+    display: block; }
+  .boardlist__inner {
     display: block;
     width: 100%;
     border: solid 1px #fafafa;

@@ -31,16 +31,16 @@ class BoardList extends Component {
       <div className="boardlist">
         {this.props.boards.map(function(object, i){
           return (
-            <button className="boardlist__item" key={i} onClick={that.clickHandler.bind(that, object.id, i)}>
+            <div className="boardlist__item" key={i}>
               <button><i className="fa fa-times"></i></button>
-              <div className="boardlist__inner">
+              <button className="boardlist__inner" onClick={that.clickHandler.bind(that, object.id, i)}>
                 <span className="boardlist__letter">{object.name.charAt(0)}</span>
                 <div className="boardlist__info">
                   <h3 className="boardlist__title">{object.name}</h3>
                   <p className="boardlist__description">{object.description}</p>
                 </div>
-              </div>
-            </button>
+              </button>
+            </div>
           );
         })}
       </div>
