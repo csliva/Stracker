@@ -166,7 +166,6 @@ figure {
 
 .nav {
   background: #1e215b;
-  /* Old browsers */
   background: -moz-linear-gradient(-45deg, #1e215b 0%, #5c457e 100%);
   background: -webkit-linear-gradient(-45deg, #1e215b 0%, #5c457e 100%);
   background: linear-gradient(135deg, #1e215b 0%, #5c457e 100%);
