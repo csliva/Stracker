@@ -19,19 +19,7 @@ class Stack extends Component {
   }
 
   render() {
-    if (this.props.loadingStack) {
-      return (
-        <div className="stack">
-          <p>No tasks stacked yet</p>
-          <div>
-            <div
-              className={"button button--success " + (this.props.formActive ? 'button--show' : 'button--disabled')} 
-              onClick={this.clickHandler.bind(this, this.props.id)}>Create your first Task</div>
-          </div>
-        </div>
-      );
-    }
-    else{
+    let loading = this.props.loadingStack;
     return (
       <div className="stack">
         <div>
@@ -45,12 +33,12 @@ class Stack extends Component {
         <Search />
         <ul>
         {this.props.tasks.data.map(function(object, i){
-          return <Task name={object.task_title} key={i} id={object.id} />;
+          if (loading) { return null }
+          else { return <Task name={object.task_title} key={i} id={object.id} />; }
         })}
         </ul>
        </div>
     );
-  }
   }
 }
 export default connect(

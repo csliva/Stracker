@@ -44,7 +44,7 @@ class BoardManagement extends Component {
           <div className="container">
             <h3 className="#">New Board</h3>
             <p>Boards are where you can create tasks, invite team members, and track time together</p>
-            <button className="button" onClick={this.toggleFormAction.bind(this, this.props.boardFormActive)}>Toggle Form</button>
+            <button className="button" onClick={this.toggleFormAction.bind(this, this.props.boardFormActive)}>Create new Board</button>
             {this.renderNewBoardForm()}
           </div>
         </section>

@@ -18,6 +18,11 @@ export default function (state = initialState, action) {
         stack: action.response,
         loadingStack: false,
       };
+    case 'SET_ACTIVE_TASK':
+      return {
+        ...state,
+        currentTask: action.response.data
+      };
     case 'LOAD_IN_STACK':
       return {
         ...state,
@@ -34,27 +39,30 @@ export default function (state = initialState, action) {
           ...state,
           formActive: false,
         };
-      case 'SET_ACTIVE_TASK':
-        return {
-          ...state,
-          currentTask: action.response.data,
-          editActive: false,
-        };
         case 'CLOSE_FORM':
           return {
             ...state,
             formActive: false,
           };
+        case 'NEW_TASK':
+          return {
+            ...state,
+            currentTask: action.response.data,
+            editActive: false,
+            loadingStack: true
+          }
         case 'DELETE_TASK':
           return {
             ...state,
             formActive: true,
+            loadingStack: true
           };
         case 'EDIT_TASK':
           return {
             ...state,
             formActive: false,
             editActive: false,
+            loadingStack: true
           };
         case 'VIEW_EDIT':
           return {
