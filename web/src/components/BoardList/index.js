@@ -1,7 +1,7 @@
 // @flow
 import React, { Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
-import { setActiveBoard } from '../../actions/boards';
+import { setActiveBoard, deleteBoard } from '../../actions/boards';
 
 
 type Props = {
@@ -30,7 +30,8 @@ class BoardList extends Component {
     //Set active board
     //Reset and get tasks
     //route to app
-    alert('Board Delete '+id)
+    console.log('Board Delete '+id)
+    this.props.deleteBoard(id)
   }
 
   render() {
@@ -61,5 +62,5 @@ export default connect(
     boards: state.boards.currentUserBoards,
     loadingBoards: state.boards.loadingBoards
   }),
-  { setActiveBoard }
+  { setActiveBoard, deleteBoard }
 )(BoardList);
