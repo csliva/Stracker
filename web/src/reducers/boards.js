@@ -46,7 +46,8 @@ export default function (state = initialState, action) {
         };
       case 'DELETE_BOARD_SUCCESS':
         return {
-          ...state
+          ...state,
+          currentUserBoards: action.response.data
         };
     default:
       return state;

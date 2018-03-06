@@ -63,4 +63,12 @@ export default {
       headers: headers(),
     })
   },
+
+  download(url) {
+    return setTimeout(() => {
+      const response = { file: `${API}${url}` };
+      window.open(response.file);
+    }, 100);
+  },
+  
 };

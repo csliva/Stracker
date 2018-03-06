@@ -5,8 +5,6 @@ defmodule Stracker.Repo.Migrations.CreateBoard do
     create table(:boards) do
       add :name, :string
       add :description, :string
-      add :slug, :string
-
       timestamps()
     end
 

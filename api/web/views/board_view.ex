@@ -12,7 +12,6 @@ defmodule Stracker.BoardView do
   def render("board.json", %{board: board}) do
     %{id: board.id,
       name: board.name,
-      description: board.description,
-      slug: board.slug}
+      description: board.description}
   end
 end

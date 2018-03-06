@@ -4,8 +4,8 @@ defmodule Stracker.Board do
   schema "boards" do
     field :name, :string
     field :description, :string
-    field :slug, :string
     many_to_many :users, Stracker.User, join_through: "user_boards"
+    has_many :tasks, Stracker.Task, on_delete: :delete_all
 
     timestamps()
   end

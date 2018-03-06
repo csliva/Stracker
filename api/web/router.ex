@@ -19,7 +19,7 @@ defmodule Stracker.Router do
     get "/users/:id/boards", UserController, :boards
     post "/board/:id/join", BoardController, :join
     get "/board/:board_id", BoardController, :get_board
-    delete "/board/:board_id", BoardController, :delete_board
+    post "/userboard/:user_id/:board_id", BoardController, :delete_board
     get "/board/:board_id/users", UserController, :get_board_users
     get "/task/:task_id/events", EventController, :get_by_task
     post "/add_event/:user_id/:task_id", EventController, :add_entry
@@ -28,5 +28,8 @@ defmodule Stracker.Router do
     resources "/tasks", TaskController
     resources "/invite", InviteController, only: [:index, :show]
     post "/invite", InviteController, :invite
+
+    #CSV
+    get "csv/:board_id", CsvController, :export
   end
 end
