@@ -1,6 +1,6 @@
 const initialState = {
   currentUserBoards: [],
-  activeBoard: [],
+  activeBoard: undefined,
   boardFormActive: false,
   boardUsers: Object
 };

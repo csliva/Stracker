@@ -14,6 +14,7 @@ defmodule Stracker.EventView do
       start_time: event.start_time,
       end_time: event.end_time,
       running: event.running,
+      total_time: event.total_time,
       created_by_id: event.created_by_id,
       updated_by_id: event.updated_by_id,
       inserted_at: event.inserted_at}

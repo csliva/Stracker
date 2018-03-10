@@ -22,7 +22,7 @@ export function deleteEvent(eventId) {
   };
 }
 
-export function addEvent(taskId, runningTimer) {
+/*export function addEvent(taskId, runningTimer) {
   if (runningTimer.length === 0 || runningTimer[0] === taskId){
     //no previous timer exists or previous timer is same as taskId so add event as normal
     return (dispatch, getState) => {
@@ -61,8 +61,34 @@ export function addEvent(taskId, runningTimer) {
         });
     };
   }
-}
+}*/
+
+export function addEvent(taskId, runningTimer) {
+    //no previous timer exists or previous timer is same as taskId so add event as normal
+    return (dispatch, getState) => {
+      dispatch({ type: 'LOAD_IN_EVENTS'});
+      dispatch({ type: 'SET_TIMING_TASK', taskId})
+      return api.post(`/add_event/${getState().session.currentUser.id}/${taskId}`)
+      .then((response) => {
+        dispatch({ type: 'GET_EVENTS', response})
+        // UPDATE STACK
+        return api.fetch(`/tasks/board/${localStorage.board}`)
+          .then((response) => {
+            dispatch({type: 'RECIEVE_STACK', response})
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    };
+  }
 
 //FUNC:
 // GET: running tasks -- tasks with null end time
 // GET: my running task
+export function getRunningEvent(userId, boardId) {
+  return dispatch => api.fetch(`/board/${userId}/${boardId}/runningEvent`)
+    .then((response) => {
+      dispatch({ type: 'SET_RUNNING_EVENT', response });
+    });
+}

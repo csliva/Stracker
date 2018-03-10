@@ -12,6 +12,7 @@ defmodule Stracker.Router do
     resources "/users", UserController, except: [:new, :edit]
     patch "/tasks/:id", TaskController, :update
     get "/tasks/board/:board_id", TaskController, :get_by_board
+    get "/board/:user_id/:board_id/runningEvent", EventController, :get_running_event
     post "/sessions", SessionController, :create
     delete "/sessions", SessionController, :delete
     delete "/tasks/:id", TaskController, :delete

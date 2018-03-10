@@ -23,6 +23,7 @@ import Analytics from '../Analytics';
 import MatchAuthenticated from '../../components/Navigation/MatchAuthenticated';
 import RedirectAuthenticated from '../../components/Navigation/RedirectAuthenticated';
 import Navbar from '../../components/Navbar';
+import RunningEvent from '../../components/Event/RunningEvent';
 
 type Props = {
   authenticate: () => void,
@@ -64,6 +65,7 @@ class Main extends Component {
             <RedirectAuthenticated pattern="/signup" component={Signup} {...authProps} />
             <Miss component={NotFound} />
           </div>
+          < RunningEvent />
           <footer className="app__footer">
             © &int;tracker 2018 | Colt Sliva | Kyle Treptow
           </footer>

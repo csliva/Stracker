@@ -20,8 +20,9 @@ class Analytics extends Component {
   //victory bar is being used. If no data is here, victory bar provides fallback data
   render() {
     return (
-    <main>
-      <button onClick={this.exportData.bind(this, this.props.activeBoard)} className="button">Export some data</button>
+    <main className="container">
+      <h2>Control Your Data</h2>
+      <button onClick={this.exportData.bind(this, this.props.activeBoard)} className="button">Export to CSV</button>
       <VictoryChart
         // domainPadding will add space to each side of VictoryBar to
         // prevent it from overlapping the axis
