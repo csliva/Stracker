@@ -57,7 +57,9 @@ class TaskDetails extends Component {
         <h3 className="details__title">{currentTask.task_title}</h3>
         <p className="details__description">{currentTask.description}</p>
         <div className="currenttime">
-          <h4><b>CURRENT TIMER WILL GO HERE</b></h4>
+          <h4>
+            <b>CURRENT TIMER WILL GO HERE</b>
+          </h4>
         </div>
         <Event />
       </div>
