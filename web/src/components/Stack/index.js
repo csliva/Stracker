@@ -22,16 +22,16 @@ class Stack extends Component {
     let loading = this.props.loadingStack;
     return (
       <div className="stack">
-        <div>
+        <header className="stack__header">
           <button className="button"
             disabled={(this.props.formActive ? 'button--disabled' : '')}
             onClick={this.clickHandler.bind(this, this.props.id)}>
-            <i className="fa fa-plus fa-2x" aria-hidden="true"></i>
+            <i className="button__icon fa fa-plus fa-2x" aria-hidden="true"></i>
+            <span className="button__inner">New Task</span>
           </button>
-          <span>New Task</span>
-        </div>
+        </header>
         <Search />
-        <ul>
+        <ul className="tasklist">
         {this.props.tasks.data.map(function(object, i){
           if (loading) { return null }
           else { return <Task name={object.task_title} key={i} id={object.id} />; }

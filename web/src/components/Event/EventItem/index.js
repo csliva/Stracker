@@ -43,7 +43,11 @@ class EventItem extends Component {
     }
     // this is the actual event value
     return(
-      <span>{event_time} - {this.dateView(object.inserted_at)} ago <span onClick={this.deleteEvent.bind(this,object.id)} className="button button__delete"><i className="fa fa-minus"></i></span></span>
+      <span>{event_time} - {this.dateView(object.inserted_at)} ago
+        <span onClick={this.deleteEvent.bind(this,object.id)} className="#test">
+          <i className="fa fa-minus"></i>
+        </span>
+      </span>
     );
   }
   render() {

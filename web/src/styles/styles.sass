@@ -270,11 +270,17 @@ $media-max-xl: "screen and (max-width: 1399px)"
   text-transform: uppercase
   text-decoration: none
   margin-bottom: $blh
+  vertical-align: middle
   &:hover,
   &:focus,
   &:after
     cursor: pointer
     background: $clr-hlt
+  &__icon
+    margin-right: $blh/2
+    vertical-align: middle
+  &__inner
+    vertical-align: middle
 
 .link
   display: inline-block
@@ -302,14 +308,28 @@ $media-max-xl: "screen and (max-width: 1399px)"
     overflow: hidden
     display: grid
     grid-template-columns: 1fr 2fr
+    grid-template-rows: 1fr
     grid-gap: 0
+    min-height: 0
+    min-width: 0
+
+.tasklist
+  padding: 0 $blh 0 0
 
 .task
   display: block
+  background: #fff
+  margin-bottom: $blh/4
+  padding: $blh/4 $blh/2
+  color: #666
+  border: solid 1px #eee
+  border-radius: 3px
+  +transition-2(color, background-color)
   &--active
-    color: blue
+    color: #fff
+    background: $clr-alt
   &--inactive
-    color: red
+    color: $clr-main
 
 .form
   &--task
@@ -318,27 +338,95 @@ $media-max-xl: "screen and (max-width: 1399px)"
     text-align: left
     box-shadow: 0 0 0 rgba(0,0,0,0.15)
   &--taskedit
-    border: solid 1px green
+    background: #fff
+    padding: $blh
+    text-align: left
+    box-shadow: 0 0 0 rgba(0,0,0,0.15)
   &--taskdetails
-    border: solid 1px purple
+    background: #fff
+    padding: $blh
+    text-align: left
+    box-shadow: 0 0 0 rgba(0,0,0,0.15)
 
 .stack
-  border: dotted 1px orange
+  @media #{$media-min-xs}
+    grid-row: 1
+    grid-column: 1
+    max-height: 100%
 
 .details
+  display: block
   background: #fff
-  padding: $blh
   text-align: left
   box-shadow: 0 0 0 rgba(0,0,0,0.15)
+  height: 100%
+  overflow: hidden
+  &__panel
+    height: 100%
+    overflow: hidden
+    padding: $blh
+  &__title
+    margin: 0
+  &__description
+
+  @media #{$media-min-xs}
+    grid-row: 1
+    grid-column: 2
+    max-height: 100%
+    &__panel
+      height: 100%
+      overflow: hidden
+      position: relative
+      padding-right: 50%
+
 
 .timer
   height: 100%
   overflow-y: scroll
+  font-size: $fs-base / $scale-factor
   &__list
     padding: 0
     margin: 0
   &__item
     display: block
+  &__delete
+    color: $clr-hlt
+    margin-left: $blh/2
+  @media #{$media-min-xs}
+    position: absolute
+    top: 0
+    right: 0
+    height: 100%
+    width: 40%
+    padding: $blh
+    border-left: solid 1px #eee
+
+.searchbar
+  margin-bottom: $blh
+  &__input
+    padding: 8px
+    border-radius: 4px
+    border: solid 1px #ddd
+    margin-bottom: 0
+    width: 200px
+    max-width: 90%
+  &__icon
+    margin-left: $blh/2
+    color: $clr-hlt
+
+.list
+  padding: 0
+  margin: 0
+  &__item
+    display: block
+    .list--inline &
+      display: inline-block
+      margin-right: $blh/2
+
+
+.currenttime
+  border: solid 1px #ddd
+  padding: $blh/2
 
 //////////////////////////////////////////////
 // Component: NEW

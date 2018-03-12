@@ -41,17 +41,24 @@ class TaskDetails extends Component {
   render() {
     let { currentTask } = this.props;
     return (
-      <div className="temp#1">
-        <div className="temp#2">
-          <div className="button" onClick={this.deleteHandler.bind(this, currentTask.id)}>
-            Delete
-          </div>
-          <div className="button" onClick={this.editHandler.bind(this, currentTask.id)}>
-            Edit
-          </div>
+      <div className="details__panel">
+        <ul className="list list--inline">
+          <li className="list__item">
+            <button className="button" onClick={this.deleteHandler.bind(this, currentTask.id)}>
+              Delete
+            </button>
+          </li>
+          <li className="list__item">
+            <button className="button" onClick={this.editHandler.bind(this, currentTask.id)}>
+              Edit
+            </button>
+          </li>
+        </ul>
+        <h3 className="details__title">{currentTask.task_title}</h3>
+        <p className="details__description">{currentTask.description}</p>
+        <div className="currenttime">
+          <h4><b>CURRENT TIMER WILL GO HERE</b></h4>
         </div>
-        <h3 className="#">{currentTask.task_title}</h3>
-        <div className="#">{currentTask.description}</div>
         <Event />
       </div>
     );

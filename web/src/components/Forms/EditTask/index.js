@@ -21,13 +21,12 @@ class EditForm extends Component {
       <form
         onSubmit={this.props.handleSubmit(this.handleSubmit)}
       >
-        <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>Edit Task</h3>
+        <h3>Edit Task</h3>
         <Field name="task_title" className="input" type="text" component={Input} placeholder="Task Title" />
         <Field name="description" className="input" type="text" component={Input} placeholder="Task Description" />
         <button
           type="submit"
-          className="button is-primary"
-        >
+          className="button">
           Edit
         </button>
       </form>
