@@ -26,15 +26,14 @@ class Task extends Component {
     return (
       <li
         onClick={this.viewTaskHandler.bind(this, this.props.id)}
-        className="#" >
+        className="task task--default" >
         {this.props.name}
       </li>
     );} else{
     return (
       <li
         onClick={this.timeEventHandler.bind(this, this.props.id)}
-        className={this.setClassName()}
-      >
+        className={this.setClassName()}>
         {this.props.name}
       </li>
     );}

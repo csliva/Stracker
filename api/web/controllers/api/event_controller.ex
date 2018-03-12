@@ -4,6 +4,7 @@ defmodule Stracker.EventController do
 
   alias Stracker.Event
   alias Stracker.Task
+    alias Stracker.Board
 
   def add_entry(conn, %{"user_id" => user_id, "task_id" => task_id}) do
     IO.inspect user_id
@@ -28,8 +29,8 @@ defmodule Stracker.EventController do
             task = Repo.get!(Task, task_id)
 
             #SQL to updated `updated at`
-            query = "UPDATE tasks SET updated_at = now() at time zone 'utc' where id = $1"
-            Ecto.Adapters.SQL.query(Repo, query, [String.to_integer(task_id)]) |> IO.inspect
+            #query = "UPDATE tasks SET updated_at = now() at time zone 'utc' where id = $1"
+            #Ecto.Adapters.SQL.query(Repo, query, [String.to_integer(task_id)]) |> IO.inspect
 
             # apply change to row
             changeset = Event.changeset(event,
@@ -48,9 +49,6 @@ defmodule Stracker.EventController do
             end
           # default action, previous event exists with filled in end_time
           true ->
-            IO.puts("_*_*_*_*_*_*_*")
-            IO.inspect(user_id)
-            IO.puts("_*_*_*_*_*_*_*")
             ####### ADDING A NEW EVENT ROW ##########
             changeset = Event.changeset(%Event{},
               %{
@@ -108,11 +106,17 @@ defmodule Stracker.EventController do
     render(conn, "index.json", events: events)
   end
 
-  #def get_running_timers(conn, %{"" => x}) do
-  #
-  #end
+  def get_running_event(conn, %{"user_id" => user_id, "board_id" => board_id}) do
+    running_events = Repo.all(
+      from e in Event,
+      select: e,
+      join: b in Board,
+      where: b.id == ^board_id and e.updated_by_id == ^user_id and e.running == true
+    )
 
-  # Update will be needed later....
+    render(conn, "index.json", events: running_events)
+    #select * from events inner join boards on boards.id = 1 where events.running = true and created_by_id = 1;
+  end
 
   def delete(conn, %{"id" => id}) do
     event = Repo.get!(Event, id)

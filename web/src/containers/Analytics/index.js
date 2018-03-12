@@ -1,6 +1,8 @@
 // @flow
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
+import { getCsv } from '../../actions/analytics';
 
 class Analytics extends Component {
 
@@ -11,11 +13,16 @@ class Analytics extends Component {
     {quarter: 4, earnings: 19000}
   ];
 
+  exportData(activeBoard){
+    this.props.getCsv(activeBoard.id || localStorage.board)
+  }
+
   //victory bar is being used. If no data is here, victory bar provides fallback data
   render() {
     return (
-    <main>
-      <p>Analytics and a csv export will be available here</p>
+    <main className="container">
+      <h2>Control Your Data</h2>
+      <button onClick={this.exportData.bind(this, this.props.activeBoard)} className="button">Export to CSV</button>
       <VictoryChart
         // domainPadding will add space to each side of VictoryBar to
         // prevent it from overlapping the axis
@@ -44,4 +51,8 @@ class Analytics extends Component {
   }
 }
 
-export default Analytics;
+export default connect(
+  state => ({
+    activeBoard: state.boards.activeBoard,
+  }),
+  { getCsv })(Analytics);

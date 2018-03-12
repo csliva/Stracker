@@ -37,6 +37,20 @@ class BoardManagement extends Component {
       </div>
     );
   }
+
+  renderBoardList(){
+    if ( this.props.boards === undefined || this.props.boards.length === 0 ) { return null }
+    else {
+      return (
+        <section className="section section--alt">
+          <div className="container">
+            <BoardList/>
+          </div>
+        </section>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="app__sections">
@@ -48,13 +62,7 @@ class BoardManagement extends Component {
             {this.renderNewBoardForm()}
           </div>
         </section>
-        {this.props.boards.length > 0 &&
-        <section className="section section--alt">
-          <div className="container">
-            <BoardList/>
-          </div>
-        </section>
-        }
+        {this.renderBoardList()}
       </div>
     );
   }

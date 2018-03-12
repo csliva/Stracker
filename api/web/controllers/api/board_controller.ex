@@ -60,4 +60,12 @@ defmodule Stracker.BoardController do
     render(conn, "board.json", board: board)
   end
 
+  def delete_board(conn, %{"board_id" => board_id, "user_id" => user_id}) do
+    Repo.get_by(Stracker.UserBoard, user_id: user_id, board_id: board_id) |> Repo.delete!
+    current_user = Guardian.Plug.current_resource(conn)
+    boards = Repo.all(assoc(current_user, :boards))
+    IO.inspect(boards)
+    render(conn, Stracker.BoardView, "index.json", %{boards: boards})
+  end
+
 end

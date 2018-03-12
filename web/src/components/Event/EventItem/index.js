@@ -1,17 +1,10 @@
 // @flow
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import { deleteEvent } from '../../actions/events';
+import { deleteEvent } from '../../../actions/events';
 import distanceInWords from 'date-fns/distance_in_words'
 
-type Props = {
-  taskEvents: Object,
-  loadingEvents: Boolean,
-}
-
-class Event extends Component {
-
-  props: Props
+class EventItem extends Component {
 
   parseTime(time){
     //preventative fix when it calculates to 23:59:59
@@ -36,6 +29,7 @@ class Event extends Component {
   }
 
   eventView(object){
+    console.log(object)
     //FUNC: test if end_time exists and then return an li
     let event_time = Date;
 
@@ -50,18 +44,18 @@ class Event extends Component {
     // this is the actual event value
     return(
       <span>{event_time} - {this.dateView(object.inserted_at)} ago
-        <span onClick={this.deleteEvent.bind(this,object.id)} className="timer__delete">
+        <span onClick={this.deleteEvent.bind(this,object.id)} className="#test">
           <i className="fa fa-minus"></i>
         </span>
       </span>
     );
   }
   render() {
-    if (this.props.loadingEvents === false && this.props.taskEvents) {
+    if (this.props.eventlist) {
       return (
       <div className="timer">
         <ul className="timer__list">
-        {this.props.taskEvents.map((object, i) => {
+        {this.props.eventlist.map((object, i) => {
           return (
             <li className="timer__item" key={i} id={object.id}>
               {this.eventView(object)}
@@ -71,7 +65,7 @@ class Event extends Component {
         </ul>
       </div>
     );}
-  else {return (<div></div>);}
+  else {return (null);}
   }
 }
 
@@ -83,4 +77,4 @@ export default connect(
     boardUsers: state.boards.boardUsers
   }),
   { deleteEvent }
-)(Event);
+)(EventItem);

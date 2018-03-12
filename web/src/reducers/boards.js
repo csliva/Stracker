@@ -1,6 +1,6 @@
 const initialState = {
   currentUserBoards: [],
-  activeBoard: [],
+  activeBoard: undefined,
   boardFormActive: false,
   boardUsers: Object
 };
@@ -43,6 +43,11 @@ export default function (state = initialState, action) {
         return {
           ...state,
           boardFormActive: action.boardFormActive
+        };
+      case 'DELETE_BOARD_SUCCESS':
+        return {
+          ...state,
+          currentUserBoards: action.response.data
         };
     default:
       return state;

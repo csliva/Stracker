@@ -39,7 +39,8 @@ defmodule Stracker.Mixfile do
      {:comeonin, "~> 2.5"},
      {:guardian, "~> 0.13.0"},
      {:cors_plug, "~> 1.1"},
-     {:bamboo, "~> 0.8"}]
+     {:bamboo, "~> 0.8"},
+     {:csv, "~> 1.4.0"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
