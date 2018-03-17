@@ -40,17 +40,8 @@ class Event extends Component {
         })}
         </ul>
       </div>
-<<<<<<< HEAD
-    );
-    } else {
-      return (
-        <div></div>
-      );
-    }
-=======
     );}
   else {return (null);}
->>>>>>> backend
   }
 }
 
