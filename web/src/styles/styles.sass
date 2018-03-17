@@ -398,7 +398,7 @@ $media-max-xl: "screen and (max-width: 1399px)"
     top: 0
     right: 0
     height: 100%
-    width: 40%
+    width: 50%
     padding: $blh
     border-left: solid 1px #eee
 
@@ -428,6 +428,61 @@ $media-max-xl: "screen and (max-width: 1399px)"
 .currenttime
   border: solid 1px #ddd
   padding: $blh/2
+
+//////////////////////////////////////////////
+// Component: NEW
+//////////////////////////////////////////////
+
+.panel
+  &--edit
+    background: #fff
+    border: solid 1px #ddd
+    border-radius: 3px
+  &__inner
+    padding: $blh
+    &--active
+      visibility: visible
+      max-height: auto
+    &--inactive
+      visibility: hidden
+      max-height: 0
+  &__icon
+    display: inline-block
+    width: $blh*2
+    height: $blh*2
+    border-radius: 100%
+    line-height: $blh*1.5
+    color: $clr-main
+    &:first-child
+      color: $clr-hlt
+  &__outer
+    background: #eee
+    min-height: 100vh
+  &__link
+    display: inline-block
+    border: solid 1px #ddd
+    border-radius: 3px
+    &:hover,
+    &:focus,
+    &:active
+      background: #eee
+
+//////////////////////////////////////////////
+// Component: NEW
+//////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //////////////////////////////////////////////
 // Component: NEW
