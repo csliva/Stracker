@@ -44,7 +44,7 @@ class App extends Component {
       this.props.getAllTasks(this.props.currentUserId)
       return ( null )
     }
-    else{
+    else {
       //return the view, all data is available and renderable
       return (
         <div className="temp">
@@ -54,14 +54,12 @@ class App extends Component {
               <Stack />
               <TaskView />
             </div>
-            <p>Timer should be below this</p>
-            < RunningClocks />
+            <RunningClocks />
           </div>
         </div>
       );
     }
   }
-
   render() {
     //conditional rendering needed to ensure data is available and renderable
     return this.renderPreload();

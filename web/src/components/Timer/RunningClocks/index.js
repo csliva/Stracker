@@ -5,7 +5,7 @@ import { getRunningEvent } from '../../../actions/events';
 import TimeDiff from '../TimeDiff';
 
 class RunningClocks extends Component {
-  
+
   render() {
     if (this.props.currentBoard === undefined){ return null; }
     else if (this.props.runningEvent === undefined){
@@ -15,18 +15,20 @@ class RunningClocks extends Component {
     else {
       if(this.props.runningEvent){
         return (
-        <div className="runningtimer">
-          <ul className="runningtimer__list">
-          {this.props.runningEvent.map((object, i) => {
-            return (
-              <li className="runningtimer__item" key={i} id={object.id}>
-                <TimeDiff timeObject={object} />
-              </li>
-            );
-          })}
-          </ul>
-        </div>
-      );}
+          <div className="runningtimer">
+            <ul className="runningtimer__list">
+            {this.props.runningEvent.map((object, i) => {
+              return (
+                <li className="runningtimer__item" key={i} id={object.id}>
+                  <i className="runningtimer__icon fa fa-clock-o"></i>
+                  <TimeDiff timeObject={object} />
+                </li>
+              );
+            })}
+            </ul>
+          </div>
+        );
+      }
       else { return null }
       }
   }

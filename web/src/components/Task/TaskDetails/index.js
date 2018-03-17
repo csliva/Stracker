@@ -63,6 +63,7 @@ class TaskDetails extends Component {
         <p className="details__description">{currentTask.description}</p>
         <div className="currenttime">
           <h4>
+            <i className="currenttime__icon fa fa-clock-o"></i>
             <b>{this.currentTimer()}</b>
           </h4>
         </div>

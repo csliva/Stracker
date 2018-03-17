@@ -122,7 +122,7 @@ figure {
   .app__body {
     display: block; }
   .app__footer {
-    padding: 26px;
+    padding: 26px 26px 52px 26px;
     color: #bbb; }
   .app__sections {
     overflow: hidden; }
@@ -448,6 +448,8 @@ figure {
 .currenttime {
   border: solid 1px #ddd;
   padding: 13px; }
+  .currenttime__icon {
+    margin-right: 6.5px; }
 
 .panel--edit {
   background: #fff;
@@ -483,3 +485,20 @@ figure {
   border-radius: 3px; }
   .panel__link:hover, .panel__link:focus, .panel__link:active {
     background: #eee; }
+
+.runningtimer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 6.5px 26px;
+  background: rgba(30, 33, 91, 0.85);
+  width: 100%;
+  color: #fff; }
+  .runningtimer__list {
+    padding: 0;
+    margin: 0; }
+  .runningtimer__item {
+    display: inline-block;
+    margin-right: 26px; }
+  .runningtimer__icon {
+    margin-right: 6.5px; }

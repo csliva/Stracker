@@ -68,7 +68,7 @@ $media-max-xl: "screen and (max-width: 1399px)"
   &__body
     display: block
   &__footer
-    padding: $blh
+    padding: $blh $blh $blh*2 $blh
     color: #bbb
   &__sections
     overflow: hidden
@@ -428,6 +428,8 @@ $media-max-xl: "screen and (max-width: 1399px)"
 .currenttime
   border: solid 1px #ddd
   padding: $blh/2
+  &__icon
+    margin-right: $blh/4
 
 //////////////////////////////////////////////
 // Component: NEW
@@ -471,6 +473,22 @@ $media-max-xl: "screen and (max-width: 1399px)"
 // Component: NEW
 //////////////////////////////////////////////
 
+.runningtimer
+  position: fixed
+  bottom: 0
+  left: 0
+  padding: $blh/4 $blh
+  background: transparentize($clr-main, 0.15)
+  width: 100%
+  color: #fff
+  &__list
+    padding: 0
+    margin: 0
+  &__item
+    display: inline-block
+    margin-right: $blh
+  &__icon
+    margin-right: $blh/4
 
 
 
