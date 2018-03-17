@@ -23,6 +23,7 @@ import Analytics from '../Analytics';
 import MatchAuthenticated from '../../components/Navigation/MatchAuthenticated';
 import RedirectAuthenticated from '../../components/Navigation/RedirectAuthenticated';
 import Navbar from '../../components/Navbar';
+import RunningClocks from '../../components/Timer/RunningClocks';
 
 type Props = {
   authenticate: () => void,
@@ -67,6 +68,7 @@ class Main extends Component {
           <footer className="app__footer">
             © &int;tracker 2018 | Colt Sliva | Kyle Treptow
           </footer>
+          <RunningClocks />
         </div>
       </BrowserRouter>
     );
