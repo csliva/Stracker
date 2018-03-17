@@ -17,6 +17,11 @@ export function deleteEvent(eventId) {
         //update events here
         return api.fetch(`/task/${getState().task.currentTask.id}/events`).then((response) => {
           dispatch({ type: 'GET_EVENTS', response})
+          //UPDATE RUNNING EVENT
+          return api.fetch(`/board/${getState().session.currentUser.id}/${getState().boards.activeBoard.id}/runningEvent`)
+            .then((response) => {
+              dispatch({ type: 'SET_RUNNING_EVENT', response });
+            });
         })
       })
   };
@@ -75,6 +80,11 @@ export function addEvent(taskId, runningTimer) {
         return api.fetch(`/tasks/board/${localStorage.board}`)
           .then((response) => {
             dispatch({type: 'RECIEVE_STACK', response})
+            //UPDATE RUNNING EVENT
+            return api.fetch(`/board/${getState().session.currentUser.id}/${getState().boards.activeBoard.id}/runningEvent`)
+              .then((response) => {
+                dispatch({ type: 'SET_RUNNING_EVENT', response });
+              });
           })
           .catch((err) => {
             console.log(err);
