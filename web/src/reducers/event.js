@@ -1,5 +1,5 @@
 const initialState = {
-  taskEvents: Array,
+  taskEvents: undefined,
   loadingEvents: true,
   runningEvent: undefined
 };
@@ -23,12 +23,12 @@ export default function (state = initialState, action) {
        ...state,
        loadingEvents: false,
        taskEvents: action.response.data
-     }
+     };
     case 'SET_RUNNING_EVENT':
       return {
         ...state,
         runningEvent: action.response.data
-      }
+      };
     default:
       return state;
   }

@@ -107,6 +107,7 @@ defmodule Stracker.EventController do
   end
 
   def get_running_event(conn, %{"user_id" => user_id, "board_id" => board_id}) do
+    IO.inspect("GETTING RUNNING EVENT*_*_*_*_*_*_*_*_*__________________-")
     running_events = Repo.all(
       from e in Event,
       select: e,

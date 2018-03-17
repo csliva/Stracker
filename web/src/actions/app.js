@@ -2,12 +2,11 @@ import { reset } from 'redux-form';
 import api from '../api';
 
 
-
+//two seperate functions are available to access events. Merge
 function getTaskEvents(taskId, dispatch) {
   dispatch({ type: 'LOAD_IN_EVENTS' });
   return api.fetch(`/task/${taskId}/events`)
     .then((response) => {
-      console.log(response)
       dispatch({ type: 'FETCH_EVENTS_SUCCESS', response });
     });
 }
@@ -15,8 +14,6 @@ function getTaskEvents(taskId, dispatch) {
 // set the active task by accepting the task ID
 // makes an api call to get all the post information
 export function setActiveTask(id) {
-  console.log("_*_*_*_*_SET ACTIVE TASK*_*_*_*__")
-  console.log(id)
   return (dispatch) => {
     return api.fetch(`/tasks/${id}`)
       .then((response) => {

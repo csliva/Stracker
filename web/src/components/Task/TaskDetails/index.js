@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Event from '../../Event';
 import { deleteTask , activateEdit } from '../../../actions/app';
-import { start_timer, end_timer, tick_tock } from '../../../actions/timer';
+import TimeDiff from '../../Timer/TimeDiff';
 
 type Props = {
   currentTask: Object
@@ -13,10 +13,6 @@ class TaskDetails extends Component {
 
   props: Props
 
-  timer = () => {
-   this.props.tick_tock()
-  }
-
   deleteHandler(id){
     this.props.deleteTask(id);
   }
@@ -25,17 +21,26 @@ class TaskDetails extends Component {
     this.props.activateEdit(id);
   }
 
-  timer = () => {
-   this.props.tick_tock()
-  }
+  currentTimer(){
+    //temporary solution to get currentTimer
+    if (this.props.taskEvents !== undefined) {
+    //options to find currentTimer:
+    //Query database and return information with getCurrentTask
+    //filter runningTimers with currentEvents to find
+    let ct = undefined;
 
-  componentWillMount(){
-   var intervalId = setInterval(this.timer, 1000);
-   this.props.start_timer(intervalId);
-  }
-
-  componentWillUnmount() {
-   this.props.end_timer(this.props.intervalId)
+    for (var i = 0; i < this.props.taskEvents.length; i++) {
+        for (var j = 0; j < this.props.runningEvent.length; j++) {
+            if (this.props.taskEvents[i].id === this.props.runningEvent[j].id) {
+                ct = this.props.taskEvents[i];
+                break;
+            }
+        }
+    }
+    if (ct){ return (< TimeDiff timeObject={ct} />) }
+    else { return null; }
+    }
+  else { return null; }
   }
 
   render() {
@@ -58,7 +63,7 @@ class TaskDetails extends Component {
         <p className="details__description">{currentTask.description}</p>
         <div className="currenttime">
           <h4>
-            <b>CURRENT TIMER WILL GO HERE</b>
+            <b>{this.currentTimer()}</b>
           </h4>
         </div>
         <Event />
@@ -70,7 +75,9 @@ class TaskDetails extends Component {
 export default connect(
   state => ({
     currentTask: state.task.currentTask,
-    intervalId: state.timer.intervalId
+    intervalId: state.timer.intervalId,
+    taskEvents: state.event.taskEvents,
+    runningEvent: state.event.runningEvent
   }),
-  {deleteTask, activateEdit, start_timer, end_timer, tick_tock }
+  {deleteTask, activateEdit }
 )(TaskDetails);
