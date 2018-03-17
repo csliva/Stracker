@@ -1,12 +1,12 @@
 import api from '../api';
 import { getAllTasks } from './app.js'
 
-export function fetchEvents(taskId) {
+/*export function fetchEvents(taskId) {
   return dispatch => api.fetch(`/task/${taskId}/events`)
     .then((response) => {
       dispatch({ type: 'FETCH_EVENTS_SUCCESS', response });
     });
-}
+}*/
 
 export function deleteEvent(eventId) {
   //we need to pass in task ID as well.

@@ -1,6 +1,6 @@
 const initialState = {
   isTiming: false,
-  datetimeNow: Number,
+  datetimeNow: new Date().getTime(),
   intervalId: Number, //Not sure what interval ID type is
   runningTimer: []
 };
