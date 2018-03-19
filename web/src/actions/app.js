@@ -35,6 +35,11 @@ export function deleteTask(id) {
         return api.fetch(`/tasks/board/${localStorage.board}`)
           .then((response) => {
             dispatch({type: 'RECIEVE_STACK', response})
+            //UPDATE RUNNING EVENT
+            return api.fetch(`/board/${getState().session.currentUser.id}/runningEvent`)
+              .then((response) => {
+                dispatch({ type: 'SET_RUNNING_EVENT', response });
+              });
           })
           .catch((err) => {
             console.log(err);

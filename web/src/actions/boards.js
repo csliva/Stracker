@@ -91,7 +91,7 @@ export function deleteBoard(user_id, board_id) {
     .then((response) => {
       dispatch({ type: 'DELETE_BOARD_SUCCESS', response });
       //UPDATE RUNNING EVENT
-      return api.fetch(`/board/${getState().session.currentUser.id}/${getState().boards.activeBoard.id}/runningEvent`)
+      return api.fetch(`/board/${getState().session.currentUser.id}/runningEvent`)
         .then((response) => {
           dispatch({ type: 'SET_RUNNING_EVENT', response });
         });

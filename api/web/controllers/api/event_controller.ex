@@ -106,15 +106,13 @@ defmodule Stracker.EventController do
     render(conn, "index.json", events: events)
   end
 
-  def get_running_event(conn, %{"user_id" => user_id, "board_id" => board_id}) do
-    IO.inspect("GETTING RUNNING EVENT*_*_*_*_*_*_*_*_*__________________-")
+  def get_running_event(conn, %{"user_id" => user_id}) do
+    # Get any running event
     running_events = Repo.all(
       from e in Event,
       select: e,
-      join: b in Board,
-      where: b.id == ^board_id and e.updated_by_id == ^user_id and e.running == true
+      where: e.updated_by_id == ^user_id and e.running == true
     )
-    IO.inspect running_events
 
     render(conn, "index.json", events: running_events)
     #select * from events inner join boards on boards.id = 1 where events.running = true and created_by_id = 1;

@@ -18,7 +18,7 @@ export function deleteEvent(eventId) {
         return api.fetch(`/task/${getState().task.currentTask.id}/events`).then((response) => {
           dispatch({ type: 'GET_EVENTS', response})
           //UPDATE RUNNING EVENT
-          return api.fetch(`/board/${getState().session.currentUser.id}/${getState().boards.activeBoard.id}/runningEvent`)
+          return api.fetch(`/board/${getState().session.currentUser.id}/runningEvent`)
             .then((response) => {
               dispatch({ type: 'SET_RUNNING_EVENT', response });
             });
@@ -81,7 +81,7 @@ export function addEvent(taskId, runningTimer) {
           .then((response) => {
             dispatch({type: 'RECIEVE_STACK', response})
             //UPDATE RUNNING EVENT
-            return api.fetch(`/board/${getState().session.currentUser.id}/${getState().boards.activeBoard.id}/runningEvent`)
+            return api.fetch(`/board/${getState().session.currentUser.id}/runningEvent`)
               .then((response) => {
                 dispatch({ type: 'SET_RUNNING_EVENT', response });
               });
@@ -96,8 +96,8 @@ export function addEvent(taskId, runningTimer) {
 //FUNC:
 // GET: running tasks -- tasks with null end time
 // GET: my running task
-export function getRunningEvent(userId, boardId) {
-  return dispatch => api.fetch(`/board/${userId}/${boardId}/runningEvent`)
+export function getRunningEvent(userId) {
+  return dispatch => api.fetch(`/board/${userId}/runningEvent`)
     .then((response) => {
       dispatch({ type: 'SET_RUNNING_EVENT', response });
     });

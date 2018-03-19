@@ -7,9 +7,8 @@ import TimeDiff from '../TimeDiff';
 class RunningClocks extends Component {
 
   render() {
-    if (this.props.currentBoard === undefined){ return null; }
-    else if (this.props.runningEvent === undefined){
-      this.props.getRunningEvent(this.props.userId, this.props.currentBoard.id)
+    if (this.props.runningEvent === undefined){
+      this.props.getRunningEvent(this.props.userId)
       return (null);
     }
     else {
