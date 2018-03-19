@@ -87,9 +87,13 @@ export function toggleBoardForm(boardFormActive){
 }
 
 export function deleteBoard(user_id, board_id) {
-  return dispatch => api.post(`/userboard/${user_id}/${board_id}`)
+  return (dispatch, getState) => api.post(`/userboard/${user_id}/${board_id}`)
     .then((response) => {
-      console.log(response.body)
       dispatch({ type: 'DELETE_BOARD_SUCCESS', response });
+      //UPDATE RUNNING EVENT
+      return api.fetch(`/board/${getState().session.currentUser.id}/${getState().boards.activeBoard.id}/runningEvent`)
+        .then((response) => {
+          dispatch({ type: 'SET_RUNNING_EVENT', response });
+        });
     });
 }
