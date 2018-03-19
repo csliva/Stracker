@@ -111,10 +111,12 @@ defmodule Stracker.EventController do
     running_events = Repo.all(
       from e in Event,
       select: e,
-      where: e.updated_by_id == ^user_id and e.running == true
+      left_join: task in assoc(e, :task),
+      left_join: board in assoc(task, :board),
+      where: e.updated_by_id == ^user_id and e.running == true,
+      preload: [task: {task, board: board}]
     )
-
-    render(conn, "index.json", events: running_events)
+    render(conn, "running.json", events: running_events)
     #select * from events inner join boards on boards.id = 1 where events.running = true and created_by_id = 1;
   end
 
