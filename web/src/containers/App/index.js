@@ -7,23 +7,8 @@ import TaskView from '../../components/Task/TaskView';
 import RunningClocks from '../../components/Timer/RunningClocks';
 import { getAllTasks } from '../../actions/app';
 import { fetchCurrentBoard } from '../../actions/boards';
-import { start_timer, end_timer, tick_tock } from '../../actions/timer';
 
 class App extends Component {
-
-  timer = () => {
-   this.props.tick_tock()
-  }
-  //start timer
-  componentWillMount(){
-   var intervalId = setInterval(this.timer, 1000);
-   this.props.start_timer(intervalId);
-  }
-  //stop timer
-  componentWillUnmount() {
-   this.props.end_timer(this.props.intervalId)
-  }
-
   //we need to pause app until data is loaded
 
   renderPreload(){
@@ -73,4 +58,4 @@ export default connect(
     loadingStack: state.task.loadingStack,
     stack: state.task.stack
   }),
-  { getAllTasks, fetchCurrentBoard, start_timer, end_timer, tick_tock })(App);
+  { getAllTasks, fetchCurrentBoard})(App);

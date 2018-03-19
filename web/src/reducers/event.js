@@ -24,11 +24,6 @@ export default function (state = initialState, action) {
        loadingEvents: false,
        taskEvents: action.response.data
      };
-    case 'SET_ACTIVE_BOARD':
-      return {
-        ...state,
-        runningEvent: undefined
-      };
     case 'SET_RUNNING_EVENT':
       return {
         ...state,

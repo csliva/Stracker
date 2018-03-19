@@ -114,6 +114,7 @@ defmodule Stracker.EventController do
       join: b in Board,
       where: b.id == ^board_id and e.updated_by_id == ^user_id and e.running == true
     )
+    IO.inspect running_events
 
     render(conn, "index.json", events: running_events)
     #select * from events inner join boards on boards.id = 1 where events.running = true and created_by_id = 1;

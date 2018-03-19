@@ -29,6 +29,7 @@ class Event extends Component {
       <div className="timer">
         <ul className="timer__list">
         {this.props.taskEvents.map((object, i) => {
+          if (object.end_time !== null) {
           return (
             <li className="timer__item" key={i} id={object.id}>
               <span><TimeDiff timeObject={object} /> <EventAge insertedAt={object.inserted_at} /></span>
@@ -37,6 +38,7 @@ class Event extends Component {
               </span>
             </li>
           );
+        } else { return null; }
         })}
         </ul>
       </div>

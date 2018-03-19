@@ -7,7 +7,7 @@ defmodule Stracker.Repo.Migrations.CreateEvent do
       add :end_time, :naive_datetime
       add :running, :boolean
       add :total_time, :integer
-      add :task_id, references(:tasks, on_delete: :nothing)
+      add :task_id, references(:tasks, on_delete: :delete_all)
       add :created_by_id, references(:users, on_delete: :nothing)
       add :updated_by_id, references(:users, on_delete: :nothing)
 

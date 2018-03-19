@@ -24,6 +24,7 @@ import MatchAuthenticated from '../../components/Navigation/MatchAuthenticated';
 import RedirectAuthenticated from '../../components/Navigation/RedirectAuthenticated';
 import Navbar from '../../components/Navbar';
 import RunningClocks from '../../components/Timer/RunningClocks';
+import { start_timer, end_timer, tick_tock } from '../../actions/timer';
 
 type Props = {
   authenticate: () => void,
@@ -42,6 +43,20 @@ class Main extends Component {
       this.props.unauthenticate();
     }
   }
+
+  timer = () => {
+   this.props.tick_tock()
+  }
+  //start timer
+  componentWillMount(){
+   var intervalId = setInterval(this.timer, 1000);
+   this.props.start_timer(intervalId);
+  }
+  //stop timer
+  componentWillUnmount() {
+   this.props.end_timer(this.props.intervalId)
+  }
+
 
   props: Props
 
@@ -80,5 +95,5 @@ export default connect(
     isAuthenticated: state.session.isAuthenticated,
     willAuthenticate: state.session.willAuthenticate,
   }),
-  { authenticate, unauthenticate }
+  { authenticate, unauthenticate, start_timer, end_timer, tick_tock  }
 )(Main);
