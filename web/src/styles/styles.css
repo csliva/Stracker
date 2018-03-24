@@ -419,7 +419,7 @@ figure {
       top: 0;
       right: 0;
       height: 100%;
-      width: 40%;
+      width: 50%;
       padding: 26px;
       border-left: solid 1px #eee; } }
 
@@ -448,3 +448,38 @@ figure {
 .currenttime {
   border: solid 1px #ddd;
   padding: 13px; }
+
+.panel--edit {
+  background: #fff;
+  border: solid 1px #ddd;
+  border-radius: 3px; }
+
+.panel__inner {
+  padding: 26px; }
+  .panel__inner--active {
+    visibility: visible;
+    max-height: auto; }
+  .panel__inner--inactive {
+    visibility: hidden;
+    max-height: 0; }
+
+.panel__icon {
+  display: inline-block;
+  width: 52px;
+  height: 52px;
+  border-radius: 100%;
+  line-height: 39px;
+  color: #1e215b; }
+  .panel__icon:first-child {
+    color: #e36ddd; }
+
+.panel__outer {
+  background: #eee;
+  min-height: 100vh; }
+
+.panel__link {
+  display: inline-block;
+  border: solid 1px #ddd;
+  border-radius: 3px; }
+  .panel__link:hover, .panel__link:focus, .panel__link:active {
+    background: #eee; }
