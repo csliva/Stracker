@@ -1,5 +1,16 @@
 # Stracker
 
+### ~~Get things done~~
+
+* Bottom bar hover functionality
+* Login Errors
+* Board Invites
+* Alert System Complete
+* Task Search
+* Exporting Data
+* Home Sales Page Complete
+
+
 ### Setup instructions
 
 You will need two terminal windows open. One for the web react app, and one for the phoenix api.
@@ -41,7 +52,7 @@ On mac you can install with `brew install gcc` or get it through xcode
 #### Populate Data
 To populate data normally:
 * You may create a new user with http://localhost:3000/signup
-* Create a board 
+* Create a board
 * Fill out the task forms
 
 To populate data programmatically:
