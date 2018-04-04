@@ -146,7 +146,7 @@ figure {
   background: transparent; }
 
 .panel {
-  width: 600px;
+  width: 750px;
   max-width: 100%;
   margin: auto;
   padding: 52px; }
@@ -163,8 +163,35 @@ figure {
     color: #1e215b; }
     .content--negative .content__headline {
       color: #fff; }
+  .content__icon {
+    margin: 0 6.5px; }
+    .content__icon--start {
+      margin-left: 0; }
   .content--negative {
     color: #eee; }
+  @media screen and (min-width: 768px) {
+    .content--dual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 26px; }
+    .content__text {
+      grid-column: 1 / span 1;
+      grid-row: 1; }
+      .content--alt .content__text {
+        grid-column: 2 / span 1; }
+    .content__graphic {
+      grid-column: 2 / span 1;
+      grid-row: 1; }
+      .content--alt .content__graphic {
+        grid-column: 1 / span 1; } }
+
+.temp-graphic {
+  display: block;
+  height: 100%;
+  background: #fafafa;
+  border: dotted 1px #ccc;
+  padding: 26px;
+  text-align: center; }
 
 .nav {
   background: #1e215b;
@@ -499,6 +526,28 @@ figure {
     margin: 0; }
   .runningtimer__item {
     display: inline-block;
-    margin-right: 26px; }
+    margin-right: 26px;
+    position: relative;
+    cursor: pointer; }
   .runningtimer__icon {
     margin-right: 6.5px; }
+  .runningtimer__info {
+    position: absolute;
+    top: -78px;
+    left: 0;
+    width: 200%;
+    background: #1e215b;
+    display: none;
+    padding: 6.5px 13px; }
+    .runningtimer__info:before {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 12px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 6px 6px 0 6px;
+      border-color: #1e215b transparent transparent transparent; }
+    .runningtimer__item:hover .runningtimer__info {
+      display: block; }

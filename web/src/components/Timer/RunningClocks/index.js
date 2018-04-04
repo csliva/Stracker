@@ -21,8 +21,10 @@ class RunningClocks extends Component {
                 <li className="runningtimer__item" key={i} id={object.id}>
                   <i className="runningtimer__icon fa fa-clock-o"></i>
                   <TimeDiff timeObject={object} />
-                  <span> {object.board_name} </span>
-                  <span> {object.task_title} </span>
+
+                  <span className="runningtimer__info"> {object.board_name}<br/>
+                  {object.task_title} </span>
+
                 </li>
               );
             })}

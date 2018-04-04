@@ -38,7 +38,6 @@ $media-min-sm: "screen and (min-width: 768px)"
 $media-min-md: "screen and (min-width: 992px)"
 $media-min-lg: "screen and (min-width: 1200px)"
 $media-min-xl: "screen and (min-width: 1400px)"
-
 // media breakpoints (max)
 $media-max-xs: "screen and (max-width: 575px)"
 $media-max-sm: "screen and (max-width: 767px)"
@@ -105,7 +104,7 @@ $media-max-xl: "screen and (max-width: 1399px)"
 //////////////////////////////////////////////
 
 .panel
-  width: 600px
+  width: 750px
   max-width: 100%
   margin: auto
   padding: $blh*2
@@ -130,8 +129,36 @@ $media-max-xl: "screen and (max-width: 1399px)"
     color: $clr-main
     .content--negative &
       color: #fff
+  &__icon
+    margin: 0 $blh/4
+    &--start
+      margin-left: 0
   &--negative
     color: #eee
+  @media #{$media-min-sm}
+    &--dual
+      display: grid
+      grid-template-columns: 1fr 1fr
+      grid-gap: $blh
+    &__text
+      grid-column: 1 / span 1
+      grid-row: 1
+      .content--alt &
+        grid-column: 2 / span 1
+    &__graphic
+      grid-column: 2 / span 1
+      grid-row: 1
+      .content--alt &
+        grid-column: 1 / span 1
+
+
+.temp-graphic
+  display: block
+  height: 100%
+  background: #fafafa
+  border: dotted 1px #ccc
+  padding: $blh
+  text-align: center
 
 //////////////////////////////////////////////
 // Component: Nav
@@ -487,19 +514,30 @@ $media-max-xl: "screen and (max-width: 1399px)"
   &__item
     display: inline-block
     margin-right: $blh
+    position: relative
+    cursor: pointer
   &__icon
     margin-right: $blh/4
-
-
-
-
-
-
-
-
-
-
-
+  &__info
+    position: absolute
+    top: -$blh*3
+    left: 0
+    width: 200%
+    background: $clr-main
+    display: none
+    padding: $blh/4 $blh/2
+    &:before
+      content: ''
+      position: absolute
+      bottom: -6px
+      left: 12px
+      width: 0
+      height: 0
+      border-style: solid
+      border-width: 6px 6px 0 6px
+      border-color: $clr-main transparent transparent transparent
+    .runningtimer__item:hover &
+      display: block
 
 
 //////////////////////////////////////////////
