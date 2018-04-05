@@ -538,7 +538,8 @@ figure {
     width: 200%;
     background: #1e215b;
     display: none;
-    padding: 6.5px 13px; }
+    padding: 6.5px 13px;
+    border-radius: 4px; }
     .runningtimer__info:before {
       content: '';
       position: absolute;
