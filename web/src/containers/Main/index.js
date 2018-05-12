@@ -42,19 +42,9 @@ class Main extends Component {
 
   updateLayout(){
     if(window.innerWidth <= 767){
-      this.props.isMobile(true),
-      () => console.log('mobile layout');
+      this.props.isMobile(true)
     } else {
-      this.props.isMobile(false),
-      () => console.log('desktop layout');
-    }
-  }
-
-  updateLayout(){
-    if(window.innerWidth <= 767){
-      this.props.isMobile(true);
-    } else {
-      this.props.isMobile(false);
+      this.props.isMobile(false)
     }
   }
 

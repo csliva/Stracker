@@ -1,7 +1,7 @@
 // @flow
 import React, { Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
-import { setActiveBoard, deleteBoard } from '../../actions/boards';
+import { setActiveBoard, deleteBoard, toggleDropdown } from '../../actions/boards';
 
 
 type Props = {
@@ -30,14 +30,41 @@ class BoardList extends Component {
     this.props.deleteBoard(user_id, board_id)
   }
 
+  toggle_dropdown(){
+    this.props.toggleDropdown(this.props.dropdownActive)
+  }
+
   render() {
     var that = this;
+    var dropdownClass = this.props.dropdownActive ? "dropdown--active" : "dropdown--inactive"
     return (
       <div className="boardlist">
         {this.props.boards.map(function(object, i){
           return (
             <div className="boardlist__item" key={i}>
-              <button className="boardlist__close" onClick={that.boardDelete.bind(that, that.props.currentUser.id, object.id)}><i className="fa fa-times"></i></button>
+            <div className="dropdown">
+                <button className="dropdown__toggle" onClick={that.toggle_dropdown.bind(that)}>
+                  <i className="fa fa-cog"></i>
+                </button>
+                <div className={dropdownClass}>
+                <div className="dropdown__menu">
+                  <ul className="dropdown__list">
+                    <li className="dropdown__item">
+                      <button className="dropdown__button">Edit Board</button>
+                    </li>
+                    <li className="dropdown__item">
+                      <button className="dropdown__button">Manage Users</button>
+                    </li>
+                    <li className="dropdown__item">
+                      <button className="dropdown__button">Delete Board</button>
+                    </li>
+                    <li className="dropdown__item">
+                      <button className="dropdown__button">Export Data</button>
+                    </li>
+                  </ul>
+                </div>
+                </div>
+              </div>
               <button className="boardlist__inner" onClick={that.clickHandler.bind(that, object.id, i)}>
                 <span className="boardlist__letter">{object.name.charAt(0)}</span>
                 <div className="boardlist__info">
@@ -56,7 +83,8 @@ export default connect(
   state => ({
     currentUser: state.session.currentUser,
     boards: state.boards.currentUserBoards,
-    loadingBoards: state.boards.loadingBoards
+    loadingBoards: state.boards.loadingBoards,
+    dropdownActive: state.boards.dropdownActive,
   }),
-  { setActiveBoard, deleteBoard }
+  { setActiveBoard, deleteBoard, toggleDropdown }
 )(BoardList);

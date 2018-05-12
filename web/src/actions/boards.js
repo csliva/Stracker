@@ -86,6 +86,10 @@ export function toggleBoardForm(boardFormActive){
  };
 }
 
+export function toggleDropdown(dropdownActive){
+  return dispatch => dispatch({ type: 'TOGGLE_DROPDOWN', payload: dropdownActive});
+}
+
 export function deleteBoard(user_id, board_id) {
   return (dispatch, getState) => api.post(`/userboard/${user_id}/${board_id}`)
     .then((response) => {

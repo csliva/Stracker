@@ -2,7 +2,8 @@ const initialState = {
   currentUserBoards: [],
   activeBoard: undefined,
   boardFormActive: false,
-  boardUsers: Object
+  boardUsers: Object,
+  dropdownActive: false
 };
 
 export default function (state = initialState, action) {
@@ -49,6 +50,11 @@ export default function (state = initialState, action) {
           ...state,
           currentUserBoards: action.response.data
         };
+      case 'TOGGLE_DROPDOWN':
+        return {
+          ...state,
+          dropdownActive: !action.payload
+        }
     default:
       return state;
   }

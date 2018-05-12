@@ -216,6 +216,49 @@ $media-max-xl: "screen and (max-width: 1399px)"
     margin-bottom: $blh
 
 //////////////////////////////////////////////
+// Component: Dropdown
+//////////////////////////////////////////////
+
+.dropdown
+  display: block
+  &__toggle
+    display: inline-block
+  &__menu
+    // overflow: hidden
+    // height: auto
+    // max-height: 0
+  &__list
+    display: block
+    padding: $blh/8 0
+    margin: 0
+    border: solid 1px #ddd
+    background: #fff
+  &__item
+    display: block
+    border-top: solid 1px #ddd
+    &:last-child
+      border-bottom: solid 1px #ddd
+  &__button
+    +transition-2(color, background-color)
+    display: block
+    width: 100%
+    background: transparent
+    border-radius: 0
+    border: 0
+    text-align: left
+    padding: $blh/4
+    &:hover,
+    &:focus,
+    &:active
+      cursor: pointer
+      background: $clr-main
+      color: #fff
+  &--active
+    display: block
+  &--inactive
+    display: none
+
+//////////////////////////////////////////////
 // Component: Board List
 //////////////////////////////////////////////
 
@@ -245,7 +288,7 @@ $media-max-xl: "screen and (max-width: 1399px)"
   &__info
   &__title
   &__description
-  &__close
+  &__options
     +transition(color)
     position: absolute
     top: 0
