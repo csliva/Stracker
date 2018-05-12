@@ -26,19 +26,11 @@ import Navbar from '../../components/Navbar';
 import RunningClocks from '../../components/Timer/RunningClocks';
 import { start_timer, end_timer, tick_tock } from '../../actions/timer';
 
-<<<<<<< HEAD
-class Main extends Component {
-  componentDidMount() {
-    const token = localStorage.getItem('token');
-    this.updateLayout()
-    window.addEventListener('resize', this.updateLayout.bind(this));
-=======
 
 
 class Main extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token');
->>>>>>> frontend
     if (token) {
       this.props.authenticate();
     } else {
@@ -85,8 +77,6 @@ class Main extends Component {
   render() {
     const { isAuthenticated, willAuthenticate } = this.props;
     const authProps = { isAuthenticated, willAuthenticate };
-    let appClass = this.props.mobile ? 'app app--mobile' : 'app';
-
     let appClass = this.props.mobile ? 'app app--mobile' : 'app';
 
     return (
