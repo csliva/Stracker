@@ -42,16 +42,6 @@ class Main extends Component {
 
   updateLayout(){
     if(window.innerWidth <= 767){
-      this.props.isMobile(true),
-      () => console.log('mobile layout');
-    } else {
-      this.props.isMobile(false),
-      () => console.log('desktop layout');
-    }
-  }
-
-  updateLayout(){
-    if(window.innerWidth <= 767){
       this.props.isMobile(true);
     } else {
       this.props.isMobile(false);
@@ -66,7 +56,6 @@ class Main extends Component {
    var intervalId = setInterval(this.timer, 1000);
    this.props.start_timer(intervalId);
    this.updateLayout();
-
   }
   //stop timer
   componentWillUnmount() {

@@ -37,7 +37,34 @@ class BoardList extends Component {
         {this.props.boards.map(function(object, i){
           return (
             <div className="boardlist__item" key={i}>
-              <button className="boardlist__close" onClick={that.boardDelete.bind(that, that.props.currentUser.id, object.id)}><i className="fa fa-times"></i></button>
+
+              <div className="boardlist__options"
+                // onClick={that.boardDelete.bind(that, that.props.currentUser.id, object.id)}
+                >
+
+                <div className="dropdown">
+                  <button className="dropdown__toggle">
+                    <i className="fa fa-cog"></i>
+                  </button>
+                  <div className="dropdown__menu">
+                    <ul className="dropdown__list">
+                      <li className="dropdown__item">
+                        <button className="dropdown__button">Edit Board</button>
+                      </li>
+                      <li className="dropdown__item">
+                        <button className="dropdown__button">Manage Users</button>
+                      </li>
+                      <li className="dropdown__item">
+                        <button className="dropdown__button">Delete Board</button>
+                      </li>
+                      <li className="dropdown__item">
+                        <button className="dropdown__button">Export Data</button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
               <button className="boardlist__inner" onClick={that.clickHandler.bind(that, object.id, i)}>
                 <span className="boardlist__letter">{object.name.charAt(0)}</span>
                 <div className="boardlist__info">
