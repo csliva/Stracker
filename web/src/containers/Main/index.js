@@ -56,7 +56,6 @@ class Main extends Component {
    var intervalId = setInterval(this.timer, 1000);
    this.props.start_timer(intervalId);
    this.updateLayout();
-
   }
   //stop timer
   componentWillUnmount() {
