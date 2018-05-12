@@ -12,7 +12,11 @@ class EventAge extends Component {
       );
     }
   else { throw new Error("Component EventAge demands vanilla prop `insertedAt`"); }
+<<<<<<< HEAD
   }//end render
+=======
+  } //end render
+>>>>>>> frontend
 }
 
 export default EventAge;

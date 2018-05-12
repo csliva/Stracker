@@ -19,6 +19,7 @@ class Task extends Component {
   }
 
   setClassName(){
+<<<<<<< HEAD
     let className = "task"
     if (this.props.runningEvent){
       for(var i = 0; i < this.props.runningEvent.length; i++){
@@ -30,6 +31,22 @@ class Task extends Component {
       else {className += " task--inactive"}
     }
     return className
+=======
+    var className = 'task';
+    if(this.props.runningEvent){
+      for(var i = 0; i < this.props.runningEvent.length; i++){
+        if(this.props.id === this.props.runningEvent[i].task_id)
+        className += ' task--running';
+      }
+      if(this.props.id === this.props.currentTask.id){
+        className += ' task--active';
+      } else {
+        className += ' task--inactive';
+      }
+    }
+
+    return className;
+>>>>>>> frontend
   }
 
   render() {
@@ -45,7 +62,7 @@ class Task extends Component {
     return (
       <li
         onClick={this.timeEventHandler.bind(this, this.props.id)}
-        className={this.setClassName()}>
+        className={this.setClassName()} >
         {this.props.name}
       </li>
     );}
@@ -56,7 +73,11 @@ export default connect(
   state => ({
     formActive: state.task.formActive,
     currentTask: state.task.currentTask,
+<<<<<<< HEAD
     runningEvent: state.event.runningEvent,
+=======
+    runningEvent: state.event.runningEvent
+>>>>>>> frontend
   }),
   { setActiveTask, formDeactivate, addEvent}
 )(Task);

@@ -26,15 +26,35 @@ import Navbar from '../../components/Navbar';
 import RunningClocks from '../../components/Timer/RunningClocks';
 import { start_timer, end_timer, tick_tock } from '../../actions/timer';
 
+<<<<<<< HEAD
 class Main extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token');
     this.updateLayout()
     window.addEventListener('resize', this.updateLayout.bind(this));
+=======
+
+
+class Main extends Component {
+  componentDidMount() {
+    const token = localStorage.getItem('token');
+>>>>>>> frontend
     if (token) {
       this.props.authenticate();
     } else {
       this.props.unauthenticate();
+    }
+    this.updateLayout();
+    window.addEventListener('resize', this.updateLayout.bind(this));
+  }
+
+  updateLayout(){
+    if(window.innerWidth <= 767){
+      this.props.isMobile(true),
+      () => console.log('mobile layout');
+    } else {
+      this.props.isMobile(false),
+      () => console.log('desktop layout');
     }
   }
 
@@ -53,6 +73,8 @@ class Main extends Component {
   componentWillMount(){
    var intervalId = setInterval(this.timer, 1000);
    this.props.start_timer(intervalId);
+   this.updateLayout();
+
   }
   //stop timer
   componentWillUnmount() {
@@ -63,6 +85,8 @@ class Main extends Component {
   render() {
     const { isAuthenticated, willAuthenticate } = this.props;
     const authProps = { isAuthenticated, willAuthenticate };
+    let appClass = this.props.mobile ? 'app app--mobile' : 'app';
+
     let appClass = this.props.mobile ? 'app app--mobile' : 'app';
 
     return (

@@ -71,4 +71,9 @@ export function authenticate() {
   };
 }
 
+export function isMobile(data){
+  return dispatch => dispatch({ type: 'IS_MOBILE', data});
+}
+
+
 export const unauthenticate = () => ({ type: 'AUTHENTICATION_FAILURE' });
