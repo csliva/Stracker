@@ -62,6 +62,8 @@ $media-max-xl: "screen and (max-width: 1399px)"
   position: relative
   min-height: 100vh
   background: $clr-bg
+  &--mobile
+    // border: solid 1px red
   &__header
     display: block
   &__body
@@ -352,13 +354,16 @@ $media-max-xl: "screen and (max-width: 1399px)"
   border: solid 1px #eee
   border-radius: 3px
   +transition-2(color, background-color)
+  &--inactive
+    color: $clr-main
+  &--running
+    color: #fff
+    background: $clr-hlt
   &--active
     color: #fff
     background: $clr-alt
-  &--inactive
-    color: $clr-main
 
-.form
+.for
   &--task
     background: #fff
     padding: $blh

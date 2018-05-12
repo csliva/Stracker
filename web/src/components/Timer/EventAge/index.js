@@ -11,8 +11,8 @@ class EventAge extends Component {
         <span className="date">{dt} ago</span>
       );
     }
-  else { throw "Component EventAge demands vanilla prop `insertedAt`"; return null; }
-  }//end render
+  else { throw new Error("Component EventAge demands vanilla prop `insertedAt`"); }
+  } //end render
 }
 
 export default EventAge;

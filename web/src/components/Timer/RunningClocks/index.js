@@ -8,7 +8,10 @@ class RunningClocks extends Component {
 
   render() {
     if (this.props.runningEvent === undefined){
-      this.props.getRunningEvent(this.props.userId)
+      if(this.props.userId) {
+        this.props.getRunningEvent(this.props.userId)
+        return (null);
+      }
       return (null);
     }
     else {

@@ -9,7 +9,7 @@ router will path to other users
 import React, { Component } from 'react';
 import { BrowserRouter, Miss, Match } from 'react-router';
 import { connect } from 'react-redux';
-import { authenticate, unauthenticate } from '../../actions/session';
+import { authenticate, unauthenticate, isMobile } from '../../actions/session';
 import Home from '../Home';
 import App from '../App';
 import BoardManagement from '../BoardManagement';
@@ -26,21 +26,27 @@ import Navbar from '../../components/Navbar';
 import RunningClocks from '../../components/Timer/RunningClocks';
 import { start_timer, end_timer, tick_tock } from '../../actions/timer';
 
-type Props = {
-  authenticate: () => void,
-  unauthenticate: () => void,
-  isAuthenticated: boolean,
-  willAuthenticate: boolean,
-}
+
 
 class Main extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token');
-
     if (token) {
       this.props.authenticate();
     } else {
       this.props.unauthenticate();
+    }
+    this.updateLayout();
+    window.addEventListener('resize', this.updateLayout.bind(this));
+  }
+
+  updateLayout(){
+    if(window.innerWidth <= 767){
+      this.props.isMobile(true),
+      () => console.log('mobile layout');
+    } else {
+      this.props.isMobile(false),
+      () => console.log('desktop layout');
     }
   }
 
@@ -51,22 +57,23 @@ class Main extends Component {
   componentWillMount(){
    var intervalId = setInterval(this.timer, 1000);
    this.props.start_timer(intervalId);
+   this.updateLayout();
+
   }
   //stop timer
   componentWillUnmount() {
    this.props.end_timer(this.props.intervalId)
   }
 
-
-  props: Props
-
   render() {
     const { isAuthenticated, willAuthenticate } = this.props;
     const authProps = { isAuthenticated, willAuthenticate };
 
+    let appClass = this.props.mobile ? 'app app--mobile' : 'app';
+
     return (
       <BrowserRouter>
-        <div className="app">
+        <div className={appClass}>
           <Navbar />
           <div className="app__body">
             <Notification/>
@@ -94,6 +101,7 @@ export default connect(
   state => ({
     isAuthenticated: state.session.isAuthenticated,
     willAuthenticate: state.session.willAuthenticate,
+    mobile: state.session.mobile
   }),
-  { authenticate, unauthenticate, start_timer, end_timer, tick_tock  }
+  { authenticate, unauthenticate, isMobile, start_timer, end_timer, tick_tock  }
 )(Main);
