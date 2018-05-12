@@ -42,27 +42,29 @@ class BoardList extends Component {
         {this.props.boards.map(function(object, i){
           return (
             <div className="boardlist__item" key={i}>
-            <div className="dropdown">
-                <button className="dropdown__toggle" onClick={that.toggle_dropdown.bind(that)}>
-                  <i className="fa fa-cog"></i>
-                </button>
-                <div className={dropdownClass}>
-                <div className="dropdown__menu">
-                  <ul className="dropdown__list">
-                    <li className="dropdown__item">
-                      <button className="dropdown__button">Edit Board</button>
-                    </li>
-                    <li className="dropdown__item">
-                      <button className="dropdown__button">Manage Users</button>
-                    </li>
-                    <li className="dropdown__item">
-                      <button className="dropdown__button">Delete Board</button>
-                    </li>
-                    <li className="dropdown__item">
-                      <button className="dropdown__button">Export Data</button>
-                    </li>
-                  </ul>
-                </div>
+
+              <div className="boardlist__options">
+
+                <div className="dropdown">
+                  <button className="dropdown__toggle">
+                    <i className="fa fa-cog"></i>
+                  </button>
+                  <div className="dropdown__menu">
+                    <ul className="dropdown__list">
+                      <li className="dropdown__item">
+                        <button className="dropdown__button">Edit Board</button>
+                      </li>
+                      <li className="dropdown__item">
+                        <button className="dropdown__button">Manage Users</button>
+                      </li>
+                      <li className="dropdown__item">
+                        <button className="dropdown__button">Delete Board</button>
+                      </li>
+                      <li className="dropdown__item">
+                        <button className="dropdown__button">Export Data</button>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
               <button className="boardlist__inner" onClick={that.clickHandler.bind(that, object.id, i)}>
