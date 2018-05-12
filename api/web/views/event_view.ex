@@ -35,6 +35,7 @@ defmodule Stracker.EventView do
       running: event.running,
       total_time: event.total_time,
       task_title: event.task.task_title,
+      task_id: event.task.id,
       board_name: event.task.board.name,
       created_by_id: event.created_by_id,
       updated_by_id: event.updated_by_id,

@@ -119,6 +119,8 @@ figure {
   background: #f7f7f7; }
   .app__header {
     display: block; }
+  .app--mobile {
+    border: solid 5px red; }
   .app__body {
     display: block; }
   .app__footer {
@@ -373,11 +375,14 @@ figure {
   -ms-transition: color 0.3s ease-out, background-color 0.3s ease-out;
   -o-transition: color 0.3s ease-out, background-color 0.3s ease-out;
   transition: color 0.3s ease-out, background-color 0.3s ease-out; }
+  .task--inactive {
+    color: #1e215b; }
+  .task--running {
+    color: #fff;
+    background: #e36ddd; }
   .task--active {
     color: #fff;
     background: #5c457e; }
-  .task--inactive {
-    color: #1e215b; }
 
 .form--task {
   background: #fff;

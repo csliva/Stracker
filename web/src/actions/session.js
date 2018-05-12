@@ -26,6 +26,10 @@ export function login(data, router) {
     });
 }
 
+export function isMobile(data){
+  return dispatch => dispatch({ type: 'IS_MOBILE', data});
+}
+
 export function invite(data, router) {
   return dispatch => api.post('/invite', data)
     .then((response) => {

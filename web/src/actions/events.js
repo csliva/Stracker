@@ -1,5 +1,4 @@
 import api from '../api';
-import { getAllTasks } from './app.js'
 
 /*export function fetchEvents(taskId) {
   return dispatch => api.fetch(`/task/${taskId}/events`)

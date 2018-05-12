@@ -2,6 +2,7 @@ const initialState = {
   isAuthenticated: false,
   willAuthenticate: true,
   currentUser: {},
+  mobile: false
 };
 
 export default function (state = initialState, action) {
@@ -29,6 +30,11 @@ export default function (state = initialState, action) {
         willAuthenticate: false,
         isAuthenticated: false,
         currentUser: {},
+      };
+    case 'IS_MOBILE':
+      return {
+        ...state,
+        mobile: action.data,
       };
     default:
       return state;

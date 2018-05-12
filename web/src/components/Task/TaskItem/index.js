@@ -18,7 +18,19 @@ class Task extends Component {
     else { this.viewTaskHandler(id) }
   }
 
-  setClassName(){return this.props.id === this.props.runningTimer[0] ? "task task--active" : "task task--inactive"}
+  setClassName(){
+    let className = "task"
+    if (this.props.runningEvent){
+      for(var i = 0; i < this.props.runningEvent.length; i++){
+        if (this.props.id === this.props.runningEvent[i].task_id) { className += " task--running" }
+      }
+      if (this.props.id === this.props.currentTask.id) {
+        className += " task--active"
+      }
+      else {className += " task--inactive"}
+    }
+    return className
+  }
 
   render() {
     //this is rendered if a task is not active
@@ -26,7 +38,7 @@ class Task extends Component {
     return (
       <li
         onClick={this.viewTaskHandler.bind(this, this.props.id)}
-        className="task task--default" >
+        className={this.setClassName()} >
         {this.props.name}
       </li>
     );} else{
@@ -44,7 +56,7 @@ export default connect(
   state => ({
     formActive: state.task.formActive,
     currentTask: state.task.currentTask,
-    runningTimer: state.timer.runningTimer
+    runningEvent: state.event.runningEvent,
   }),
   { setActiveTask, formDeactivate, addEvent}
 )(Task);
