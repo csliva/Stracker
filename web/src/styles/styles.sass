@@ -223,13 +223,16 @@ $media-max-xl: "screen and (max-width: 1399px)"
 //////////////////////////////////////////////
 
 .options
-  display: none
+  display: block
   &__toggle
     display: inline-block
   &__menu
-    // overflow: hidden
-    // height: auto
-    // max-height: 0
+    +transition(max-height)
+    overflow: hidden
+    height: auto
+    max-height: 0
+    .options--active &
+      max-height: 500px
   &__list
     display: block
     padding: $blh/8 0
@@ -256,8 +259,6 @@ $media-max-xl: "screen and (max-width: 1399px)"
       cursor: pointer
       background: $clr-main
       color: #fff
-  &--active
-    display: block
 
 //////////////////////////////////////////////
 // Component: Board List

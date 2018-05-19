@@ -249,9 +249,20 @@ figure {
   margin-bottom: 26px; }
 
 .options {
-  display: none; }
+  display: block; }
   .options__toggle {
     display: inline-block; }
+  .options__menu {
+    -webkit-transition: max-height 0.3s ease-out;
+    -moz-transition: max-height 0.3s ease-out;
+    -ms-transition: max-height 0.3s ease-out;
+    -o-transition: max-height 0.3s ease-out;
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    height: auto;
+    max-height: 0; }
+    .options--active .options__menu {
+      max-height: 500px; }
   .options__list {
     display: block;
     padding: 3.25px 0;
@@ -280,8 +291,6 @@ figure {
       cursor: pointer;
       background: #1e215b;
       color: #fff; }
-  .options--active {
-    display: block; }
 
 .boardlist {
   padding: 0;
