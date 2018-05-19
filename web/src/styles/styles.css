@@ -154,9 +154,16 @@ figure {
   padding: 52px; }
 
 .dropdown {
-  display: none; }
+  -webkit-transition: max-height 0.3s ease-out;
+  -moz-transition: max-height 0.3s ease-out;
+  -ms-transition: max-height 0.3s ease-out;
+  -o-transition: max-height 0.3s ease-out;
+  transition: max-height 0.3s ease-out;
+  height: auto;
+  max-height: 0;
+  overflow: hidden; }
   .dropdown--active {
-    display: block; }
+    max-height: 600px; }
 
 .content {
   color: #666;
