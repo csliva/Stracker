@@ -86,8 +86,8 @@ export function toggleBoardForm(boardFormActive){
  };
 }
 
-export function toggleDropdown(dropdownActive){
-  return dispatch => dispatch({ type: 'TOGGLE_DROPDOWN', payload: dropdownActive});
+export function toggleOptions(optionsActive){
+  return dispatch => dispatch({ type: 'TOGGLE_OPTIONS', payload: optionsActive});
 }
 
 export function deleteBoard(user_id, board_id) {
