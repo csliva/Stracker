@@ -385,6 +385,8 @@ figure {
     padding: 0; }
   .nav__item {
     display: inline-block; }
+    .nav__item--right {
+      float: right; }
   .nav__link, .nav__button {
     font-size: 16px;
     line-height: 26px;
