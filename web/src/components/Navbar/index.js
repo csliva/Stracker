@@ -42,18 +42,6 @@ class Navbar extends Component {
       );
     }
   }
-  renderSettingsLink(){
-    const { isAuthenticated } = this.props;
-    if (isAuthenticated){
-      return (
-        <li className="nav__item nav__item--right">
-          <Link className="nav__link"  to="/settings">
-            Manage Settings
-          </Link>
-        </li>
-      );
-    }
-  }
   render() {
     return (
       <header className="app__header">
@@ -63,7 +51,6 @@ class Navbar extends Component {
               <Link className="nav__link nav__link--branding" to="/">&int;tracker</Link>
             </li>
             { this.renderBoardsLink() }
-            { this.renderSettingsLink() }
             { this.renderLogoutLink() }
           </ul>
         </nav>
