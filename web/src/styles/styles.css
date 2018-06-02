@@ -80,7 +80,8 @@ h4,
   small,
   button,
   .fs-h5,
-  .fs-small {
+  .fs-small,
+  .options__button {
     font-size: 12.003px; } }
 
 @media screen and (max-width: 767px) {
@@ -88,7 +89,8 @@ h4,
   small,
   button,
   .fs-h5,
-  .fs-small {
+  .fs-small,
+  .options__button {
     font-size: 14.22222px; } }
 
 p, ul, ol, pre, table, blockquote {
@@ -289,6 +291,7 @@ figure {
     .options__item:last-child {
       border-bottom: solid 1px #ddd; }
   .options__button {
+    line-height: 13px;
     -webkit-transition: color 0.3s ease-out, background-color 0.3s ease-out;
     -moz-transition: color 0.3s ease-out, background-color 0.3s ease-out;
     -ms-transition: color 0.3s ease-out, background-color 0.3s ease-out;
@@ -302,7 +305,8 @@ figure {
     text-align: left;
     padding: 6.5px 13px;
     background: #fff;
-    text-decoration: none; }
+    text-decoration: none;
+    color: #1e215b; }
     .options__button:hover, .options__button:focus, .options__button:active {
       cursor: pointer;
       background: #1e215b;
