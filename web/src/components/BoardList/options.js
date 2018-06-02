@@ -39,7 +39,7 @@ class Options extends Component {
           <div className="options__menu">
             <ul className="options__list">
               <li className="options__item">
-                <Link to="/edit/board"><button className="options__button">Edit Board</button></Link>
+                <Link className="options__button" to="/edit/board">Edit Board</Link>
               </li>
               <li className="options__item">
                 <button className="options__button">Manage Users</button>
