@@ -7,3 +7,41 @@
   max-width: 100%
   margin: auto
   padding: $blh*2
+
+//////////////////////////////////////////////
+// Component: Panel
+//////////////////////////////////////////////
+
+.panel
+  &--edit
+    background: #fff
+    border: solid 1px #ddd
+    border-radius: 3px
+  &__inner
+    padding: $blh
+    &--active
+      visibility: visible
+      max-height: auto
+    &--inactive
+      visibility: hidden
+      max-height: 0
+  &__icon
+    display: inline-block
+    width: $blh*2
+    height: $blh*2
+    border-radius: 100%
+    line-height: $blh*1.5
+    color: $clr-main
+    &:first-child
+      color: $clr-hlt
+  &__outer
+    background: #eee
+    min-height: 100vh
+  &__link
+    display: inline-block
+    border: solid 1px #ddd
+    border-radius: 3px
+    &:hover,
+    &:focus,
+    &:active
+      background: #eee

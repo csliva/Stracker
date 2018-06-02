@@ -1,0 +1,29 @@
+//////////////////////////////////////////////
+// Component: Details
+//////////////////////////////////////////////
+
+.details
+  display: block
+  background: #fff
+  text-align: left
+  box-shadow: 0 0 0 rgba(0,0,0,0.15)
+  height: 100%
+  overflow: hidden
+  border: solid 1px #eee
+  &__panel
+    height: 100%
+    overflow: hidden
+    padding: $blh
+  &__title
+    margin: 0
+  &__description
+    position: relative
+  @media #{$media-min-xs}
+    grid-row: 1
+    grid-column: 2
+    max-height: 100%
+    &__panel
+      height: 100%
+      overflow: hidden
+      position: relative
+      padding-right: 50%
