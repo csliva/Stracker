@@ -11,7 +11,7 @@ class Notification extends Component {
       return(
         <div id="message" className="notification">
           <button className="notification__close" onClick={this.props.clearNotification} aria-label="delete">
-            <i class="fa fa-times"></i>
+            <i className="fa fa-times"></i>
           </button>
           <p className="notification__message">
             Notification
