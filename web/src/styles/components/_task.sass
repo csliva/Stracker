@@ -1,0 +1,21 @@
+//////////////////////////////////////////////
+// Component: Task
+//////////////////////////////////////////////
+
+.task
+  display: block
+  background: #fff
+  margin-bottom: $blh/4
+  padding: $blh/4 $blh/2
+  color: #666
+  border: solid 1px #eee
+  border-radius: 3px
+  +transition-2(color, background-color)
+  &--inactive
+    color: $clr-main
+  &--running
+    color: #fff
+    background: $clr-hlt
+  &--active
+    color: #fff
+    background: $clr-alt

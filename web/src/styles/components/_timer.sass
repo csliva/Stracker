@@ -1,0 +1,24 @@
+//////////////////////////////////////////////
+// Component: Timer
+//////////////////////////////////////////////
+
+.timer
+  height: 100%
+  overflow-y: scroll
+  font-size: $fs-base / $scale-factor
+  &__list
+    padding: 0
+    margin: 0
+  &__item
+    display: block
+  &__delete
+    color: $clr-hlt
+    margin-left: $blh/2
+  @media #{$media-min-xs}
+    position: absolute
+    top: 0
+    right: 0
+    height: 100%
+    width: 50%
+    padding: $blh
+    border-left: solid 1px #eee
