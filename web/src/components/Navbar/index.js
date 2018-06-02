@@ -22,7 +22,7 @@ class Navbar extends Component {
     const { isAuthenticated } = this.props;
     if (isAuthenticated){
       return (
-        <li className="nav__item nav__item--right">
+        <li className="nav__item">
           <Link className="nav__link"  to="/boards">
             Go to Boards
           </Link>
@@ -34,7 +34,7 @@ class Navbar extends Component {
     const { currentUser, isAuthenticated } = this.props;
     if (isAuthenticated){
       return (
-        <li className="nav__item">
+        <li className="nav__item nav__item--right">
           <button className="nav__button" type="button" onClick={this.handleLogout}>
             Logout (<span>{currentUser.username}</span>)
           </button>
