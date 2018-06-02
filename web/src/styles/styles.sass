@@ -259,9 +259,9 @@ $media-max-xl: "screen and (max-width: 1399px)"
     &:last-child
       border-bottom: solid 1px #ddd
   &__button
+    +transition-2(color, background-color)
     @extend .fs-small
     line-height: $blh * 0.5
-    +transition-2(color, background-color)
     display: block
     width: 100%
     background: transparent
