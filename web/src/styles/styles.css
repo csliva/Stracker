@@ -301,7 +301,8 @@ figure {
     border: 0;
     text-align: left;
     padding: 6.5px 13px;
-    background: #fff; }
+    background: #fff;
+    text-decoration: none; }
     .options__button:hover, .options__button:focus, .options__button:active {
       cursor: pointer;
       background: #1e215b;
