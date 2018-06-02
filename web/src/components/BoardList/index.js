@@ -56,7 +56,7 @@ class BoardList extends Component {
           return (
             <div className="boardlist__item" key={i}>
 
-              <Options  />
+              <Options userId={that.props.currentUser.id} boardId={object.id} />
 
               <button className="boardlist__inner" onClick={that.clickHandler.bind(that, object.id, i)}>
                 <span className="boardlist__letter">{object.name.charAt(0)}</span>
