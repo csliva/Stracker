@@ -10,10 +10,11 @@ class Notification extends Component {
     if(this.props.isNotified){
       return(
         <div id="message" className="notification">
-          <p className="notification__message">Notification
-            <button className="notification__close" onClick={this.props.clearNotification} aria-label="delete">
-              X
-            </button>
+          <button className="notification__close" onClick={this.props.clearNotification} aria-label="delete">
+            <i class="fa fa-times"></i>
+          </button>
+          <p className="notification__message">
+            Notification
           </p>
           <div className="notification__body">
             <p>{this.props.message}</p>

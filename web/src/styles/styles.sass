@@ -63,11 +63,9 @@ $media-max-xl: "screen and (max-width: 1399px)"
   min-height: 100vh
   background: $clr-bg
   &--mobile
-    // border: solid 1px red
+    // mobile only
   &__header
     display: block
-  &--mobile
-    border: solid 5px red
   &__body
     display: block
   &__footer
@@ -158,6 +156,9 @@ $media-max-xl: "screen and (max-width: 1399px)"
       .content--alt &
         grid-column: 1 / span 1
 
+//////////////////////////////////////////////
+// Component: Graphic (temp)
+//////////////////////////////////////////////
 
 .temp-graphic
   display: block
@@ -273,6 +274,7 @@ $media-max-xl: "screen and (max-width: 1399px)"
       cursor: pointer
       background: $clr-main
       color: #fff
+      text-decoration: none
 
 //////////////////////////////////////////////
 // Component: Board List
@@ -346,7 +348,7 @@ $media-max-xl: "screen and (max-width: 1399px)"
 
 
 //////////////////////////////////////////////
-// Component: Buttons & Links
+// Component: Button
 //////////////////////////////////////////////
 
 .button
@@ -374,11 +376,15 @@ $media-max-xl: "screen and (max-width: 1399px)"
   &__inner
     vertical-align: middle
 
+//////////////////////////////////////////////
+// Component: Link
+//////////////////////////////////////////////
+
 .link
   display: inline-block
 
 //////////////////////////////////////////////
-// Component: #
+// Component: Notification
 //////////////////////////////////////////////
 
 .notification
@@ -387,11 +393,12 @@ $media-max-xl: "screen and (max-width: 1399px)"
   background: #fff
   &__message
   &__close
+    border: solid 1px red
   &__body
 
 
 //////////////////////////////////////////////
-// Component: NEW
+// Component: Columns
 //////////////////////////////////////////////
 
 .columns
@@ -405,8 +412,16 @@ $media-max-xl: "screen and (max-width: 1399px)"
     min-height: 0
     min-width: 0
 
+//////////////////////////////////////////////
+// Component: Tasklist
+//////////////////////////////////////////////
+
 .tasklist
   padding: 0 $blh 0 0
+
+//////////////////////////////////////////////
+// Component: Task
+//////////////////////////////////////////////
 
 .task
   display: block
@@ -426,6 +441,10 @@ $media-max-xl: "screen and (max-width: 1399px)"
     color: #fff
     background: $clr-alt
 
+//////////////////////////////////////////////
+// Component: For
+//////////////////////////////////////////////
+
 .for
   &--task
     background: #fff
@@ -443,11 +462,19 @@ $media-max-xl: "screen and (max-width: 1399px)"
     text-align: left
     box-shadow: 0 0 0 rgba(0,0,0,0.15)
 
+//////////////////////////////////////////////
+// Component: Stack
+//////////////////////////////////////////////
+
 .stack
   @media #{$media-min-xs}
     grid-row: 1
     grid-column: 1
     max-height: 100%
+
+//////////////////////////////////////////////
+// Component: Details
+//////////////////////////////////////////////
 
 .details
   display: block
@@ -464,7 +491,7 @@ $media-max-xl: "screen and (max-width: 1399px)"
   &__title
     margin: 0
   &__description
-
+    position: relative
   @media #{$media-min-xs}
     grid-row: 1
     grid-column: 2
@@ -475,6 +502,9 @@ $media-max-xl: "screen and (max-width: 1399px)"
       position: relative
       padding-right: 50%
 
+//////////////////////////////////////////////
+// Component: Timer
+//////////////////////////////////////////////
 
 .timer
   height: 100%
@@ -497,6 +527,10 @@ $media-max-xl: "screen and (max-width: 1399px)"
     padding: $blh
     border-left: solid 1px #eee
 
+//////////////////////////////////////////////
+// Component: Searchbar
+//////////////////////////////////////////////
+
 .searchbar
   margin-bottom: $blh
   &__input
@@ -510,6 +544,10 @@ $media-max-xl: "screen and (max-width: 1399px)"
     margin-left: $blh/2
     color: $clr-hlt
 
+//////////////////////////////////////////////
+// Component: List
+//////////////////////////////////////////////
+
 .list
   padding: 0
   margin: 0
@@ -519,6 +557,9 @@ $media-max-xl: "screen and (max-width: 1399px)"
       display: inline-block
       margin-right: $blh/2
 
+//////////////////////////////////////////////
+// Component: Currenttime
+//////////////////////////////////////////////
 
 .currenttime
   border: solid 1px #ddd
@@ -527,7 +568,7 @@ $media-max-xl: "screen and (max-width: 1399px)"
     margin-right: $blh/4
 
 //////////////////////////////////////////////
-// Component: NEW
+// Component: Panel
 //////////////////////////////////////////////
 
 .panel
@@ -565,7 +606,7 @@ $media-max-xl: "screen and (max-width: 1399px)"
       background: #eee
 
 //////////////////////////////////////////////
-// Component: NEW
+// Component: Runningtimer
 //////////////////////////////////////////////
 
 .runningtimer

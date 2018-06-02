@@ -1,0 +1,56 @@
+//////////////////////////////////////////////
+// Component: Options
+//////////////////////////////////////////////
+
+.options
+  display: block
+  position: absolute
+  top: 0
+  left: 0
+  &__toggle
+    +transition(color)
+    display: inline-block
+    border: 0
+    padding: $blh/2
+    color: $clr-main
+    &:hover
+      color: $clr-hlt
+      cursor: pointer
+    &:focus,
+    &:active
+      outline: 0
+  &__menu
+    +transition(max-height)
+    overflow: hidden
+    height: auto
+    max-height: 0
+    .options--active &
+      max-height: 500px
+  &__list
+    display: block
+    padding: $blh/8 0
+    margin: 0
+    border: solid 1px #ddd
+    background: #eee
+  &__item
+    display: block
+    border-top: solid 1px #ddd
+    &:last-child
+      border-bottom: solid 1px #ddd
+  &__button
+    +transition-2(color, background-color)
+    display: block
+    width: 100%
+    background: transparent
+    border-radius: 0
+    border: 0
+    text-align: left
+    padding: $blh/4 $blh/2
+    background: #fff
+    &:hover,
+    &:focus,
+    &:active
+      cursor: pointer
+      background: $clr-main
+      color: #fff
+      text-decoration: none

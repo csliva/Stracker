@@ -1,0 +1,28 @@
+//////////////////////////////////////////////
+// Component: Button
+//////////////////////////////////////////////
+
+.button
+  +transition(background-color)
+  font-family: #{$font-title}
+  display: inline-block
+  background: lighten($clr-hlt, 5%)
+  color: #fff
+  padding: $blh/4 $blh/2
+  border-radius: $blh/8
+  border: 0
+  font-weight: 700
+  text-transform: uppercase
+  text-decoration: none
+  margin-bottom: $blh
+  vertical-align: middle
+  &:hover,
+  &:focus,
+  &:after
+    cursor: pointer
+    background: $clr-hlt
+  &__icon
+    margin-right: $blh/2
+    vertical-align: middle
+  &__inner
+    vertical-align: middle

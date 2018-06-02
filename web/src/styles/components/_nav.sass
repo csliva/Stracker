@@ -1,0 +1,28 @@
+//////////////////////////////////////////////
+// Component: Nav
+//////////////////////////////////////////////
+
+.nav
+  +gradient-bg-diag($clr-main, $clr-alt)
+  &__list
+    margin: 0
+    padding: 0
+  &__item
+    display: inline-block
+  &__link,
+  &__button
+    font-size: $fs-base
+    line-height: $blh
+    background: transparent
+    display: block
+    padding: $blh/2 $blh
+    color: #fff
+    text-decoration: none
+    border: 0
+    border-right: solid 1px darken($clr-main, 5%)
+    &:hover,
+    &:focus,
+    &:active
+      background: darken($clr-main, 5%)
+    &--branding
+      font-weight: 700

@@ -119,8 +119,6 @@ figure {
   background: #f7f7f7; }
   .app__header {
     display: block; }
-  .app--mobile {
-    border: solid 5px red; }
   .app__body {
     display: block; }
   .app__footer {
@@ -307,7 +305,8 @@ figure {
     .options__button:hover, .options__button:focus, .options__button:active {
       cursor: pointer;
       background: #1e215b;
-      color: #fff; }
+      color: #fff;
+      text-decoration: none; }
 
 .boardlist {
   padding: 0;
@@ -416,6 +415,8 @@ figure {
   padding: 26px;
   border: solid 1px #ddd;
   background: #fff; }
+  .notification__close {
+    border: solid 1px red; }
 
 @media screen and (min-width: 576px) {
   .columns {
@@ -491,6 +492,8 @@ figure {
     padding: 26px; }
   .details__title {
     margin: 0; }
+  .details__description {
+    position: relative; }
   @media screen and (min-width: 576px) {
     .details {
       grid-row: 1;
