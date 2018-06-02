@@ -254,10 +254,20 @@ figure {
   top: 0;
   left: 0; }
   .options__toggle {
+    -webkit-transition: color 0.3s ease-out;
+    -moz-transition: color 0.3s ease-out;
+    -ms-transition: color 0.3s ease-out;
+    -o-transition: color 0.3s ease-out;
+    transition: color 0.3s ease-out;
     display: inline-block;
     border: 0;
     padding: 13px;
     color: #1e215b; }
+    .options__toggle:hover {
+      color: #e36ddd;
+      cursor: pointer; }
+    .options__toggle:focus, .options__toggle:active {
+      outline: 0; }
   .options__menu {
     -webkit-transition: max-height 0.3s ease-out;
     -moz-transition: max-height 0.3s ease-out;

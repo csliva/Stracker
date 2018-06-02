@@ -228,10 +228,17 @@ $media-max-xl: "screen and (max-width: 1399px)"
   top: 0
   left: 0
   &__toggle
+    +transition(color)
     display: inline-block
     border: 0
     padding: $blh/2
     color: $clr-main
+    &:hover
+      color: $clr-hlt
+      cursor: pointer
+    &:focus,
+    &:active
+      outline: 0
   &__menu
     +transition(max-height)
     overflow: hidden
