@@ -13,6 +13,7 @@ import { authenticate, unauthenticate, isMobile } from '../../actions/session';
 import Home from '../Home';
 import App from '../App';
 import BoardManagement from '../BoardManagement';
+import EditBoard from '../EditBoard';
 import Notification from '../../components/Notification';
 import NotFound from '../../components/Navigation/NotFound';
 import Login from '../Login';
@@ -77,6 +78,7 @@ class Main extends Component {
             <Match exactly pattern="/home" component={Home} {...authProps} />
             <MatchAuthenticated exactly pattern="/boards" component={BoardManagement} {...authProps} />
             <MatchAuthenticated exactly pattern="/" component={App} {...authProps} />
+            <MatchAuthenticated exactly pattern="/edit/board" component={EditBoard} {...authProps} />
             <MatchAuthenticated exactly pattern="/analytics" component={Analytics} {...authProps} />
             <MatchAuthenticated exactly pattern="/settings" component={Settings} {...authProps} />
             <MatchAuthenticated exactly pattern="/invite" component={Invite} {...authProps} />
