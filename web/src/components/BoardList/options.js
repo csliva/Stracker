@@ -2,6 +2,7 @@
 import React, { Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { getCsv } from '../../actions/analytics';
 import { deleteBoard } from '../../actions/boards.js';
 
 //Props: boardId, userId
@@ -29,6 +30,10 @@ class Options extends Component {
     }
   }
 
+  exportData(activeBoard){
+    this.props.getCsv(this.props.boardId)
+  }
+
   render() {
     let c = this.state.active ? 'options options--active' : 'options';
     return(
@@ -42,13 +47,13 @@ class Options extends Component {
                 <Link className="options__button" to="/edit/board">Edit Board</Link>
               </li>
               <li className="options__item">
-                <button className="options__button">Manage Users</button>
+                <Link className="options__button" to="/edit/users">Manage Users</Link>
               </li>
               <li className="options__item">
                 <button className="options__button" onClick={() => { this.boardDelete() }}>Delete Board</button>
               </li>
               <li className="options__item">
-                <button className="options__button">Export Data</button>
+                <button className="options__button" onClick={() => { this.exportData() }}>Export Data</button>
               </li>
             </ul>
           </div>
@@ -59,7 +64,6 @@ class Options extends Component {
 }
 export default connect(
   state => ({
-
   }),
-  { deleteBoard }
+  { deleteBoard, getCsv }
 )(Options);
