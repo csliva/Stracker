@@ -37,9 +37,10 @@ defmodule Stracker.EventView do
       task_title: event.task.task_title,
       task_id: event.task.id,
       board_name: event.task.board.name,
+      board_id: event.task.board.id,
       created_by_id: event.created_by_id,
       updated_by_id: event.updated_by_id,
       inserted_at: event.inserted_at,
-      task_id: event.task.id}  
+      task_id: event.task.id}
   end
 end

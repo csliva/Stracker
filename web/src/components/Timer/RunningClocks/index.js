@@ -2,9 +2,17 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { getRunningEvent } from '../../../actions/events';
+import { setActiveTask, formDeactivate } from '../../../actions/app';
+import { setActiveBoard } from '../../../actions/boards';
 import TimeDiff from '../TimeDiff';
 
 class RunningClocks extends Component {
+
+  viewTask(timer){
+    this.props.setActiveTask(timer.task_id)
+    this.props.setActiveBoard(timer.board_id)
+    this.props.formDeactivate()
+  }
 
   render() {
     if (this.props.runningEvent === undefined){
@@ -20,7 +28,11 @@ class RunningClocks extends Component {
             <ul className="runningtimer__list">
             {this.props.runningEvent.map((object, i) => {
               return (
-                <li className="runningtimer__item" key={i} id={object.id}>
+                <li onClick={this.viewTask.bind(this, object)}
+                  className="runningtimer__item"
+                  key={i}
+                  id={object.id}
+                >
                   <i className="runningtimer__icon fa fa-clock-o"></i>
                   <TimeDiff timeObject={object} />
                   <span className="runningtimer__info">
@@ -44,5 +56,5 @@ export default connect(
     userId: state.session.currentUser.id,
     currentBoard: state.boards.activeBoard,
   }),
-  { getRunningEvent }
+  { getRunningEvent, setActiveTask, setActiveBoard, formDeactivate }
 )(RunningClocks);

@@ -22,6 +22,7 @@ class BoardList extends Component {
     //Set active board
     //Reset and get tasks
     //route to app
+    console.log(this.props.boards[index])
     this.props.setActiveBoard(id, this.props.boards[index], this.context.router);
   }
 

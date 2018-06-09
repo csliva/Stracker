@@ -51,7 +51,9 @@ export function setActiveBoard(idNum, boardData, router) {
     getBoardStack(dispatch, idNum)
     dispatch({ type: 'SET_ACTIVE_BOARD', boardData });
     dispatch({ type: 'FORM_ACTIVATE' });
-    router.transitionTo('/');
+    if (router){
+      router.transitionTo('/');
+    }
   };
 }
 
