@@ -9,8 +9,6 @@
     padding: 0
   &__item
     display: inline-block
-    &--right
-      float: right
   &__link,
   &__button
     font-size: $fs-base
@@ -21,10 +19,33 @@
     color: #fff
     text-decoration: none
     border: 0
-    border-right: solid 1px darken($clr-main, 5%)
     &:hover,
     &:focus,
     &:active
       background: darken($clr-main, 5%)
     &--branding
       font-weight: 700
+  @media #{$media-max-sm}
+    &__inner
+      display: block
+    &__item
+      display: block
+      border: 0
+      border-bottom: solid 1px darken($clr-main, 5%)
+      &:last-child
+        border-right: 0
+  @media #{$media-min-sm}
+    &__inner
+      display: grid
+      grid-template-columns: 1fr 1fr
+    &__list
+      &--left
+        text-align: left
+      &--right
+        text-align: right
+    &__link,
+    &__button
+      .nav__list--left &
+        border-right: solid 1px darken($clr-main, 5%)
+      .nav__list--right &
+        border-left: solid 1px darken($clr-main, 5%)
