@@ -1,5 +1,5 @@
 // web/src/components/Timer/runningClocks -- VIEW -- SINGLE USE
-import React, { Component} from 'react';
+import React, { Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
 import { getRunningEvent } from '../../../actions/events';
 import { setActiveTask, formDeactivate } from '../../../actions/app';
@@ -8,9 +8,14 @@ import TimeDiff from '../TimeDiff';
 
 class RunningClocks extends Component {
 
+  static contextTypes = {
+    router: PropTypes.object,
+  }
+
   viewTask(timer){
+    console.log(this.context.router)
     this.props.setActiveTask(timer.task_id)
-    this.props.setActiveBoard(timer.board_id)
+    this.props.setActiveBoard(timer.board_id, null, this.context.router)
     this.props.formDeactivate()
   }
 
